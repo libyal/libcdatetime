@@ -34,12 +34,12 @@
 /* The following type definitions hide internal data structures
  */
 #if defined( HAVE_DEBUG_OUTPUT ) && !defined( WINAPI )
-typedef struct libcdatetime_narrow_split_string {}	libcdatetime_narrow_split_string_t;
-typedef struct libcdatetime_wide_split_string {}	libcdatetime_wide_split_string_t;
+typedef struct libcdatetime_elements {}		libcdatetime_elements_t;
+typedef struct libcdatetime_timestamp {}	libcdatetime_timestamp_t;
 
 #else
-typedef intptr_t libcdatetime_narrow_split_string_t;
-typedef intptr_t libcdatetime_wide_split_string_t;
+typedef intptr_t libcdatetime_elements_t;
+typedef intptr_t libcdatetime_timestamp_t;
 
 #endif
 

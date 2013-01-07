@@ -1,5 +1,5 @@
 /*
- * Library to support cross-platform C split string functions
+ * Library to support cross-platform C date and time functions
  *
  * Copyright (c) 2006-2013, Joachim Metz <joachim.metz@gmail.com>
  *

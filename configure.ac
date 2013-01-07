@@ -2,7 +2,7 @@ AC_PREREQ( 2.59 )
 
 AC_INIT(
  [libcdatetime],
- [20130103],
+ [20130106],
  [joachim.metz@gmail.com])
 
 AC_CONFIG_SRCDIR(
@@ -60,6 +60,9 @@ AX_LIBCSTRING_CHECK_ENABLE
 
 dnl Check for enabling libcerror for cross-platform C error functions
 AX_LIBCERROR_CHECK_ENABLE
+
+dnl Check for library function support
+AX_LIBCDATETIME_CHECK_LOCAL
 
 dnl Set additional compiler flags
 CFLAGS="$CFLAGS -Wall";

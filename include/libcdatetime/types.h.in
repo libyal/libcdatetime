@@ -197,8 +197,8 @@ typedef int64_t off64_t;
 
 /* The following type definitions hide internal data structures
  */
-typedef intptr_t libcdatetime_narrow_split_string_t;
-typedef intptr_t libcdatetime_wide_split_string_t;
+typedef intptr_t libcdatetime_elements_t;
+typedef intptr_t libcdatetime_timestamp_t;
 
 #ifdef __cplusplus
 }
