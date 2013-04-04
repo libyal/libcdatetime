@@ -47,7 +47,7 @@ const char *libcdatetime_get_version(
  * Error functions
  * ------------------------------------------------------------------------- */
 
-/* Frees the error including elements
+/* Frees an error
  */
 LIBCDATETIME_EXTERN \
 void libcdatetime_error_free(

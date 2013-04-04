@@ -41,7 +41,8 @@
 #include "libcdatetime_libcerror.h"
 #include "libcdatetime_types.h"
 
-/* Initialize the date and time elements
+/* Creates date and time elements
+ * Make sure the value elements is referencing, is set to NULL
  * Returns 1 if successful or -1 on error
  */
 int libcdatetime_elements_initialize(
@@ -114,7 +115,7 @@ on_error:
 	return( -1 );
 }
 
-/* Frees the date and time elements
+/* Frees date and time elements
  * Returns 1 if successful or -1 on error
  */
 int libcdatetime_elements_free(

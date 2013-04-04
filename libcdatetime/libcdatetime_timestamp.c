@@ -42,6 +42,7 @@
 #include "libcdatetime_types.h"
 
 /* Initialize the timestamp
+ * Make sure the value timestamp is referencing, is set to NULL
  * Returns 1 if successful or -1 on error
  */
 int libcdatetime_timestamp_initialize(
@@ -114,7 +115,7 @@ on_error:
 	return( -1 );
 }
 
-/* Frees the timestamp
+/* Frees a timestamp
  * Returns 1 if successful or -1 on error
  */
 int libcdatetime_timestamp_free(
