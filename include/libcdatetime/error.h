@@ -33,10 +33,10 @@ typedef intptr_t libcdatetime_error_t;
 enum LIBCDATETIME_ERROR_DOMAINS
 {
 	LIBCDATETIME_ERROR_DOMAIN_ARGUMENTS			= (int) 'a',
-	LIBCDATETIME_ERROR_DOMAIN_CONVERSION		= (int) 'c',
-	LIBCDATETIME_ERROR_DOMAIN_COMPRESSION		= (int) 'C',
-	LIBCDATETIME_ERROR_DOMAIN_IO			= (int) 'I',
-	LIBCDATETIME_ERROR_DOMAIN_INPUT			= (int) 'i',
+	LIBCDATETIME_ERROR_DOMAIN_CONVERSION			= (int) 'c',
+	LIBCDATETIME_ERROR_DOMAIN_COMPRESSION			= (int) 'C',
+	LIBCDATETIME_ERROR_DOMAIN_IO				= (int) 'I',
+	LIBCDATETIME_ERROR_DOMAIN_INPUT				= (int) 'i',
 	LIBCDATETIME_ERROR_DOMAIN_MEMORY			= (int) 'm',
 	LIBCDATETIME_ERROR_DOMAIN_OUTPUT			= (int) 'o',
 	LIBCDATETIME_ERROR_DOMAIN_RUNTIME			= (int) 'r',
@@ -59,7 +59,7 @@ enum LIBCDATETIME_ARGUMENT_ERROR
 
 	/* The argument contains a value zero or less
 	 */
-	LIBCDATETIME_ARGUMENT_ERROR_VALUE_ZERO_OR_LESS	= 3,
+	LIBCDATETIME_ARGUMENT_ERROR_VALUE_ZERO_OR_LESS		= 3,
 
 	/* The argument contains a value that exceeds the maximum
 	 * for the specific type
@@ -76,15 +76,15 @@ enum LIBCDATETIME_ARGUMENT_ERROR
 
 	/* The argument contains a value that is out of bounds
 	 */
-	LIBCDATETIME_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS	= 7,
+	LIBCDATETIME_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS		= 7,
 
 	/* The argument contains a value that is not supported
 	 */
-	LIBCDATETIME_ARGUMENT_ERROR_UNSUPPORTED_VALUE	= 8,
+	LIBCDATETIME_ARGUMENT_ERROR_UNSUPPORTED_VALUE		= 8,
 
 	/* The argument contains a value that conficts with another argument
 	 */
-	LIBCDATETIME_ARGUMENT_ERROR_CONFLICTING_VALUE	= 9
+	LIBCDATETIME_ARGUMENT_ERROR_CONFLICTING_VALUE		= 9
 };
 
 /* The conversion error codes
@@ -92,7 +92,7 @@ enum LIBCDATETIME_ARGUMENT_ERROR
  */
 enum LIBCDATETIME_CONVERSION_ERROR
 {
-	LIBCDATETIME_CONVERSION_ERROR_GENERIC		= 0,
+	LIBCDATETIME_CONVERSION_ERROR_GENERIC			= 0,
 
 	/* The conversion failed on the input
 	 */
@@ -108,11 +108,11 @@ enum LIBCDATETIME_CONVERSION_ERROR
  */
 enum LIBCDATETIME_COMPRESSION_ERROR
 {
-	LIBCDATETIME_COMPRESSION_ERROR_GENERIC		= 0,
+	LIBCDATETIME_COMPRESSION_ERROR_GENERIC			= 0,
 
 	/* The compression failed
 	 */
-	LIBCDATETIME_COMPRESSION_ERROR_COMPRESS_FAILED	= 1,
+	LIBCDATETIME_COMPRESSION_ERROR_COMPRESS_FAILED		= 1,
 
 	/* The decompression failed
 	 */
@@ -124,7 +124,7 @@ enum LIBCDATETIME_COMPRESSION_ERROR
  */
 enum LIBCDATETIME_IO_ERROR
 {
-	LIBCDATETIME_IO_ERROR_GENERIC			= 0,
+	LIBCDATETIME_IO_ERROR_GENERIC				= 0,
 
 	/* The open failed
 	 */
@@ -152,7 +152,7 @@ enum LIBCDATETIME_IO_ERROR
 
 	/* The resource is invalid i.e. a missing file
 	 */
-	LIBCDATETIME_IO_ERROR_INVALID_RESOURCE		= 7,
+	LIBCDATETIME_IO_ERROR_INVALID_RESOURCE			= 7,
 
 	/* The ioctl failed
 	 */
@@ -172,7 +172,7 @@ enum LIBCDATETIME_INPUT_ERROR
 
 	/* The input contains invalid data
 	 */
-	LIBCDATETIME_INPUT_ERROR_INVALID_DATA		= 1,
+	LIBCDATETIME_INPUT_ERROR_INVALID_DATA			= 1,
 
 	/* The input contains an unsupported signature
 	 */
@@ -185,7 +185,7 @@ enum LIBCDATETIME_INPUT_ERROR
 	/* A value in the input did not match a previously
 	 * read value or calculated value
 	 */
-	LIBCDATETIME_INPUT_ERROR_VALUE_MISMATCH		= 4
+	LIBCDATETIME_INPUT_ERROR_VALUE_MISMATCH			= 4
 };
 
 /* The memory error codes
@@ -197,15 +197,15 @@ enum LIBCDATETIME_MEMORY_ERROR
 
 	/* There is insufficient memory available
 	 */
-	LIBCDATETIME_MEMORY_ERROR_INSUFFICIENT		= 1,
+	LIBCDATETIME_MEMORY_ERROR_INSUFFICIENT			= 1,
 
 	/* The memory failed to be copied
 	 */
-	LIBCDATETIME_MEMORY_ERROR_COPY_FAILED		= 2,
+	LIBCDATETIME_MEMORY_ERROR_COPY_FAILED			= 2,
 
 	/* The memory failed to be set
 	 */
-	LIBCDATETIME_MEMORY_ERROR_SET_FAILED		= 3
+	LIBCDATETIME_MEMORY_ERROR_SET_FAILED			= 3
 };
 
 /* The runtime error codes
@@ -221,11 +221,11 @@ enum LIBCDATETIME_RUNTIME_ERROR
 
 	/* The value was already set
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_VALUE_ALREADY_SET	= 2,
+	LIBCDATETIME_RUNTIME_ERROR_VALUE_ALREADY_SET		= 2,
 
 	/* The creation and/or initialization of an internal structure failed
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_INITIALIZE_FAILED	= 3,
+	LIBCDATETIME_RUNTIME_ERROR_INITIALIZE_FAILED		= 3,
 
 	/* The resize of an internal structure failed
 	 */
@@ -237,11 +237,11 @@ enum LIBCDATETIME_RUNTIME_ERROR
 
 	/* The value could not be determined
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_GET_FAILED		= 6,
+	LIBCDATETIME_RUNTIME_ERROR_GET_FAILED			= 6,
 
 	/* The value could not be set
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_SET_FAILED		= 7,
+	LIBCDATETIME_RUNTIME_ERROR_SET_FAILED			= 7,
 
 	/* The value could not be appended/prepended
 	 */
@@ -249,7 +249,7 @@ enum LIBCDATETIME_RUNTIME_ERROR
 
 	/* The value could not be copied
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_COPY_FAILED		= 9,
+	LIBCDATETIME_RUNTIME_ERROR_COPY_FAILED			= 9,
 
 	/* The value could not be removed
 	 */
@@ -257,11 +257,11 @@ enum LIBCDATETIME_RUNTIME_ERROR
 
 	/* The value could not be printed
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_PRINT_FAILED		= 11,
+	LIBCDATETIME_RUNTIME_ERROR_PRINT_FAILED			= 11,
 
 	/* The value was out of bounds
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_VALUE_OUT_OF_BOUNDS	= 12,
+	LIBCDATETIME_RUNTIME_ERROR_VALUE_OUT_OF_BOUNDS		= 12,
 
 	/* The value exceeds the maximum for its specific type
 	 */
@@ -269,7 +269,7 @@ enum LIBCDATETIME_RUNTIME_ERROR
 
 	/* The value is unsupported
 	 */
-	LIBCDATETIME_RUNTIME_ERROR_UNSUPPORTED_VALUE	= 14,
+	LIBCDATETIME_RUNTIME_ERROR_UNSUPPORTED_VALUE		= 14,
 
 	/* An abort was requested
 	 */
@@ -284,7 +284,7 @@ enum LIBCDATETIME_OUTPUT_ERROR
 
 	/* There is insuficient space to write the output
 	 */
-	LIBCDATETIME_OUTPUT_ERROR_INSUFFICIENT_SPACE	= 1
+	LIBCDATETIME_OUTPUT_ERROR_INSUFFICIENT_SPACE		= 1
 };
 
 #endif

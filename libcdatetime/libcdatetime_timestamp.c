@@ -41,7 +41,7 @@
 #include "libcdatetime_timestamp.h"
 #include "libcdatetime_types.h"
 
-/* Initialize the timestamp
+/* Creates a timestamp
  * Make sure the value timestamp is referencing, is set to NULL
  * Returns 1 if successful or -1 on error
  */
