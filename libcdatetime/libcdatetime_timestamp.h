@@ -1,7 +1,7 @@
 /*
  * Timestamp functions
  *
- * Copyright (c) 2006-2013, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (c) 2006-2014, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -25,7 +25,7 @@
 #include <common.h>
 #include <types.h>
 
-#if !defined( WINAPI ) || defined( USE_CRT_FUNCTIONS )
+#if !defined( WINAPI )
 #if defined( TIME_WITH_SYS_TIME )
 #include <sys/time.h>
 #include <time.h>
@@ -48,12 +48,12 @@ typedef struct libcdatetime_internal_timestamp libcdatetime_internal_timestamp_t
 
 struct libcdatetime_internal_timestamp
 {
-#if defined( WINAPI ) && ( WINVER >= 0x0500 ) && !defined( USE_CRT_FUNCTIONS )
-	/* The systemtime
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	/* The filetime timestamp
 	 */
-	SYSTEMTIME systemtime;
+	FILETIME filetime;
 
-#elif defined( WINAPI ) && !defined( USE_CRT_FUNCTIONS )
+#elif defined( WINAPI )
 
 /* TODO */
 #error WINAPI timestamp type for Windows NT4 or earlier NOT implemented yet
@@ -76,6 +76,12 @@ int libcdatetime_timestamp_free(
      libcerror_error_t **error );
 
 LIBCDATETIME_EXTERN \
+int libcdatetime_timestamp_copy(
+     libcdatetime_timestamp_t *destination_timestamp,
+     const libcdatetime_timestamp_t *source_timestamp,
+     libcerror_error_t **error );
+
+LIBCDATETIME_EXTERN \
 int libcdatetime_timestamp_set_current_time(
      libcdatetime_timestamp_t *timestamp,
      libcerror_error_t **error );
@@ -88,16 +94,24 @@ int libcdatetime_timestamp_get_delta_in_seconds(
      libcerror_error_t **error );
 
 LIBCDATETIME_EXTERN \
-int libcdatetime_date_time_values_get_string_size(
+int libcdatetime_timestamp_get_string_size(
      libcdatetime_timestamp_t *timestamp,
      size_t *string_size,
      uint32_t string_format_flags,
      libcerror_error_t **error );
 
 LIBCDATETIME_EXTERN \
-int libcdatetime_date_time_values_copy_to_string_with_index(
+int libcdatetime_timestamp_copy_to_string(
      libcdatetime_timestamp_t *timestamp,
-     char *string,
+     uint8_t *string,
+     size_t string_size,
+     uint32_t string_format_flags,
+     libcerror_error_t **error );
+
+LIBCDATETIME_EXTERN \
+int libcdatetime_timestamp_copy_to_string_with_index(
+     libcdatetime_timestamp_t *timestamp,
+     uint8_t *string,
      size_t string_size,
      size_t *string_index,
      uint32_t string_format_flags,

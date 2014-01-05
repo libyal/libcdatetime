@@ -1,7 +1,7 @@
 /*
- * Support functions
+ * The internal unused definition
  *
- * Copyright (c) 2006-2014, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (c) 2010-2014, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -19,29 +19,25 @@
  * along with this software.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined( _LIBCDATETIME_SUPPORT_H )
-#define _LIBCDATETIME_SUPPORT_H
+#if !defined( _LIBCSTRING_INTERNAL_UNUSED_H )
+#define _LIBCSTRING_INTERNAL_UNUSED_H
 
 #include <common.h>
-#include <types.h>
 
-#include "libcdatetime_extern.h"
-#include "libcdatetime_libcerror.h"
-
-#if defined( __cplusplus )
-extern "C" {
+#if !defined( LIBCSTRING_ATTRIBUTE_UNUSED )
+#if defined( __GNUC__ ) && __GNUC__ >= 3
+#define LIBCSTRING_ATTRIBUTE_UNUSED	__attribute__ ((__unused__))
+#else
+#define LIBCSTRING_ATTRIBUTE_UNUSED
+#endif
 #endif
 
-#if !defined( HAVE_LOCAL_LIBCDATETIME )
-
-LIBCDATETIME_EXTERN \
-const char *libcdatetime_get_version(
-             void );
-
-#endif /* !defined( HAVE_LOCAL_LIBCDATETIME ) */
-
-#if defined( __cplusplus )
-}
+#if defined( _MSC_VER )
+#define LIBCSTRING_UNREFERENCED_PARAMETER( parameter ) \
+	UNREFERENCED_PARAMETER( parameter );
+#else
+#define LIBCSTRING_UNREFERENCED_PARAMETER( parameter ) \
+	/* parameter */
 #endif
 
 #endif

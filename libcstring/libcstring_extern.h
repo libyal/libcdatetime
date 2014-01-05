@@ -1,7 +1,7 @@
 /*
- * Support functions
+ * The internal extern definition
  *
- * Copyright (c) 2006-2014, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (c) 2010-2014, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -19,29 +19,27 @@
  * along with this software.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined( _LIBCDATETIME_SUPPORT_H )
-#define _LIBCDATETIME_SUPPORT_H
+#if !defined( _LIBCSTRING_INTERNAL_EXTERN_H )
+#define _LIBCSTRING_INTERNAL_EXTERN_H
 
 #include <common.h>
-#include <types.h>
 
-#include "libcdatetime_extern.h"
-#include "libcdatetime_libcerror.h"
+/* Define HAVE_LOCAL_LIBCSTRING for local use of libcstring
+ */
+#if !defined( HAVE_LOCAL_LIBCSTRING )
 
-#if defined( __cplusplus )
-extern "C" {
+/* If libtool DLL support is enabled set LIBCSTRING_DLL_EXPORT
+ * before including libcstring/extern.h
+ */
+#if defined( _WIN32 ) && defined( DLL_EXPORT )
+#define LIBCSTRING_DLL_EXPORT
 #endif
 
-#if !defined( HAVE_LOCAL_LIBCDATETIME )
+#include <libcstring/extern.h>
 
-LIBCDATETIME_EXTERN \
-const char *libcdatetime_get_version(
-             void );
+#else
+#define LIBCSTRING_EXTERN	extern
 
-#endif /* !defined( HAVE_LOCAL_LIBCDATETIME ) */
-
-#if defined( __cplusplus )
-}
 #endif
 
 #endif

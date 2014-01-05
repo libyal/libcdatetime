@@ -1,6 +1,9 @@
 dnl Functions for libcdatetime
 dnl
-dnl Version: 20130106
+dnl Version: 20140105
+
+dnl The AX_LIBCDATETIME_CHECK_FUNC_CTIME function is currently not used
+dnl but kept as a reference for the time being.
 
 dnl Function to detect if ctime_r or ctime is available
 dnl Also checks how to use ctime_r
@@ -87,7 +90,7 @@ AC_DEFUN([AX_LIBCDATETIME_CHECK_FUNC_CTIME],
  ])
 
 dnl Function to detect if libcdatetime dependencies are available
-AC_DEFUN([AX_LIBCNOTIFY_CHECK_LOCAL],
+AC_DEFUN([AX_LIBCDATETIME_CHECK_LOCAL],
  [dnl Headers included in libcdatetime/libcdatetime_elements.c
  AC_CHECK_HEADERS([errno.h])
 
@@ -97,12 +100,19 @@ AC_DEFUN([AX_LIBCNOTIFY_CHECK_LOCAL],
  AC_STRUCT_TM
 
  dnl Date and time functions used in libcdatetime/libcdatetime_elements.c
- AC_CHECK_FUNCS([gmtime gmtime_r mktime time])
+ AC_CHECK_FUNCS([gmtime gmtime_r localtime localtime_r mktime time])
 
  AS_IF(
   [test "x$ac_cv_func_gmtime" != xyes && test "x$ac_cv_func_gmtime_r" != xyes],
   [AC_MSG_FAILURE(
    [Missing functions: gmtime_r and gmtime],
+   [1])
+  ])
+ 
+ AS_IF(
+  [test "x$ac_cv_func_localtime" != xyes && test "x$ac_cv_func_localtime_r" != xyes],
+  [AC_MSG_FAILURE(
+   [Missing functions: localtime_r and localtime],
    [1])
   ])
  

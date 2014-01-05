@@ -1,7 +1,7 @@
 /*
- * The internal libcstring header
+ * Type definitions
  *
- * Copyright (c) 2006-2014, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (c) 2010-2014, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -19,32 +19,44 @@
  * along with this software.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined( _LIBCDATETIME_LIBCSTRING_H )
-#define _LIBCDATETIME_LIBCSTRING_H
+#if !defined( _LIBCSTRING_TYPES_H )
+#define _LIBCSTRING_TYPES_H
 
 #include <common.h>
+#include <types.h>
+
+#if defined( _cplusplus )
+extern "C" {
+#endif
 
 /* Define HAVE_LOCAL_LIBCSTRING for local use of libcstring
+ * The definitions in <libcstring/types.h> are copied here
+ * for local use of libcstring
  */
 #if defined( HAVE_LOCAL_LIBCSTRING )
 
-#include <libcstring_definitions.h>
-#include <libcstring_narrow_string.h>
-#include <libcstring_system_string.h>
-#include <libcstring_types.h>
-#include <libcstring_wide_string.h>
+#if defined( WINAPI ) && ( defined( _UNICODE ) || defined( UNICODE ) )
+
+/* The system character type is wide
+ * A system string contains either UTF-16 or UTF-32
+ */
+typedef wchar_t libcstring_system_character_t;
+typedef wint_t libcstring_system_integer_t;
 
 #else
 
-/* If libtool DLL support is enabled set LIBCSTRING_DLL_IMPORT
- * before including libcstring.h
+/* The system character type is narrow
+ * A system string contains either UTF-8 or extended ASCII with a codepage
  */
-#if defined( _WIN32 ) && defined( DLL_IMPORT )
-#define LIBCSTRING_DLL_IMPORT
+typedef char libcstring_system_character_t;
+typedef int libcstring_system_integer_t;
+
 #endif
 
-#include <libcstring.h>
+#endif
 
+#if defined( _cplusplus )
+}
 #endif
 
 #endif

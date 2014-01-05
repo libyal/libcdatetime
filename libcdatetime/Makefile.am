@@ -14,6 +14,7 @@ libcdatetime_la_SOURCES = \
 	libcdatetime_extern.h \
 	libcdatetime_libcerror.h \
 	libcdatetime_libcstring.h \
+	libcdatetime_timestamp.c libcdatetime_timestamp.h \
 	libcdatetime_support.c libcdatetime_support.h \
 	libcdatetime_types.h \
 	libcdatetime_unused.h

@@ -1,4 +1,13 @@
 TODO:
+* add tests
+* add a copy time elements from timestamp function?
+* clean up time elements string function, reuse code from libewf_date_time_values.c
+
+20140105
+* updated dependencies
+* 2014 update
+* worked on elements and timestamp functionality
+* updated msvscpp files
 
 20130609
 * fix in .pc.in file
@@ -19,5 +28,5 @@ TODO:
 * Worked on initial version
 
 20130105
-* Initial version split of from libewf and libcsystem
+* Initial version split off from libewf and libcsystem
 

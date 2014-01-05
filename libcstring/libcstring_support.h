@@ -1,7 +1,7 @@
 /*
- * Date and time functions
+ * Support functions
  *
- * Copyright (c) 2006-2012, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (c) 2010-2014, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -19,43 +19,27 @@
  * along with this software.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined( _LIBEWF_DATE_TIME_H )
-#define _LIBEWF_DATE_TIME_H
+#if !defined( _LIBCSTRING_SUPPORT_H )
+#define _LIBCSTRING_SUPPORT_H
 
 #include <common.h>
 #include <types.h>
 
-#if defined( TIME_WITH_SYS_TIME )
-#include <sys/time.h>
-#include <time.h>
-#elif defined( HAVE_SYS_TIME_H )
-#include <sys/time.h>
-#else
-#include <time.h>
-#endif
+#include <stdio.h>
 
-#include "libewf_libcerror.h"
+#include "libcstring_extern.h"
 
 #if defined( __cplusplus )
 extern "C" {
 #endif
 
-#if defined( WINAPI )
-#define libewf_date_time_mktime( time_elements ) \
-	mktime( time_elements )
+#if !defined( HAVE_LOCAL_LIBCSTRING )
 
-#elif defined( HAVE_MKTIME )
-#define libewf_date_time_mktime( time_elements ) \
-	mktime( time_elements )
+LIBCSTRING_EXTERN \
+const char *libcstring_get_version(
+             void );
 
-#else
-#error Missing mktime function
-#endif
-
-int libewf_date_time_localtime(
-     const time_t *timestamp,
-     struct tm *time_elements,
-     libcerror_error_t **error );
+#endif /* !defined( HAVE_LOCAL_LIBCSTRING ) */
 
 #if defined( __cplusplus )
 }

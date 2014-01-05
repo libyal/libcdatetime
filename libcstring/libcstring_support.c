@@ -1,7 +1,7 @@
 /*
  * Support functions
  *
- * Copyright (c) 2006-2014, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (c) 2010-2014, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -19,30 +19,21 @@
  * along with this software.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined( _LIBCDATETIME_SUPPORT_H )
-#define _LIBCDATETIME_SUPPORT_H
-
 #include <common.h>
 #include <types.h>
 
-#include "libcdatetime_extern.h"
-#include "libcdatetime_libcerror.h"
+#include "libcstring_definitions.h"
+#include "libcstring_support.h"
 
-#if defined( __cplusplus )
-extern "C" {
-#endif
+#if !defined( HAVE_LOCAL_LIBCSTRING )
 
-#if !defined( HAVE_LOCAL_LIBCDATETIME )
-
-LIBCDATETIME_EXTERN \
-const char *libcdatetime_get_version(
-             void );
-
-#endif /* !defined( HAVE_LOCAL_LIBCDATETIME ) */
-
-#if defined( __cplusplus )
+/* Returns the library version as a string
+ */
+const char *libcstring_get_version(
+             void )
+{
+	return( (const char *) LIBCSTRING_VERSION_STRING );
 }
-#endif
 
-#endif
+#endif /* !defined( HAVE_LOCAL_LIBCSTRING ) */
 

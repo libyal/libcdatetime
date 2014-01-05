@@ -1,7 +1,7 @@
 /*
  * Timestamp functions
  *
- * Copyright (c) 2006-2013, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (c) 2006-2014, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -23,7 +23,7 @@
 #include <memory.h>
 #include <types.h>
 
-#if !defined( WINAPI ) || defined( USE_CRT_FUNCTIONS )
+#if !defined( WINAPI )
 #if defined( TIME_WITH_SYS_TIME )
 #include <sys/time.h>
 #include <time.h>
@@ -37,6 +37,7 @@
 #include <errno.h>
 
 #include "libcdatetime_definitions.h"
+#include "libcdatetime_elements.h"
 #include "libcdatetime_libcerror.h"
 #include "libcdatetime_timestamp.h"
 #include "libcdatetime_types.h"
@@ -147,7 +148,56 @@ int libcdatetime_timestamp_free(
 	return( 1 );
 }
 
-#if defined( WINAPI ) && ( WINVER >= 0x0500 ) && !defined( USE_CRT_FUNCTIONS )
+/* Copies the timestamp
+ * Returns 1 if successful or -1 on error
+ */
+int libcdatetime_timestamp_copy(
+     libcdatetime_timestamp_t *destination_timestamp,
+     const libcdatetime_timestamp_t *source_timestamp,
+     libcerror_error_t **error )
+{
+	static char *function = "libcdatetime_timestamp_copy";
+
+	if( destination_timestamp == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
+		 "%s: invalid destination timestamp.",
+		 function );
+
+		return( -1 );
+	}
+	if( source_timestamp == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
+		 "%s: invalid source timestamp.",
+		 function );
+
+		return( -1 );
+	}
+	if( memory_copy(
+	     destination_timestamp,
+	     source_timestamp,
+	     sizeof( libcdatetime_internal_timestamp_t ) ) == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_MEMORY,
+		 LIBCERROR_MEMORY_ERROR_COPY_FAILED,
+		 "%s: unable to copy timestamp.",
+		 function );
+
+		return( -1 );
+	}
+	return( 1 );
+}
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
 
 /* Sets the timestamp to the current (system) date and time in UTC
  * This function uses the WINAPI function for Windows 2000 or later
@@ -157,6 +207,8 @@ int libcdatetime_timestamp_set_current_time(
      libcdatetime_timestamp_t *timestamp,
      libcerror_error_t **error )
 {
+	SYSTEMTIME systemtime;
+
 	libcdatetime_internal_timestamp_t *internal_timestamp = NULL;
 	static char *function                                 = "libcdatetime_timestamp_set_current_time";
 
@@ -173,18 +225,46 @@ int libcdatetime_timestamp_set_current_time(
 	}
 	internal_timestamp = (libcdatetime_internal_timestamp_t *) timestamp;
 
-	GetSystemTime(
-	 internal_timestamp->systemtime );
+	if( memory_set(
+	     &systemtime,
+	     0,
+	     sizeof( SYSTEMTIME ) ) == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_MEMORY,
+		 LIBCERROR_MEMORY_ERROR_SET_FAILED,
+		 "%s: unable to clear systemtime.",
+		 function );
 
+		return( 1 );
+	}
+	GetSystemTime(
+	 &systemtime );
+
+	if( SystemTimeToFileTime(
+	     &systemtime,
+	     &( internal_timestamp->filetime ) ) != 0 )
+	{
+		libcerror_system_set_error(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
+		 errno,
+		 "%s: unable to retrieve filetime.",
+		 function );
+
+		return( -1 );
+	}
 	return( 1 );
 }
 
-#elif defined( WINAPI ) && !defined( USE_CRT_FUNCTIONS )
+#elif defined( WINAPI )
 
 /* TODO */
 #error WINAPI get current time function for Windows NT4 or earlier NOT implemented yet
 
-#elif defined( HAVE_TIME ) || defined( WINAPI )
+#elif defined( HAVE_TIME )
 
 /* Sets the timestamp to the current (system) date and time in UTC
  * This function uses the POSIX time function or equivalent
@@ -196,7 +276,6 @@ int libcdatetime_timestamp_set_current_time(
 {
 	libcdatetime_internal_timestamp_t *internal_timestamp = NULL;
 	static char *function                                 = "libcdatetime_timestamp_set_current_time";
-	time_t result                                         = 0;
 
 	if( timestamp == NULL )
 	{
@@ -211,10 +290,8 @@ int libcdatetime_timestamp_set_current_time(
 	}
 	internal_timestamp = (libcdatetime_internal_timestamp_t *) timestamp;
 
-	result = time(
-	 &( internal_timestamp->time ) );
-
-	if( result == (time_t) -1 )
+	if( time(
+	     &( internal_timestamp->time ) ) == (time_t) -1 )
 	{
 		libcerror_system_set_error(
 		 error,
@@ -233,7 +310,7 @@ int libcdatetime_timestamp_set_current_time(
 #error Missing get current time function
 #endif
 
-#if defined( WINAPI ) && ( WINVER >= 0x0500 ) && !defined( USE_CRT_FUNCTIONS )
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
 
 /* Determines the delta in seconds between the first and second timestamp
  * This function uses the WINAPI function for Windows 2000 or later
@@ -247,11 +324,117 @@ int libcdatetime_timestamp_get_delta_in_seconds(
      int64_t *number_of_seconds,
      libcerror_error_t **error )
 {
-/* TODO */
-#error WINAPI libcdatetime_timestamp_get_delta_in_seconds function for Windows 2000 or later NOT implemented yet
+	libcdatetime_internal_timestamp_t *internal_first_timestamp  = NULL;
+	libcdatetime_internal_timestamp_t *internal_second_timestamp = NULL;
+	static char *function                                        = "libcdatetime_timestamp_get_delta_in_seconds";
+	int64_t time_delta                                           = 0;
+
+	if( first_timestamp == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
+		 "%s: invalid first timestamp.",
+		 function );
+
+		return( -1 );
+	}
+	internal_first_timestamp = (libcdatetime_internal_timestamp_t *) first_timestamp;
+
+	if( second_timestamp == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
+		 "%s: invalid second timestamp.",
+		 function );
+
+		return( -1 );
+	}
+	internal_second_timestamp = (libcdatetime_internal_timestamp_t *) second_timestamp;
+
+	if( number_of_seconds == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
+		 "%s: invalid number of seconds.",
+		 function );
+
+		return( -1 );
+	}
+	time_delta = (int64_t) internal_first_timestamp->filetime.dwHighDateTime - (int64_t) internal_second_timestamp->filetime.dwHighDateTime;
+
+	if( time_delta < 0 )
+	{
+		if( (uint64_t) -time_delta > (uint64_t) INT32_MAX )
+		{
+			libcerror_error_set(
+			 error,
+			 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+			 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+			 "%s: invalid time delta value out of bounds.",
+			 function );
+
+			return( -1 );
+		}
+	}
+	else
+	{
+		if( (uint64_t) time_delta > (uint64_t) INT64_MAX )
+		{
+			libcerror_error_set(
+			 error,
+			 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+			 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+			 "%s: invalid time delta value out of bounds.",
+			 function );
+
+			return( -1 );
+		}
+	}
+	time_delta <<= 32;
+
+	time_delta += (int64_t) internal_first_timestamp->filetime.dwLowDateTime - (int64_t) internal_second_timestamp->filetime.dwLowDateTime;
+
+	if( time_delta < 0 )
+	{
+		if( (uint64_t) -time_delta > (uint64_t) INT64_MAX )
+		{
+			libcerror_error_set(
+			 error,
+			 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+			 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+			 "%s: invalid time delta value out of bounds.",
+			 function );
+
+			return( -1 );
+		}
+	}
+	else
+	{
+		if( (uint64_t) time_delta > (uint64_t) INT64_MAX )
+		{
+			libcerror_error_set(
+			 error,
+			 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+			 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+			 "%s: invalid time delta value out of bounds.",
+			 function );
+
+			return( -1 );
+		}
+	}
+	*number_of_seconds = (int64_t) time_delta;
+
+	return( 1 );
 }
 
-#elif defined( WINAPI ) && !defined( USE_CRT_FUNCTIONS )
+
+#elif defined( WINAPI )
 
 /* TODO */
 #error WINAPI timestamp type for Windows NT4 or earlier NOT implemented yet
@@ -497,6 +680,40 @@ int libcdatetime_timestamp_get_string_size(
  * The string size should include the end of string character
  * Returns 1 if successful, 0 if the timestamp is not a valid or -1 on error
  */
+int libcdatetime_timestamp_copy_to_string(
+     libcdatetime_timestamp_t *timestamp,
+     uint8_t *string,
+     size_t string_size,
+     uint32_t string_format_flags,
+     libcerror_error_t **error )
+{
+	static char *function = "libcdatetime_timestamp_copy_to_string";
+	size_t string_index   = 0;
+
+	if( libcdatetime_timestamp_copy_to_string_with_index(
+	     timestamp,
+	     string,
+	     string_size,
+	     &string_index,
+	     string_format_flags,
+	     error ) != 1 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_COPY_FAILED,
+		 "%s: unable to copy timestamp to string.",
+		 function );
+
+		return( -1 );
+	}
+	return( 1 );
+}
+
+/* Converts the timestamp into a string
+ * The string size should include the end of string character
+ * Returns 1 if successful, 0 if the timestamp is not a valid or -1 on error
+ */
 int libcdatetime_timestamp_copy_to_string_with_index(
      libcdatetime_timestamp_t *timestamp,
      uint8_t *string,
@@ -505,21 +722,9 @@ int libcdatetime_timestamp_copy_to_string_with_index(
      uint32_t string_format_flags,
      libcerror_error_t **error )
 {
+	libcdatetime_elements_t *time_elements                = NULL;
 	libcdatetime_internal_timestamp_t *internal_timestamp = NULL;
-	char *month_string                                    = NULL;
 	static char *function                                 = "libcdatetime_timestamp_copy_to_string_with_index";
-	size_t internal_string_index                          = 0;
-	uint32_t string_format_type                           = 0;
-	uint32_t supported_flags                              = 0;
-	uint16_t micro_seconds                                = 0;
-	uint16_t milli_seconds                                = 0;
-	uint16_t nano_seconds                                 = 0;
-	uint16_t year                                         = 0;
-	uint8_t day_of_month                                  = 0;
-	uint8_t days_in_month                                 = 0;
-	uint8_t hours                                         = 0;
-	uint8_t minutes                                       = 0;
-	uint8_t seconds                                       = 0;
 
 	if( timestamp == NULL )
 	{
@@ -534,477 +739,87 @@ int libcdatetime_timestamp_copy_to_string_with_index(
 	}
 	internal_timestamp = (libcdatetime_internal_timestamp_t *) timestamp;
 
-	if( string == NULL )
-	{
-		libcerror_error_set(
-		 error,
-		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
-		 "%s: invalid string.",
-		 function );
-
-		return( -1 );
-	}
-	if( string_size > (size_t) SSIZE_MAX )
-	{
-		libcerror_error_set(
-		 error,
-		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-		 LIBCERROR_ARGUMENT_ERROR_VALUE_EXCEEDS_MAXIMUM,
-		 "%s: invalid string size value exceeds maximum.",
-		 function );
-
-		return( -1 );
-	}
-	if( string_index == NULL )
-	{
-		libcerror_error_set(
-		 error,
-		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
-		 "%s: invalid string index.",
-		 function );
-
-		return( -1 );
-	}
-	supported_flags = 0x000000ffUL
-	                | LIBCDATETIME_STRING_FORMAT_FLAG_DATE
-	                | LIBCDATETIME_STRING_FORMAT_FLAG_TIME
-	                | LIBCDATETIME_STRING_FORMAT_FLAG_DURATION
-	                | LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MILLI_SECONDS
-	                | LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MICRO_SECONDS
-	                | LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS
-	                | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR;
-
-	if( ( string_format_flags & supported_flags ) == 0 )
+	if( libcdatetime_elements_initialize(
+	     &time_elements,
+	     error ) != 1 )
 	{
 		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
-		 LIBCERROR_RUNTIME_ERROR_UNSUPPORTED_VALUE,
-		 "%s: unsupported string format flags: 0x%08" PRIx32 ".",
-		 function,
-		 string_format_flags );
+		 LIBCERROR_RUNTIME_ERROR_INITIALIZE_FAILED,
+		 "%s: unable to create time elements.",
+		 function );
 
-		return( -1 );
+		goto on_error;
 	}
-	string_format_type = string_format_flags & 0x000000ffUL;
+/* TODO convert timestamp into elements */
 
-	if( ( string_format_type != LIBCDATETIME_STRING_FORMAT_TYPE_CTIME )
-	 && ( string_format_type != LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 ) )
-	{
-		libcerror_error_set(
-		 error,
-		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
-		 LIBCERROR_RUNTIME_ERROR_UNSUPPORTED_VALUE,
-		 "%s: unsupported string format type: 0x%08" PRIx32 ".",
-		 function,
-		 string_format_type );
-
-		return( -1 );
-	}
-	internal_string_index = *string_index;
-
+#if defined( WINAPI ) && ( WINVER < 0x0500 )
 /* TODO */
-	year          = (uint16_t) date_time_values->year;
-	month         = (uint8_t) date_time_values->month;
-	day_of_month  = (uint8_t) date_time_values->day;
-	hours         = (uint8_t) date_time_values->hours;
-	minutes       = (uint8_t) date_time_values->minutes;
-	seconds       = (uint8_t) date_time_values->seconds;
-	milli_seconds = (uint16_t) date_time_values->milli_seconds;
-	micro_seconds = (uint16_t) date_time_values->micro_seconds;
-	nano_seconds  = (uint16_t) date_time_values->nano_seconds;
+#error WINAPI support for Windows NT4 or earlier NOT implemented yet
+#endif
 
-	/* Validate the date and time if necessary
-	 */
-	if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_DATE ) != 0 )
-	{
-		if( year > 9999 )
-		{
-			return( 0 );
-		}
-		if( ( month == 0 )
-		 || ( month > 12 ) )
-		{
-			return( 0 );
-		}
-		switch( month )
-		{
-			case 1:
-			case 3:
-			case 5:
-			case 7:
-			case 8:
-			case 10:
-			case 12:
-				days_in_month = 31;
-				break;
-			case 4:
-			case 6:
-			case 9:
-			case 11:
-				days_in_month = 30;
-				break;
-			case 2:
-				if( ( ( ( year % 4 ) == 0 )
-				  &&  ( ( year % 100 ) != 0 ) )
-				 || ( ( year % 400 ) == 0 ) )
-				{
-					days_in_month = 29;
-				}
-				else
-				{
-					days_in_month = 28;
-				}
-				break;
-		}
-		if( ( day_of_month == 0 )
-		 || ( day_of_month > days_in_month ) )
-		{
-			return( 0 );
-		}
-	}
-	if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME ) != 0 )
-	{
-		if( hours > 23 )
-		{
-			return( 0 );
-		}
-		if( minutes > 59 )
-		{
-			return( 0 );
-		}
-		if( seconds > 59 )
-		{
-			return( 0 );
-		}
-		if( ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MILLI_SECONDS ) != 0 )
-		 || ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MICRO_SECONDS ) != 0 )
-		 || ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS ) != 0 ) )
-		{
-			if( milli_seconds > 999 )
-			{
-				return( 0 );
-			}
-		}
-		if( ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MICRO_SECONDS ) != 0 )
-		 || ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS ) != 0 ) )
-		{
-			if( micro_seconds > 999 )
-			{
-				return( 0 );
-			}
-		}
-		if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS ) != 0 )
-		{
-			if( nano_seconds > 999 )
-			{
-				return( 0 );
-			}
-		}
-	}
-	/* Create the date and time string
-	 */
-	if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_DATE ) != 0 )
-	{
-		if( string_format_type == LIBCDATETIME_STRING_FORMAT_TYPE_CTIME )
-		{
-			switch( month )
-			{
-				case 1:
-					month_string = "Jan";
-					break;
-				case 2:
-					month_string = "Feb";
-					break;
-				case 3:
-					month_string = "Mar";
-					break;
-				case 4:
-					month_string = "Apr";
-					break;
-				case 5:
-					month_string = "May";
-					break;
-				case 6:
-					month_string = "Jun";
-					break;
-				case 7:
-					month_string = "Jul";
-					break;
-				case 8:
-					month_string = "Aug";
-					break;
-				case 9:
-					month_string = "Sep";
-					break;
-				case 10:
-					month_string = "Oct";
-					break;
-				case 11:
-					month_string = "Nov";
-					break;
-				case 12:
-					month_string = "Dec";
-					break;
-			}
-			if( ( internal_string_index + 12 ) > string_size )
-			{
-				libcerror_error_set(
-				 error,
-				 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-				 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-				 "%s: string is too small.",
-				 function );
-
-				return( -1 );
-			}
-			/* Format: mmm dd, yyyy */
-			string[ internal_string_index++ ] = month_string[ 0 ];
-			string[ internal_string_index++ ] = month_string[ 1 ];
-			string[ internal_string_index++ ] = month_string[ 2 ];
-
-			string[ internal_string_index++ ] = ' ';
-
-			string[ internal_string_index++ ] = '0' + (char) ( day_of_month / 10 );
-			string[ internal_string_index++ ] = '0' + (char) ( day_of_month % 10 );
-
-			string[ internal_string_index++ ] = ',';
-			string[ internal_string_index++ ] = ' ';
-
-			string[ internal_string_index++ ] = '0' + (char) ( year / 1000 );
-			year                             %= 1000;
-			string[ internal_string_index++ ] = '0' + (char) ( year / 100 );
-			year                             %= 100;
-			string[ internal_string_index++ ] = '0' + (char) ( year / 10 );
-			year                             %= 10;
-			string[ internal_string_index++ ] = '0' + (char) year;
-
-			if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME ) != 0 )
-			{
-				if( ( internal_string_index + 1 ) > string_size )
-				{
-					libcerror_error_set(
-					 error,
-					 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-					 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-					 "%s: string is too small.",
-					 function );
-
-					return( -1 );
-				}
-				string[ internal_string_index++ ] = ' ';
-			}
-		}
-		else if( string_format_type == LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 )
-		{
-			if( ( internal_string_index + 10 ) > string_size )
-			{
-				libcerror_error_set(
-				 error,
-				 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-				 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-				 "%s: string is too small.",
-				 function );
-
-				return( -1 );
-			}
-			/* Format: yyyy-mm-dd */
-			string[ internal_string_index++ ] = '0' + (char) ( year / 1000 );
-			year                             %= 1000;
-			string[ internal_string_index++ ] = '0' + (char) ( year / 100 );
-			year                             %= 100;
-			string[ internal_string_index++ ] = '0' + (char) ( year / 10 );
-			year                             %= 10;
-			string[ internal_string_index++ ] = '0' + (char) year;
-
-			string[ internal_string_index++ ] = '-';
-
-			string[ internal_string_index++ ] = '0' + (char) ( month / 10 );
-			string[ internal_string_index++ ] = '0' + (char) ( month % 10 );
-
-			string[ internal_string_index++ ] = '-';
-
-			string[ internal_string_index++ ] = '0' + (char) ( day_of_month / 10 );
-			string[ internal_string_index++ ] = '0' + (char) ( day_of_month % 10 );
-
-			if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME ) != 0 )
-			{
-				if( ( internal_string_index + 1 ) > string_size )
-				{
-					libcerror_error_set(
-					 error,
-					 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-					 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-					 "%s: string is too small.",
-					 function );
-
-					return( -1 );
-				}
-				string[ internal_string_index++ ] = (uint8_t) 'T';
-			}
-		}
-	}
-	if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME ) != 0 )
-	{
-		if( ( internal_string_index + 8 ) > string_size )
-		{
-			libcerror_error_set(
-			 error,
-			 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-			 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-			 "%s: string is too small.",
-			 function );
-
-			return( -1 );
-		}
-		/* Format: HH:MM:SS */
-		string[ internal_string_index++ ] = '0' + (char) ( hours / 10 );
-		string[ internal_string_index++ ] = '0' + (char) ( hours % 10 );
-
-		string[ internal_string_index++ ] = ':';
-
-		string[ internal_string_index++ ] = '0' + (char) ( minutes / 10 );
-		string[ internal_string_index++ ] = '0' + (char) ( minutes % 10 );
-
-		string[ internal_string_index++ ] = ':';
-
-		string[ internal_string_index++ ] = '0' + (char) ( seconds / 10 );
-		string[ internal_string_index++ ] = '0' + (char) ( seconds % 10 );
-
-		if( ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MILLI_SECONDS ) != 0 )
-		 || ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MICRO_SECONDS ) != 0 )
-		 || ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS ) != 0 ) )
-		{
-			if( ( internal_string_index + 4 ) > string_size )
-			{
-				libcerror_error_set(
-				 error,
-				 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-				 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-				 "%s: string is too small.",
-				 function );
-
-				return( -1 );
-			}
-			/* Format: .### */
-			string[ internal_string_index++ ] = '.';
-
-			string[ internal_string_index + 2 ] = '0' + (char) ( milli_seconds % 10 );
-			milli_seconds                      /= 10;
-
-			string[ internal_string_index + 1 ] = '0' + (char) ( milli_seconds % 10 );
-			milli_seconds                      /= 10;
-
-			string[ internal_string_index ] = '0' + (char) ( milli_seconds % 10 );
-			milli_seconds                  /= 10;
-
-			internal_string_index += 3;
-		}
-		if( ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_MICRO_SECONDS ) != 0 )
-		 || ( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS ) != 0 ) )
-		{
-			if( ( internal_string_index + 3 ) > string_size )
-			{
-				libcerror_error_set(
-				 error,
-				 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-				 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-				 "%s: string is too small.",
-				 function );
-
-				return( -1 );
-			}
-			/* Format: ### */
-			string[ internal_string_index + 2 ] = '0' + (char) ( micro_seconds % 10 );
-			micro_seconds                      /= 10;
-
-			string[ internal_string_index + 1 ] = '0' + (char) ( micro_seconds % 10 );
-			micro_seconds                      /= 10;
-
-			string[ internal_string_index ] = '0' + (char) ( micro_seconds % 10 );
-			micro_seconds                  /= 10;
-
-			internal_string_index += 3;
-		}
-		if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS ) != 0 )
-		{
-			if( ( internal_string_index + 3 ) > string_size )
-			{
-				libcerror_error_set(
-				 error,
-				 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-				 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-				 "%s: string is too small.",
-				 function );
-
-				return( -1 );
-			}
-			/* Format: ### */
-			string[ internal_string_index + 2 ] = '0' + (char) ( nano_seconds % 10 );
-			nano_seconds                       /= 10;
-
-			string[ internal_string_index + 1 ] = '0' + (char) ( nano_seconds % 10 );
-			nano_seconds                       /= 10;
-
-			string[ internal_string_index ] = '0' + (char) ( nano_seconds % 10 );
-			nano_seconds                   /= 10;
-
-			internal_string_index += 3;
-		}
-	}
-	if( ( string_format_flags & LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR ) != 0 )
-	{
-		if( string_format_type == LIBCDATETIME_STRING_FORMAT_TYPE_CTIME )
-		{
-			if( ( internal_string_index + 4 ) > string_size )
-			{
-				libcerror_error_set(
-				 error,
-				 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-				 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-				 "%s: string is too small.",
-				 function );
-
-				return( -1 );
-			}
-			string[ internal_string_index++ ] = ' ';
-			string[ internal_string_index++ ] = 'U';
-			string[ internal_string_index++ ] = 'T';
-			string[ internal_string_index++ ] = 'C';
-		}
-		else if( string_format_type == LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 )
-		{
-			if( ( internal_string_index + 1 ) > string_size )
-			{
-				libcerror_error_set(
-				 error,
-				 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-				 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-				 "%s: string is too small.",
-				 function );
-
-				return( -1 );
-			}
-			string[ internal_string_index++ ] = 'Z';
-		}
-	}
-	if( ( internal_string_index + 1 ) > string_size )
+/* TODO move this function into time elements ? */
+#if defined( WINAPI )
+	if( libcdatetime_internal_elements_set_from_filetime_utc(
+	     (libcdatetime_internal_elements_t *) time_elements,
+	     &( internal_timestamp->filetime ),
+	     error ) != 1 )
+#else
+	if( libcdatetime_internal_elements_set_from_time_utc(
+	     (libcdatetime_internal_elements_t *) time_elements,
+	     &( internal_timestamp->time ),
+	     error ) != 1 )
+#endif
 	{
 		libcerror_error_set(
 		 error,
-		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-		 LIBCERROR_ARGUMENT_ERROR_VALUE_TOO_SMALL,
-		 "%s: string is too small.",
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_SET_FAILED,
+		 "%s: unable to set time elements from timestamp.",
 		 function );
 
-		return( -1 );
+		goto on_error;
 	}
-	string[ internal_string_index++ ] = 0;
+	if( libcdatetime_elements_copy_to_string_with_index(
+	     time_elements,
+	     string,
+	     string_size,
+	     string_index,
+	     string_format_flags,
+	     error ) != 1 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_COPY_FAILED,
+		 "%s: unable to copy time elements to string.",
+		 function );
 
-	*string_index = internal_string_index;
+		goto on_error;
+	}
+	if( libcdatetime_elements_free(
+	     &time_elements,
+	     error ) != 1 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_FINALIZE_FAILED,
+		 "%s: unable to free time elements.",
+		 function );
 
+		goto on_error;
+	}
 	return( 1 );
+
+on_error:
+	if( time_elements != NULL )
+	{
+		libcdatetime_elements_free(
+		 &time_elements,
+		 error );
+	}
+	return( -1 );
 }
 

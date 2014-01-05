@@ -169,15 +169,11 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\libcdatetime\libcdatetime_elements.c"
+				>
+			</File>
+			<File
 				RelativePath="..\..\libcdatetime\libcdatetime_error.c"
-				>
-			</File>
-			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_narrow_split_string.c"
-				>
-			</File>
-			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_narrow_string.c"
 				>
 			</File>
 			<File
@@ -185,11 +181,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_wide_split_string.c"
-				>
-			</File>
-			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_wide_string.c"
+				RelativePath="..\..\libcdatetime\libcdatetime_timestamp.c"
 				>
 			</File>
 		</Filter>
@@ -200,6 +192,10 @@
 			>
 			<File
 				RelativePath="..\..\libcdatetime\libcdatetime_definitions.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\libcdatetime\libcdatetime_elements.h"
 				>
 			</File>
 			<File
@@ -219,15 +215,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_narrow_split_string.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_narrow_string.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\libcdatetime\libcdatetime_support.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\libcdatetime\libcdatetime_timestamp.h"
 				>
 			</File>
 			<File
@@ -236,14 +228,6 @@
 			</File>
 			<File
 				RelativePath="..\..\libcdatetime\libcdatetime_unused.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_wide_split_string.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\libcdatetime\libcdatetime_wide_string.h"
 				>
 			</File>
 		</Filter>
