@@ -237,7 +237,7 @@ int libcdatetime_timestamp_set_current_time(
 		 "%s: unable to clear systemtime.",
 		 function );
 
-		return( 1 );
+		return( -1 );
 	}
 	GetSystemTime(
 	 &systemtime );
