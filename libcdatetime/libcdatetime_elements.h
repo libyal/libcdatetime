@@ -184,14 +184,14 @@ int libcdatetime_internal_elements_set_from_filetime_utc(
      libcerror_error_t **error );
 #endif
 
-#if defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) ) 
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) ) 
 int libcdatetime_internal_elements_set_from_time_utc(
      libcdatetime_internal_elements_t *internal_elements,
      time_t *time,
      libcerror_error_t **error );
 #endif
 
-#if defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) )
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) )
 int libcdatetime_internal_elements_set_from_time_localtime(
      libcdatetime_internal_elements_t *internal_elements,
      time_t *time,

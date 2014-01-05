@@ -1530,7 +1530,7 @@ int libcdatetime_internal_elements_set_from_filetime_utc(
 
 #endif
 
-#if defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) )
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) )
 
 /* Sets the date and time elements from a POSIX time value in UTC
  * Returns 1 if successful or -1 on error
@@ -1616,9 +1616,9 @@ int libcdatetime_internal_elements_set_from_time_utc(
 	return( 1 );
 }
 
-#endif /* defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) ) */
+#endif /* !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) ) */
 
-#if defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) )
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) )
 
 /* Sets the date and time elements from a POSIX time value in localtime
  * Returns 1 if successful or -1 on error
@@ -1703,7 +1703,7 @@ int libcdatetime_internal_elements_set_from_time_localtime(
 	return( 1 );
 }
 
-#endif /* if defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) ) */
+#endif /* if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) ) */
 
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
 
