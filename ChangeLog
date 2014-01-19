@@ -3,6 +3,9 @@ TODO:
 * add a copy time elements from timestamp function?
 * clean up time elements string function, reuse code from libewf_date_time_values.c
 
+20140119
+* Bug fixes
+
 20140105
 * updated dependencies
 * 2014 update
