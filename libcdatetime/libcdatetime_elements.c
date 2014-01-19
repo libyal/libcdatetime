@@ -295,7 +295,7 @@ int libcdatetime_elements_get_year(
 
 		return( -1 );
 	}
-	safe_year = 1970 + internal_elements->tm.tm_year;
+	safe_year = 1900 + internal_elements->tm.tm_year;
 
 	/* The number of years since 1900
 	 */
@@ -454,7 +454,7 @@ int libcdatetime_elements_get_day_of_year(
 
 		return( -1 );
 	}
-	safe_year = 1970 + internal_elements->tm.tm_year;
+	safe_year = 1900 + internal_elements->tm.tm_year;
 
 	if( ( ( ( safe_year % 4 ) == 0 )
 	  &&  ( ( safe_year % 100 ) != 0 ) )
@@ -767,7 +767,7 @@ int libcdatetime_elements_get_day_of_month(
 
 		return( -1 );
 	}
-	safe_year = 1970 + internal_elements->tm.tm_year;
+	safe_year = 1900 + internal_elements->tm.tm_year;
 
 	switch( internal_elements->tm.tm_mon + 1 )
 	{
