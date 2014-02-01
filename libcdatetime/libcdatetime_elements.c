@@ -468,7 +468,7 @@ int libcdatetime_elements_get_day_of_year(
 	}
 	/* Valid values for the tm_yday member are 0 through 365.
 	 */
-	if( ( internal_elements->tm.tm_yday <= 0 )
+	if( ( internal_elements->tm.tm_yday < 0 )
 	 || ( internal_elements->tm.tm_yday >= days_in_year ) )
 	{
 		libcerror_error_set(
