@@ -1513,7 +1513,7 @@ int libcdatetime_internal_elements_set_from_filetime_utc(
 	}
 	if( FileTimeToSystemTime(
 	     filetime,
-	     &( internal_elements->systemtime ) ) != 0 )
+	     &( internal_elements->systemtime ) ) == 0 )
 	{
 		libcerror_system_set_error(
 		 error,
@@ -1736,7 +1736,7 @@ int libcdatetime_elements_set_current_time_utc(
 
 	if( SystemTimeToFileTime(
 	     &( internal_elements->systemtime ),
-	     &( internal_elements->filetime ) ) != 0 )
+	     &( internal_elements->filetime ) ) == 0 )
 	{
 		libcerror_system_set_error(
 		 error,
@@ -1851,7 +1851,7 @@ int libcdatetime_elements_set_current_time_localtime(
 
 	if( SystemTimeToFileTime(
 	     &( internal_elements->systemtime ),
-	     &( internal_elements->filetime ) ) != 0 )
+	     &( internal_elements->filetime ) ) == 0 )
 	{
 		libcerror_system_set_error(
 		 error,

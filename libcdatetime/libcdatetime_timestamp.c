@@ -244,7 +244,7 @@ int libcdatetime_timestamp_set_current_time(
 
 	if( SystemTimeToFileTime(
 	     &systemtime,
-	     &( internal_timestamp->filetime ) ) != 0 )
+	     &( internal_timestamp->filetime ) ) == 0 )
 	{
 		libcerror_system_set_error(
 		 error,
