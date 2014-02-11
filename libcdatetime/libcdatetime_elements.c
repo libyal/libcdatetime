@@ -1488,6 +1488,7 @@ int libcdatetime_internal_elements_set_from_filetime_utc(
      libcerror_error_t **error )
 {
 	static char *function = "libcdatetime_internal_elements_set_from_filetime_utc";
+	DWORD error_code      = 0;
 
 	if( internal_elements == NULL )
 	{
@@ -1515,11 +1516,13 @@ int libcdatetime_internal_elements_set_from_filetime_utc(
 	     filetime,
 	     &( internal_elements->systemtime ) ) == 0 )
 	{
+		error_code = GetLastError();
+
 		libcerror_system_set_error(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
+		 error_code,
 		 "%s: unable to retrieve systemtime.",
 		 function );
 
@@ -1717,6 +1720,7 @@ int libcdatetime_elements_set_current_time_utc(
 {
 	libcdatetime_internal_elements_t *internal_elements = NULL;
 	static char *function                               = "libcdatetime_elements_set_current_time_utc";
+	DWORD error_code                                    = 0;
 
 	if( elements == NULL )
 	{
@@ -1738,6 +1742,8 @@ int libcdatetime_elements_set_current_time_utc(
 	     &( internal_elements->systemtime ),
 	     &( internal_elements->filetime ) ) == 0 )
 	{
+		error_code = GetLastError();
+
 		libcerror_system_set_error(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
@@ -1832,6 +1838,7 @@ int libcdatetime_elements_set_current_time_localtime(
 {
 	libcdatetime_internal_elements_t *internal_elements = NULL;
 	static char *function                               = "libcdatetime_elements_set_current_time_localtime";
+	DWORD error_code                                    = 0;
 
 	if( elements == NULL )
 	{
@@ -1853,6 +1860,8 @@ int libcdatetime_elements_set_current_time_localtime(
 	     &( internal_elements->systemtime ),
 	     &( internal_elements->filetime ) ) == 0 )
 	{
+		error_code = GetLastError();
+
 		libcerror_system_set_error(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,

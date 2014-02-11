@@ -211,6 +211,7 @@ int libcdatetime_timestamp_set_current_time(
 
 	libcdatetime_internal_timestamp_t *internal_timestamp = NULL;
 	static char *function                                 = "libcdatetime_timestamp_set_current_time";
+	DWORD error_code                                      = 0;
 
 	if( timestamp == NULL )
 	{
@@ -246,6 +247,8 @@ int libcdatetime_timestamp_set_current_time(
 	     &systemtime,
 	     &( internal_timestamp->filetime ) ) == 0 )
 	{
+		error_code = GetLastError();
+
 		libcerror_system_set_error(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
