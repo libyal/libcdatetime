@@ -10,8 +10,16 @@ Package: libcdatetime
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: libcdatetime-dbg
 Description: Library to support cross-platform C date and time functions
  libcdatetime is a library to support cross-platform C date and time functions.
+
+Package: libcdatetime-dbg
+Architecture: any
+Section: debug
+Depends: libcdatetime (= ${Source-Version}), ${misc:Depends}
+Description: Debugging symbols for libcdatetime
+ Debugging symbols for libcdatetime.
 
 Package: libcdatetime-dev
 Section: libdevel

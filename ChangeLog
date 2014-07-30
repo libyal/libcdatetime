@@ -3,6 +3,9 @@ TODO:
 * add a copy time elements from timestamp function?
 * clean up time elements string function, reuse code from libewf_date_time_values.c
 
+20140730
+* updated dpkg files
+
 20140505
 * fixes to build static library with mingw and cygwin
 
