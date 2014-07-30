@@ -1,6 +1,6 @@
 MSVSCPP_FILES = \
+	libcdatetime/libcdatetime.vcproj \
 	libcerror/libcerror.vcproj \
-	libcdatetime_dll/libcdatetime_dll.vcproj \
 	libcstring/libcstring.vcproj \
 	libcdatetime.sln
 
