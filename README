@@ -1,4 +1,6 @@
-See:
-* http://code.google.com/p/libcdatetime/wiki/Building
-* README.macosx
+libcdatetime is a library for cross-platform C date and time functions.
+
+For more information see:
+* Project documentation: https://github.com/libyal/libcdatetime/wiki/Home
+* How to build from source: https://github.com/libyal/libcdatetime/wiki/Building
 

@@ -34,7 +34,6 @@ SPEC_FILES = \
 	libcdatetime.spec.in
 
 EXTRA_DIST = \
-	README.macosx \
 	$(DPKG_FILES) \
 	$(GETTEXT_FILES) \
 	$(PKGCONFIG_FILES) \

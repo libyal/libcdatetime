@@ -28,7 +28,7 @@ BEGIN
       VALUE "OriginalFilename",		"libcdatetime.dll\0"
       VALUE "ProductName",		"libcdatetime\0"
       VALUE "ProductVersion",		"@VERSION@" "\0"
-      VALUE "Comments",			"For more information visit http://code.google.com/p/libcdatetime/\0"
+      VALUE "Comments",			"For more information visit https://github.com/libyal/libcdatetime/\0"
     END
   END
   BLOCK "VarFileInfo"
