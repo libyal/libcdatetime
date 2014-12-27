@@ -2206,8 +2206,8 @@ int libcdatetime_elements_set_from_delta_in_seconds(
 /* TODO mark duration as negative ? */
 		number_of_seconds *= -1;
 	}
-	internal_elements->filetime.dwHighDateTime = (DWORD) ( ( number_of_seconds >> 32 ) & 0x00000000ffffffffULL );
-	internal_elements->filetime.dwLowDateTime  = (DWORD) ( number_of_seconds & 0x00000000ffffffffULL );
+	internal_elements->filetime.dwHighDateTime = (DWORD) ( ( number_of_seconds >> 32 ) & 0xffffffffUL );
+	internal_elements->filetime.dwLowDateTime  = (DWORD) ( number_of_seconds & 0xffffffffUL );
 
 	if( libcdatetime_internal_elements_set_from_filetime_utc(
              internal_elements,
