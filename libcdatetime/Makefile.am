@@ -19,7 +19,7 @@ libcdatetime_la_SOURCES = \
 	libcdatetime_types.h \
 	libcdatetime_unused.h
 
-libcdatetime_la_LIBADD  = \
+libcdatetime_la_LIBADD = \
 	@LIBCSTRING_LIBADD@ \
 	@LIBCERROR_LIBADD@
 
