@@ -20,9 +20,8 @@
  */
 
 #include <common.h>
+#include <file_stream.h>
 #include <types.h>
-
-#include <stdio.h>
 
 #include "libcdatetime_error.h"
 #include "libcdatetime_libcerror.h"
@@ -51,6 +50,7 @@ int libcdatetime_error_fprint(
 }
 
 /* Prints a descriptive string of the error to the string
+ * The end-of-string character is not included in the return value
  * Returns the number of printed characters if successful or -1 on error
  */
 int libcdatetime_error_sprint(
@@ -77,6 +77,7 @@ int libcdatetime_error_backtrace_fprint(
 }
 
 /* Prints a backtrace of the error to the string
+ * The end-of-string character is not included in the return value
  * Returns the number of printed characters if successful or -1 on error
  */
 int libcdatetime_error_backtrace_sprint(

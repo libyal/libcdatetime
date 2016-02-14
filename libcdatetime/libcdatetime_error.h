@@ -23,9 +23,8 @@
 #define _LIBCDATETIME_INTERNAL_ERROR_H
 
 #include <common.h>
+#include <file_stream.h>
 #include <types.h>
-
-#include <stdio.h>
 
 #if !defined( HAVE_LOCAL_LIBCDATETIME )
 #include <libcdatetime/error.h>
@@ -71,5 +70,5 @@ int libcdatetime_error_backtrace_sprint(
 }
 #endif
 
-#endif
+#endif /* !defined( _LIBCDATETIME_INTERNAL_ERROR_H ) */
 

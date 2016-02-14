@@ -19,8 +19,8 @@
  * along with this software.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined( _LIBCDATETIME_TYPES_H )
-#define _LIBCDATETIME_TYPES_H
+#if !defined( _LIBCDATETIME_INTERNAL_TYPES_H )
+#define _LIBCDATETIME_INTERNAL_TYPES_H
 
 #include <common.h>
 #include <types.h>
@@ -41,9 +41,9 @@ typedef struct libcdatetime_timestamp {}	libcdatetime_timestamp_t;
 typedef intptr_t libcdatetime_elements_t;
 typedef intptr_t libcdatetime_timestamp_t;
 
-#endif
+#endif /* defined( HAVE_DEBUG_OUTPUT ) && !defined( WINAPI ) */
 
-#endif
+#endif /* defined( HAVE_LOCAL_LIBCDATETIME ) */
 
-#endif
+#endif /* !defined( _LIBCDATETIME_INTERNAL_TYPES_H ) */
 
