@@ -5,14 +5,27 @@ AM_CPPFLAGS = \
 	@LIBCERROR_CPPFLAGS@ \
 	@LIBCDATETIME_DLL_IMPORT@
 
-TESTS =
+TESTS = \
+	test_api_functions.sh
 
-check_SCRIPTS =
+check_SCRIPTS = \
+	test_api_functions.sh \
+	test_runner.sh
 
 EXTRA_DIST = \
 	$(check_SCRIPTS)
 
-check_PROGRAMS =
+check_PROGRAMS = \
+	cdatetime_test_get_version
+
+cdatetime_test_get_version_SOURCES = \
+	cdatetime_test_libcdatetime.h \
+	cdatetime_test_libcstring.h \
+	cdatetime_test_get_version.c
+
+cdatetime_test_get_version_LDADD = \
+	../libcdatetime/libcdatetime.la \
+	@LIBCSTRING_LIBADD@
 
 MAINTAINERCLEANFILES = \
 	Makefile.in

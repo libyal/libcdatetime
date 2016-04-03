@@ -1,4 +1,5 @@
 MSVSCPP_FILES = \
+	cdatetime_test_get_version/cdatetime_test_get_version.vcproj \
 	libcdatetime/libcdatetime.vcproj \
 	libcerror/libcerror.vcproj \
 	libcstring/libcstring.vcproj \
