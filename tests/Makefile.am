@@ -6,25 +6,53 @@ AM_CPPFLAGS = \
 	@LIBCDATETIME_DLL_IMPORT@
 
 TESTS = \
-	test_api_functions.sh
+	test_api_functions.sh \
+	test_api_types.sh
 
 check_SCRIPTS = \
 	test_api_functions.sh \
+	test_api_types.sh \
 	test_runner.sh
 
 EXTRA_DIST = \
 	$(check_SCRIPTS)
 
 check_PROGRAMS = \
-	cdatetime_test_get_version
+	cdatetime_test_elements \
+	cdatetime_test_get_version \
+	cdatetime_test_timestamp
+
+cdatetime_test_elements_SOURCES = \
+	cdatetime_test_elements.c \
+	cdatetime_test_libcdatetime.h \
+	cdatetime_test_libcerror.h \
+	cdatetime_test_libcstring.h \
+	cdatetime_test_unused.h
+
+cdatetime_test_elements_LDADD = \
+	../libcdatetime/libcdatetime.la \
+	@LIBCERROR_LIBADD@ \
+	@LIBCSTRING_LIBADD@
 
 cdatetime_test_get_version_SOURCES = \
+	cdatetime_test_get_version.c \
 	cdatetime_test_libcdatetime.h \
-	cdatetime_test_libcstring.h \
-	cdatetime_test_get_version.c
+	cdatetime_test_libcstring.h
 
 cdatetime_test_get_version_LDADD = \
 	../libcdatetime/libcdatetime.la \
+	@LIBCSTRING_LIBADD@
+
+cdatetime_test_timestamp_SOURCES = \
+	cdatetime_test_timestamp.c \
+	cdatetime_test_libcdatetime.h \
+	cdatetime_test_libcerror.h \
+	cdatetime_test_libcstring.h \
+	cdatetime_test_unused.h
+
+cdatetime_test_timestamp_LDADD = \
+	../libcdatetime/libcdatetime.la \
+	@LIBCERROR_LIBADD@ \
 	@LIBCSTRING_LIBADD@
 
 MAINTAINERCLEANFILES = \

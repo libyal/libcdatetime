@@ -116,7 +116,9 @@ stamp-h[1-9]
 /include/libcdatetime/types.h
 /libcdatetime/libcdatetime.rc
 /libcdatetime/libcdatetime_definitions.h
+/tests/cdatetime_test_elements
 /tests/cdatetime_test_get_version
+/tests/cdatetime_test_timestamp
 /tests/tmp*
 
 # Local library dependencies specific files

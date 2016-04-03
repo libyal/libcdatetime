@@ -77,7 +77,8 @@ struct libcdatetime_internal_elements
 	/* The struct tm
 	 */
 	struct tm tm;
-#endif
+
+#endif /* defined( WINAPI ) && ( WINVER >= 0x0500 ) */
 
 	/* Value to indicate how the time elements are used
 	 * e.g. to store a date time in UCT or localtime or a duration
@@ -178,25 +179,31 @@ int libcdatetime_elements_get_time_values(
      libcerror_error_t **error );
 
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
+
 int libcdatetime_internal_elements_set_from_filetime_utc(
      libcdatetime_internal_elements_t *internal_elements,
      FILETIME *filetime,
      libcerror_error_t **error );
-#endif
+
+#endif /* defined( WINAPI ) && ( WINVER >= 0x0500 ) */
 
 #if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) )
+
 int libcdatetime_internal_elements_set_from_time_utc(
      libcdatetime_internal_elements_t *internal_elements,
      time_t *time,
      libcerror_error_t **error );
-#endif
+
+#endif /* !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) ) */
 
 #if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) )
+
 int libcdatetime_internal_elements_set_from_time_localtime(
      libcdatetime_internal_elements_t *internal_elements,
      time_t *time,
      libcerror_error_t **error );
-#endif
+
+#endif /* !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) ) */
 
 LIBCDATETIME_EXTERN \
 int libcdatetime_elements_set_current_time_utc(
@@ -249,5 +256,5 @@ int libcdatetime_elements_copy_to_string_with_index(
 }
 #endif
 
-#endif
+#endif /* !defined( _LIBCDATETIME_INTERNAL_ELEMENTS_H ) */
 

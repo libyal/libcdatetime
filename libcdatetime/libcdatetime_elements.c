@@ -1748,7 +1748,7 @@ int libcdatetime_elements_set_current_time_utc(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
+		 error_code,
 		 "%s: unable to retrieve filetime.",
 		 function );
 
@@ -1866,7 +1866,7 @@ int libcdatetime_elements_set_current_time_localtime(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
+		 error_code,
 		 "%s: unable to retrieve filetime.",
 		 function );
 

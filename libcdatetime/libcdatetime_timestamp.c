@@ -253,7 +253,7 @@ int libcdatetime_timestamp_set_current_time(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
+		 error_code,
 		 "%s: unable to retrieve filetime.",
 		 function );
 
