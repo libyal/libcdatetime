@@ -2073,7 +2073,7 @@ int libcdatetime_elements_get_delta_in_seconds(
 			return( -1 );
 		}
 	}
-	*number_of_seconds = (int64_t) time_delta;
+	*number_of_seconds = (int64_t) time_delta / 10000000;
 
 	return( 1 );
 }
@@ -2206,6 +2206,8 @@ int libcdatetime_elements_set_from_delta_in_seconds(
 /* TODO mark duration as negative ? */
 		number_of_seconds *= -1;
 	}
+	number_of_seconds *= 10000000;
+
 	internal_elements->filetime.dwHighDateTime = (DWORD) ( ( number_of_seconds >> 32 ) & 0xffffffffUL );
 	internal_elements->filetime.dwLowDateTime  = (DWORD) ( number_of_seconds & 0xffffffffUL );
 

@@ -37,7 +37,8 @@ cdatetime_test_elements_LDADD = \
 cdatetime_test_get_version_SOURCES = \
 	cdatetime_test_get_version.c \
 	cdatetime_test_libcdatetime.h \
-	cdatetime_test_libcstring.h
+	cdatetime_test_libcstring.h \
+	cdatetime_test_unused.h
 
 cdatetime_test_get_version_LDADD = \
 	../libcdatetime/libcdatetime.la \

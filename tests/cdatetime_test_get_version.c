@@ -28,16 +28,19 @@
 
 #include "cdatetime_test_libcdatetime.h"
 #include "cdatetime_test_libcstring.h"
+#include "cdatetime_test_unused.h"
 
 /* The main program
  */
 #if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )
-int wmain( int argc, wchar_t * const argv[] )
+int wmain( int argc, wchar_t * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
 #else
-int main( int argc, char * const argv[] )
+int main( int argc, char * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
 #endif
 {
 	const char *version_string = NULL;
+
+	CDATETIME_TEST_UNREFERENCED_PARAMETER( argv )
 
 	if( argc != 1 )
 	{

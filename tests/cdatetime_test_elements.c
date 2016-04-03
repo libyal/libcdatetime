@@ -111,6 +111,21 @@ int cdatetime_test_elements_initialize(
 	return( 1 );
 }
 
+/* TODO test get functions
+ * libcdatetime_elements_get_year
+ * libcdatetime_elements_get_day_of_year
+ * libcdatetime_elements_get_month
+ * libcdatetime_elements_get_day_of_month
+ * libcdatetime_elements_get_date_values
+ * libcdatetime_elements_get_hours
+ * libcdatetime_elements_get_minutes
+ * libcdatetime_elements_get_seconds
+ * libcdatetime_elements_get_milli_seconds
+ * libcdatetime_elements_get_micro_seconds
+ * libcdatetime_elements_get_nano_seconds
+ * libcdatetime_elements_get_time_values
+ */
+
 /* The main program
  */
 #if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )

@@ -11,6 +11,7 @@ Tests:
 20160403
 * code clean up
 * worked on tests
+* bug fixes for WINAPI delta in seconds functions
 
 20160121
 * 2016 update
