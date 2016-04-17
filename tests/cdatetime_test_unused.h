@@ -1,5 +1,5 @@
 /*
- * The internal unused definition
+ * The unused definition
  *
  * Copyright (C) 2013-2016, Joachim Metz <joachim.metz@gmail.com>
  *
@@ -19,26 +19,32 @@
  * along with this software.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined( _CDATETIME_TEST_INTERNAL_UNUSED_H )
-#define _CDATETIME_TEST_INTERNAL_UNUSED_H
+#if !defined( _CDATETIME_TEST_UNUSED_H )
+#define _CDATETIME_TEST_UNUSED_H
 
 #include <common.h>
 
 #if !defined( CDATETIME_TEST_ATTRIBUTE_UNUSED )
+
 #if defined( __GNUC__ ) && __GNUC__ >= 3
 #define CDATETIME_TEST_ATTRIBUTE_UNUSED	__attribute__ ((__unused__))
+
 #else
 #define CDATETIME_TEST_ATTRIBUTE_UNUSED
-#endif
-#endif
+
+#endif /* defined( __GNUC__ ) && __GNUC__ >= 3 */
+
+#endif /* !defined( CDATETIME_TEST_ATTRIBUTE_UNUSED ) */
 
 #if defined( _MSC_VER )
 #define CDATETIME_TEST_UNREFERENCED_PARAMETER( parameter ) \
 	UNREFERENCED_PARAMETER( parameter );
+
 #else
 #define CDATETIME_TEST_UNREFERENCED_PARAMETER( parameter ) \
 	/* parameter */
-#endif
 
-#endif
+#endif /* defined( _MSC_VER ) */
+
+#endif /* !defined( _CDATETIME_TEST_UNUSED_H ) */
 
