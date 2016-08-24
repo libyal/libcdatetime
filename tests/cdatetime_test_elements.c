@@ -567,6 +567,402 @@ on_error:
 	return( 0 );
 }
 
+/* Tests the libcdatetime_elements_get_day_of_month function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_elements_get_day_of_month(
+     void )
+{
+	libcdatetime_elements_t *elements = NULL;
+	libcerror_error_t *error          = NULL;
+	int result                        = 0;
+	uint8_t day_of_month              = 0;
+
+	/* Initialize test
+	 */
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	/* Test get day of month
+	 */
+#ifdef TODO
+	result = libcdatetime_elements_get_day_of_month(
+	          elements,
+	          &day_of_month,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "day_of_month",
+	 day_of_month,
+	 0 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+#endif
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_get_day_of_month(
+	          NULL,
+	          &day_of_month,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_day_of_month(
+	          elements,
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Clean up
+	 */
+	result = libcdatetime_elements_free(
+	          &elements,
+	          NULL );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( elements != NULL )
+	{
+		libcdatetime_elements_free(
+		 &elements,
+		 NULL );
+	}
+	return( 0 );
+}
+
+/* Tests the libcdatetime_elements_get_hours function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_elements_get_hours(
+     void )
+{
+	libcdatetime_elements_t *elements = NULL;
+	libcerror_error_t *error          = NULL;
+	int result                        = 0;
+	uint8_t hours                     = 0;
+
+	/* Initialize test
+	 */
+#ifdef TODO
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	/* Test get hours
+	 */
+	result = libcdatetime_elements_get_hours(
+	          elements,
+	          &hours,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "hours",
+	 hours,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+#endif
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_get_hours(
+	          NULL,
+	          &hours,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_hours(
+	          elements,
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Clean up
+	 */
+	result = libcdatetime_elements_free(
+	          &elements,
+	          NULL );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( elements != NULL )
+	{
+		libcdatetime_elements_free(
+		 &elements,
+		 NULL );
+	}
+	return( 0 );
+}
+
+/* Tests the libcdatetime_elements_get_minutes function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_elements_get_minutes(
+     void )
+{
+	libcdatetime_elements_t *elements = NULL;
+	libcerror_error_t *error          = NULL;
+	int result                        = 0;
+	uint8_t minutes                   = 0;
+
+	/* Initialize test
+	 */
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	/* Test get minutes
+	 */
+#ifdef TODO
+	result = libcdatetime_elements_get_minutes(
+	          elements,
+	          &minutes,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "minutes",
+	 minutes,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+#endif
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_get_minutes(
+	          NULL,
+	          &minutes,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_minutes(
+	          elements,
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Clean up
+	 */
+	result = libcdatetime_elements_free(
+	          &elements,
+	          NULL );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( elements != NULL )
+	{
+		libcdatetime_elements_free(
+		 &elements,
+		 NULL );
+	}
+	return( 0 );
+}
+
+/* Tests the libcdatetime_elements_get_seconds function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_elements_get_seconds(
+     void )
+{
+	libcdatetime_elements_t *elements = NULL;
+	libcerror_error_t *error          = NULL;
+	int result                        = 0;
+	uint8_t seconds                   = 0;
+
+	/* Initialize test
+	 */
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	/* Test get seconds
+	 */
+#ifdef TODO
+	result = libcdatetime_elements_get_seconds(
+	          elements,
+	          &seconds,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "seconds",
+	 seconds,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+#endif
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_get_seconds(
+	          NULL,
+	          &seconds,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_seconds(
+	          elements,
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Clean up
+	 */
+	result = libcdatetime_elements_free(
+	          &elements,
+	          NULL );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( elements != NULL )
+	{
+		libcdatetime_elements_free(
+		 &elements,
+		 NULL );
+	}
+	return( 0 );
+}
+
 /* The main program
  */
 #if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )
@@ -606,11 +1002,24 @@ int main(
 	 "libcdatetime_elements_get_month",
 	 cdatetime_test_elements_get_month() )
 
-	/* TODO: add test for libcdatetime_elements_get_day_of_month */
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_elements_get_day_of_month",
+	 cdatetime_test_elements_get_day_of_month() )
+
 	/* TODO: add test for libcdatetime_elements_get_date_values */
-	/* TODO: add test for libcdatetime_elements_get_hours */
-	/* TODO: add test for libcdatetime_elements_get_minutes */
-	/* TODO: add test for libcdatetime_elements_get_seconds */
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_elements_get_hours",
+	 cdatetime_test_elements_get_hours() )
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_elements_get_minutes",
+	 cdatetime_test_elements_get_minutes() )
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_elements_get_seconds",
+	 cdatetime_test_elements_get_seconds() )
+
 	/* TODO: add test for libcdatetime_elements_get_milli_seconds */
 	/* TODO: add test for libcdatetime_elements_get_micro_seconds */
 	/* TODO: add test for libcdatetime_elements_get_nano_seconds */
