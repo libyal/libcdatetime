@@ -1,4 +1,5 @@
 TODO:
+* Add WINVER < 0x0500 support
 * add a copy time elements from timestamp function?
 * clean up time elements string function, reuse code from libewf_date_time_values.c
 
