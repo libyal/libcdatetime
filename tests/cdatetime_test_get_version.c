@@ -20,14 +20,14 @@
  */
 
 #include <common.h>
-#include <file_stream.h>
 
 #if defined( HAVE_STDLIB_H ) || defined( WINAPI )
 #include <stdlib.h>
 #endif
 
-#include "cdatetime_test_libcdatetime.h"
 #include "cdatetime_test_libcstring.h"
+#include "cdatetime_test_libcdatetime.h"
+#include "cdatetime_test_macros.h"
 #include "cdatetime_test_unused.h"
 
 /* Tests retrieving the library version
@@ -46,11 +46,15 @@ int cdatetime_test_get_version(
 	          LIBCDATETIME_VERSION_STRING,
 	          9 );
 
-	if( result != 0 )
-	{
-		return( 0 );
-	}
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 0 );
+
 	return( 1 );
+
+on_error:
+	return( 0 );
 }
 
 /* The main program
@@ -68,10 +72,13 @@ int main(
 	CDATETIME_TEST_UNREFERENCED_PARAMETER( argc )
 	CDATETIME_TEST_UNREFERENCED_PARAMETER( argv )
 
-	if( cdatetime_test_get_version() != 1 )
-	{
-		return( EXIT_FAILURE );
-	}
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_get_version",
+	 cdatetime_test_get_version() )
+
 	return( EXIT_SUCCESS );
+
+on_error:
+	return( EXIT_FAILURE );
 }
 

@@ -19,6 +19,7 @@ EXTRA_DIST = \
 
 check_PROGRAMS = \
 	cdatetime_test_elements \
+	cdatetime_test_error \
 	cdatetime_test_get_version \
 	cdatetime_test_timestamp
 
@@ -27,9 +28,23 @@ cdatetime_test_elements_SOURCES = \
 	cdatetime_test_libcdatetime.h \
 	cdatetime_test_libcerror.h \
 	cdatetime_test_libcstring.h \
+	cdatetime_test_macros.h \
+	cdatetime_test_memory.c cdatetime_test_memory.h \
 	cdatetime_test_unused.h
 
 cdatetime_test_elements_LDADD = \
+	../libcdatetime/libcdatetime.la \
+	@LIBCERROR_LIBADD@ \
+	@LIBCSTRING_LIBADD@
+
+cdatetime_test_error_SOURCES = \
+	cdatetime_test_error.c \
+	cdatetime_test_libcdatetime.h \
+	cdatetime_test_libcerror.h \
+	cdatetime_test_macros.h \
+	cdatetime_test_unused.h
+
+cdatetime_test_error_LDADD = \
 	../libcdatetime/libcdatetime.la \
 	@LIBCERROR_LIBADD@ \
 	@LIBCSTRING_LIBADD@
@@ -38,6 +53,7 @@ cdatetime_test_get_version_SOURCES = \
 	cdatetime_test_get_version.c \
 	cdatetime_test_libcdatetime.h \
 	cdatetime_test_libcstring.h \
+	cdatetime_test_macros.h \
 	cdatetime_test_unused.h
 
 cdatetime_test_get_version_LDADD = \
@@ -49,6 +65,7 @@ cdatetime_test_timestamp_SOURCES = \
 	cdatetime_test_libcdatetime.h \
 	cdatetime_test_libcerror.h \
 	cdatetime_test_libcstring.h \
+	cdatetime_test_macros.h \
 	cdatetime_test_unused.h
 
 cdatetime_test_timestamp_LDADD = \

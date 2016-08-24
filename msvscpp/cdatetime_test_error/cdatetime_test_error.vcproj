@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="cdatetime_test_timestamp"
-	ProjectGUID="{AD27CE76-CA94-40D4-94FA-DCE700E82FFC}"
-	RootNamespace="cdatetime_test_timestamp"
+	Name="cdatetime_test_error"
+	ProjectGUID="{237BC439-C654-497A-AF68-AB19D39D17BA}"
+	RootNamespace="cdatetime_test_error"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -176,7 +176,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\tests\cdatetime_test_timestamp.c"
+				RelativePath="..\..\tests\cdatetime_test_error.c"
 				>
 			</File>
 		</Filter>
@@ -191,10 +191,6 @@
 			</File>
 			<File
 				RelativePath="..\..\tests\cdatetime_test_libcerror.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\tests\cdatetime_test_libcstring.h"
 				>
 			</File>
 			<File

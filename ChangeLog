@@ -2,11 +2,8 @@ TODO:
 * add a copy time elements from timestamp function?
 * clean up time elements string function, reuse code from libewf_date_time_values.c
 
-Tests:
-* elements
-  - add more test coverage
-* timestamp
-  - add more test coverage
+20160824
+* worked on tests
 
 20160403
 * code clean up

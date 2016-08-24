@@ -25,91 +25,238 @@
 #include <stdlib.h>
 #endif
 
-#include <stdio.h>
-
 #include "cdatetime_test_libcdatetime.h"
 #include "cdatetime_test_libcerror.h"
 #include "cdatetime_test_libcstring.h"
+#include "cdatetime_test_macros.h"
+#include "cdatetime_test_memory.h"
 #include "cdatetime_test_unused.h"
 
-/* Tests initializing the elements
- * Make sure the value elements is referencing, is set to NULL
- * Returns 1 if successful, 0 if not or -1 on error
+/* Tests the libcdatetime_elements_initialize function
+ * Returns 1 if successful or 0 if not
  */
 int cdatetime_test_elements_initialize(
-     libcdatetime_elements_t **elements,
-     int expected_result )
+     void )
 {
-	libcerror_error_t *error = NULL;
-	static char *function    = "cdatetime_test_elements_initialize";
-	int result               = 0;
+	libcdatetime_elements_t *elements = NULL;
+	libcerror_error_t *error          = NULL;
+	int result                        = 0;
 
-	fprintf(
-	 stdout,
-	 "Testing initialize\t" );
-
+	/* Test libcdatetime_elements_initialize
+	 */
 	result = libcdatetime_elements_initialize(
-	          elements,
+	          &elements,
 	          &error );
 
-	if( result == -1 )
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "elements",
+         elements );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	result = libcdatetime_elements_free(
+	          &elements,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "elements",
+         elements );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_initialize(
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	elements = (libcdatetime_elements_t *) 0x12345678UL;
+
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	elements = NULL;
+
+#if defined( HAVE_CDATETIME_TEST_MEMORY )
+
+	/* Test libcdatetime_elements_initialize with malloc failing
+	 */
+	cdatetime_test_malloc_attempts_before_fail = 0;
+
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	if( cdatetime_test_malloc_attempts_before_fail != -1 )
 	{
-		libcerror_error_set(
-		 &error,
-		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
-		 LIBCERROR_RUNTIME_ERROR_INITIALIZE_FAILED,
-		 "%s: unable to create elements.",
-		 function );
-	}
-	if( result != expected_result )
-	{
-		fprintf(
-		 stdout,
-		 "(FAIL)" );
+		cdatetime_test_malloc_attempts_before_fail = -1;
 	}
 	else
 	{
-		fprintf(
-		 stdout,
-		 "(PASS)" );
-	}
-	fprintf(
-	 stdout,
-	 "\n" );
+		CDATETIME_TEST_ASSERT_EQUAL(
+		 "result",
+		 result,
+		 -1 );
 
-	if( result == 1 )
-	{
-		result = libcdatetime_elements_free(
-		          elements,
-		          &error );
+		CDATETIME_TEST_ASSERT_IS_NULL(
+		 "elements",
+		 elements );
 
-		if( result != 1 )
-		{
-			libcerror_error_set(
-			 &error,
-			 LIBCERROR_ERROR_DOMAIN_RUNTIME,
-			 LIBCERROR_RUNTIME_ERROR_FINALIZE_FAILED,
-			 "%s: unable to free elements.",
-			 function );
-		}
-	}
-	if( error != NULL )
-	{
-		if( result != expected_result )
-		{
-			libcerror_error_backtrace_fprint(
-			 error,
-			 stderr );
-		}
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
 		libcerror_error_free(
 		 &error );
 	}
-	if( result != expected_result )
+	/* Test libcdatetime_elements_initialize with memset failing
+	 */
+	cdatetime_test_memset_attempts_before_fail = 0;
+
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	if( cdatetime_test_memset_attempts_before_fail != -1 )
 	{
-		return( 0 );
+		cdatetime_test_memset_attempts_before_fail = -1;
 	}
+	else
+	{
+		CDATETIME_TEST_ASSERT_EQUAL(
+		 "result",
+		 result,
+		 -1 );
+
+		CDATETIME_TEST_ASSERT_IS_NULL(
+		 "elements",
+		 elements );
+
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
+		libcerror_error_free(
+		 &error );
+	}
+#endif /* defined( HAVE_CDATETIME_TEST_MEMORY ) */
+
 	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( elements != NULL )
+	{
+		libcdatetime_elements_free(
+		 &elements,
+		 NULL );
+	}
+	return( 0 );
 }
+
+/* Tests the libcdatetime_elements_free function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_elements_free(
+     void )
+{
+	libcerror_error_t *error = NULL;
+	int result               = 0;
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_free(
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	return( 0 );
+}
+
+/* The main program
+ */
+#if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )
+int wmain(
+     int argc CDATETIME_TEST_ATTRIBUTE_UNUSED,
+     wchar_t * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
+#else
+int main(
+     int argc CDATETIME_TEST_ATTRIBUTE_UNUSED,
+     char * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
+#endif
+{
+	CDATETIME_TEST_UNREFERENCED_PARAMETER( argc )
+	CDATETIME_TEST_UNREFERENCED_PARAMETER( argv )
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_elements_initialize",
+	 cdatetime_test_elements_initialize() )
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_elements_free",
+	 cdatetime_test_elements_free() )
 
 /* TODO test get functions
  * libcdatetime_elements_get_year
@@ -126,64 +273,9 @@ int cdatetime_test_elements_initialize(
  * libcdatetime_elements_get_time_values
  */
 
-/* The main program
- */
-#if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )
-int wmain( int argc, wchar_t * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
-#else
-int main( int argc, char * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
-#endif
-{
-	libcdatetime_elements_t *elements = NULL;
-
-	CDATETIME_TEST_UNREFERENCED_PARAMETER( argv )
-
-	if( argc != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unsupported number of arguments.\n" );
-
-		return( EXIT_FAILURE );
-	}
-	/* Initialization tests
-	 */
-	elements = NULL;
-
-	if( cdatetime_test_elements_initialize(
-	     &elements,
-	     1 ) != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unable to test initialize.\n" );
-
-		return( EXIT_FAILURE );
-	}
-	elements = (libcdatetime_elements_t *) 0x12345678UL;
-
-	if( cdatetime_test_elements_initialize(
-	     &elements,
-	     -1 ) != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unable to test initialize.\n" );
-
-		return( EXIT_FAILURE );
-	}
-	if( cdatetime_test_elements_initialize(
-	     NULL,
-	     -1 ) != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unable to test initialize.\n" );
-
-		return( EXIT_FAILURE );
-	}
-	/* TODO: test functions
-	 */
 	return( EXIT_SUCCESS );
+
+on_error:
+	return( EXIT_FAILURE );
 }
 

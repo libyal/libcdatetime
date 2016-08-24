@@ -120,6 +120,7 @@ stamp-h[1-9]
 /libcdatetime/libcdatetime.rc
 /libcdatetime/libcdatetime_definitions.h
 /tests/cdatetime_test_elements
+/tests/cdatetime_test_error
 /tests/cdatetime_test_get_version
 /tests/cdatetime_test_timestamp
 /tests/tmp*
