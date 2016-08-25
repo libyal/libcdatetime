@@ -389,6 +389,10 @@ int cdatetime_test_elements_get_year(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get year
 	 */
 	result = libcdatetime_elements_get_year(
@@ -401,10 +405,12 @@ int cdatetime_test_elements_get_year(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "year",
 	 year,
 	 1900 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
@@ -486,6 +492,10 @@ int cdatetime_test_elements_get_day_of_year(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get day of year
 	 */
 	result = libcdatetime_elements_get_day_of_year(
@@ -498,10 +508,12 @@ int cdatetime_test_elements_get_day_of_year(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "day_of_year",
 	 day_of_year,
 	 0 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
@@ -583,6 +595,10 @@ int cdatetime_test_elements_get_month(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get month
 	 */
 	result = libcdatetime_elements_get_month(
@@ -595,10 +611,12 @@ int cdatetime_test_elements_get_month(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "month",
 	 month,
 	 1 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
@@ -680,9 +698,12 @@ int cdatetime_test_elements_get_day_of_month(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get day of month
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_get_day_of_month(
 	          elements,
 	          &day_of_month,
@@ -693,15 +714,16 @@ int cdatetime_test_elements_get_day_of_month(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "day_of_month",
 	 day_of_month,
 	 0 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -777,9 +799,12 @@ int cdatetime_test_elements_get_date_values(
 
 	/* Initialize test
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_initialize(
 	          &elements,
+	          &error );
+
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
 	          &error );
 
 	/* Test get date values
@@ -796,6 +821,7 @@ int cdatetime_test_elements_get_date_values(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "year",
 	 year,
@@ -810,11 +836,11 @@ int cdatetime_test_elements_get_date_values(
 	 "day_of_month",
 	 day_of_month,
 	 0 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -934,9 +960,12 @@ int cdatetime_test_elements_get_hours(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get hours
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_get_hours(
 	          elements,
 	          &hours,
@@ -947,15 +976,16 @@ int cdatetime_test_elements_get_hours(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "hours",
 	 hours,
 	 1 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -1033,9 +1063,12 @@ int cdatetime_test_elements_get_minutes(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get minutes
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_get_minutes(
 	          elements,
 	          &minutes,
@@ -1046,15 +1079,16 @@ int cdatetime_test_elements_get_minutes(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "minutes",
 	 minutes,
 	 1 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -1132,9 +1166,12 @@ int cdatetime_test_elements_get_seconds(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get seconds
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_get_seconds(
 	          elements,
 	          &seconds,
@@ -1145,15 +1182,16 @@ int cdatetime_test_elements_get_seconds(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "seconds",
 	 seconds,
 	 1 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -1231,9 +1269,12 @@ int cdatetime_test_elements_get_milli_seconds(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get milli seconds
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_get_milli_seconds(
 	          elements,
 	          &milli_seconds,
@@ -1247,12 +1288,11 @@ int cdatetime_test_elements_get_milli_seconds(
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "milli_seconds",
 	 milli_seconds,
-	 1 );
+	 0 );
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -1330,9 +1370,12 @@ int cdatetime_test_elements_get_micro_seconds(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get micro seconds
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_get_micro_seconds(
 	          elements,
 	          &micro_seconds,
@@ -1346,12 +1389,11 @@ int cdatetime_test_elements_get_micro_seconds(
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "micro_seconds",
 	 micro_seconds,
-	 1 );
+	 0 );
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -1429,9 +1471,12 @@ int cdatetime_test_elements_get_nano_seconds(
 	          &elements,
 	          &error );
 
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
 	/* Test get nano seconds
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_get_nano_seconds(
 	          elements,
 	          &nano_seconds,
@@ -1445,12 +1490,11 @@ int cdatetime_test_elements_get_nano_seconds(
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "nano_seconds",
 	 nano_seconds,
-	 1 );
+	 0 );
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -1526,9 +1570,12 @@ int cdatetime_test_elements_get_time_values(
 
 	/* Initialize test
 	 */
-#ifdef TODO
 	result = libcdatetime_elements_initialize(
 	          &elements,
+	          &error );
+
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
 	          &error );
 
 	/* Test get time values
@@ -1545,6 +1592,7 @@ int cdatetime_test_elements_get_time_values(
 	 result,
 	 1 );
 
+#ifdef TODO
 	CDATETIME_TEST_ASSERT_EQUAL(
 	 "hours",
 	 hours,
@@ -1559,11 +1607,11 @@ int cdatetime_test_elements_get_time_values(
 	 "seconds",
 	 seconds,
 	 0 );
+#endif
 
         CDATETIME_TEST_ASSERT_IS_NULL(
          "error",
          error );
-#endif
 
 	/* Test error cases
 	 */
@@ -1662,6 +1710,87 @@ on_error:
 		libcdatetime_elements_free(
 		 &elements,
 		 NULL );
+	}
+	return( 0 );
+}
+
+/* Tests the libcdatetime_elements_get_delta_in_seconds function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_elements_get_delta_in_seconds(
+     void )
+{
+	libcdatetime_elements_t *first_elements  = NULL;
+	libcdatetime_elements_t *second_elements = NULL;
+	libcerror_error_t *error                 = NULL;
+	int64_t number_of_seconds                = 0;
+	int result                               = 0;
+
+/* TODO: improve test coverage */
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_get_delta_in_seconds(
+	          NULL,
+	          second_elements,
+	          &number_of_seconds,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_delta_in_seconds(
+	          first_elements,
+	          NULL,
+	          &number_of_seconds,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_delta_in_seconds(
+	          first_elements,
+	          second_elements,
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
 	}
 	return( 0 );
 }
@@ -1836,7 +1965,7 @@ int cdatetime_test_elements_get_string_size(
 	result = libcdatetime_elements_get_string_size(
 	          elements,
 	          &string_size,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -1853,7 +1982,7 @@ int cdatetime_test_elements_get_string_size(
 	result = libcdatetime_elements_get_string_size(
 	          elements,
 	          &string_size,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -1872,7 +2001,7 @@ int cdatetime_test_elements_get_string_size(
 	result = libcdatetime_elements_get_string_size(
 	          NULL,
 	          &string_size,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -1890,7 +2019,7 @@ int cdatetime_test_elements_get_string_size(
 	result = libcdatetime_elements_get_string_size(
 	          elements,
 	          NULL,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -1909,6 +2038,24 @@ int cdatetime_test_elements_get_string_size(
 	          elements,
 	          &string_size,
 	          0,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_string_size(
+	          elements,
+	          &string_size,
+	          LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -1996,7 +2143,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          string,
 	          128,
 	          &string_index,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -2017,7 +2164,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          string,
 	          128,
 	          &string_index,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -2031,6 +2178,8 @@ int cdatetime_test_elements_copy_to_string_with_index(
          "error",
          error );
 
+/* TODO: add test coverage for too small strings */
+
 	/* Test error cases
 	 */
 	string_index = 0;
@@ -2040,7 +2189,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          string,
 	          128,
 	          &string_index,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -2060,7 +2209,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          NULL,
 	          128,
 	          &string_index,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -2080,7 +2229,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          string,
 	          (size_t) SSIZE_MAX + 1,
 	          &string_index,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -2100,7 +2249,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          string,
 	          128,
 	          NULL,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -2121,6 +2270,26 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          128,
 	          &string_index,
 	          0,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          128,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL(
@@ -2233,6 +2402,10 @@ int main(
 	 "libcdatetime_elements_get_time_values",
 	 cdatetime_test_elements_get_time_values() )
 
+	/* TODO: add test for libcdatetime_internal_elements_set_from_filetime_utc */
+	/* TODO: add test for libcdatetime_internal_elements_set_from_time_utc */
+	/* TODO: add test for libcdatetime_internal_elements_set_from_time_localtime */
+
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_set_current_time_utc",
 	 cdatetime_test_elements_set_current_time_utc() )
@@ -2241,7 +2414,10 @@ int main(
 	 "libcdatetime_elements_set_current_time_localtime",
 	 cdatetime_test_elements_set_current_time_localtime() )
 
-	/* TODO: add test for libcdatetime_elements_get_delta_in_seconds */
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_elements_get_delta_in_seconds",
+	 cdatetime_test_elements_get_delta_in_seconds() )
+
 	/* TODO: add test for libcdatetime_elements_set_from_delta_in_seconds */
 
 	CDATETIME_TEST_RUN(

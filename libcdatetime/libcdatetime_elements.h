@@ -175,7 +175,7 @@ int libcdatetime_elements_get_time_values(
      libcdatetime_elements_t *elements,
      uint8_t *hours,
      uint8_t *minutes,
-     uint8_t *secons,
+     uint8_t *seconds,
      libcerror_error_t **error );
 
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
