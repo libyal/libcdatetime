@@ -96,5 +96,5 @@ enum LIBCDATETIME_STRING_FORMAT_FLAGS
 
 #endif /* !defined( HAVE_LOCAL_LIBCDATETIME ) */
 
-#endif
+#endif /* !defined( LIBCDATETIME_INTERNAL_DEFINITIONS_H ) */
 
