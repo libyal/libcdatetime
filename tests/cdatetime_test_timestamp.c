@@ -372,6 +372,78 @@ on_error:
 	return( 0 );
 }
 
+/* Tests the libcdatetime_timestamp_set_current_time function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_timestamp_set_current_time(
+     void )
+{
+	libcdatetime_timestamp_t *timestamp = NULL;
+	libcerror_error_t *error            = NULL;
+	int result                          = 0;
+
+	/* Initialize test
+	 */
+	result = libcdatetime_timestamp_initialize(
+	          &timestamp,
+	          &error );
+
+	/* Test set current time
+	 */
+	result = libcdatetime_timestamp_set_current_time(
+	          timestamp,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_timestamp_set_current_time(
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Clean up
+	 */
+	result = libcdatetime_timestamp_free(
+	          &timestamp,
+	          NULL );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( timestamp != NULL )
+	{
+		libcdatetime_timestamp_free(
+		 &timestamp,
+		 NULL );
+	}
+	return( 0 );
+}
+
 /* The main program
  */
 #if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )
@@ -399,7 +471,10 @@ int main(
 	 "libcdatetime_timestamp_copy",
 	 cdatetime_test_timestamp_copy() )
 
-	/* TODO: add test for libcdatetime_timestamp_set_current_time */
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_timestamp_set_current_time",
+	 cdatetime_test_timestamp_set_current_time() )
+
 	/* TODO: add test for libcdatetime_timestamp_get_delta_in_seconds */
 	/* TODO: add test for libcdatetime_timestamp_get_string_size */
 	/* TODO: add test for libcdatetime_timestamp_copy_to_string */
