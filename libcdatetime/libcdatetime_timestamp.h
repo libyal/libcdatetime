@@ -121,5 +121,5 @@ int libcdatetime_timestamp_copy_to_string_with_index(
 }
 #endif
 
-#endif
+#endif /* !defined( _LIBCDATETIME_INTERNAL_TIMESTAMP_H ) */
 

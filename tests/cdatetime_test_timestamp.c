@@ -25,150 +25,389 @@
 #include <stdlib.h>
 #endif
 
-#include <stdio.h>
-
 #include "cdatetime_test_libcdatetime.h"
 #include "cdatetime_test_libcerror.h"
 #include "cdatetime_test_libcstring.h"
+#include "cdatetime_test_macros.h"
+#include "cdatetime_test_memory.h"
 #include "cdatetime_test_unused.h"
 
-/* Tests initializing the timestamp
- * Make sure the value timestamp is referencing, is set to NULL
- * Returns 1 if successful, 0 if not or -1 on error
+/* Tests the libcdatetime_timestamp_initialize function
+ * Returns 1 if successful or 0 if not
  */
 int cdatetime_test_timestamp_initialize(
-     libcdatetime_timestamp_t **timestamp,
-     int expected_result )
+     void )
 {
-	libcerror_error_t *error = NULL;
-	static char *function    = "cdatetime_test_timestamp_initialize";
-	int result               = 0;
+	libcdatetime_timestamp_t *timestamp = NULL;
+	libcerror_error_t *error            = NULL;
+	int result                          = 0;
 
-	fprintf(
-	 stdout,
-	 "Testing initialize\t" );
-
+	/* Test libcdatetime_timestamp_initialize
+	 */
 	result = libcdatetime_timestamp_initialize(
-	          timestamp,
+	          &timestamp,
 	          &error );
 
-	if( result == -1 )
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "timestamp",
+         timestamp );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	result = libcdatetime_timestamp_free(
+	          &timestamp,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "timestamp",
+         timestamp );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_timestamp_initialize(
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	timestamp = (libcdatetime_timestamp_t *) 0x12345678UL;
+
+	result = libcdatetime_timestamp_initialize(
+	          &timestamp,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	timestamp = NULL;
+
+#if defined( HAVE_CDATETIME_TEST_MEMORY )
+
+	/* Test libcdatetime_timestamp_initialize with malloc failing
+	 */
+	cdatetime_test_malloc_attempts_before_fail = 0;
+
+	result = libcdatetime_timestamp_initialize(
+	          &timestamp,
+	          &error );
+
+	if( cdatetime_test_malloc_attempts_before_fail != -1 )
 	{
-		libcerror_error_set(
-		 &error,
-		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
-		 LIBCERROR_RUNTIME_ERROR_INITIALIZE_FAILED,
-		 "%s: unable to create timestamp.",
-		 function );
-	}
-	if( result != expected_result )
-	{
-		fprintf(
-		 stdout,
-		 "(FAIL)" );
+		cdatetime_test_malloc_attempts_before_fail = -1;
 	}
 	else
 	{
-		fprintf(
-		 stdout,
-		 "(PASS)" );
-	}
-	fprintf(
-	 stdout,
-	 "\n" );
+		CDATETIME_TEST_ASSERT_EQUAL(
+		 "result",
+		 result,
+		 -1 );
 
-	if( result == 1 )
-	{
-		result = libcdatetime_timestamp_free(
-		          timestamp,
-		          &error );
+		CDATETIME_TEST_ASSERT_IS_NULL(
+		 "timestamp",
+		 timestamp );
 
-		if( result != 1 )
-		{
-			libcerror_error_set(
-			 &error,
-			 LIBCERROR_ERROR_DOMAIN_RUNTIME,
-			 LIBCERROR_RUNTIME_ERROR_FINALIZE_FAILED,
-			 "%s: unable to free timestamp.",
-			 function );
-		}
-	}
-	if( error != NULL )
-	{
-		if( result != expected_result )
-		{
-			libcerror_error_backtrace_fprint(
-			 error,
-			 stderr );
-		}
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
 		libcerror_error_free(
 		 &error );
 	}
-	if( result != expected_result )
+	/* Test libcdatetime_timestamp_initialize with memset failing
+	 */
+	cdatetime_test_memset_attempts_before_fail = 0;
+
+	result = libcdatetime_timestamp_initialize(
+	          &timestamp,
+	          &error );
+
+	if( cdatetime_test_memset_attempts_before_fail != -1 )
 	{
-		return( 0 );
+		cdatetime_test_memset_attempts_before_fail = -1;
 	}
+	else
+	{
+		CDATETIME_TEST_ASSERT_EQUAL(
+		 "result",
+		 result,
+		 -1 );
+
+		CDATETIME_TEST_ASSERT_IS_NULL(
+		 "timestamp",
+		 timestamp );
+
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
+		libcerror_error_free(
+		 &error );
+	}
+#endif /* defined( HAVE_CDATETIME_TEST_MEMORY ) */
+
 	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( timestamp != NULL )
+	{
+		libcdatetime_timestamp_free(
+		 &timestamp,
+		 NULL );
+	}
+	return( 0 );
+}
+
+/* Tests the libcdatetime_timestamp_free function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_timestamp_free(
+     void )
+{
+	libcerror_error_t *error = NULL;
+	int result               = 0;
+
+	/* Test error cases
+	 */
+	result = libcdatetime_timestamp_free(
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	return( 0 );
+}
+
+/* Tests the libcdatetime_timestamp_copy function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_timestamp_copy(
+     void )
+{
+	libcdatetime_timestamp_t *destination_timestamp = NULL;
+	libcdatetime_timestamp_t *timestamp             = NULL;
+	libcerror_error_t *error                        = NULL;
+	int result                                      = 0;
+
+	/* Initialize test
+	 */
+	result = libcdatetime_timestamp_initialize(
+	          &timestamp,
+	          &error );
+
+	result = libcdatetime_timestamp_initialize(
+	          &destination_timestamp,
+	          &error );
+
+	/* Test timestamp entry copy
+	 */
+	result = libcdatetime_timestamp_copy(
+	          destination_timestamp,
+	          timestamp,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_timestamp_copy(
+	          NULL,
+	          timestamp,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_timestamp_copy(
+	          destination_timestamp,
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+#if defined( HAVE_CDATETIME_TEST_MEMORY )
+
+	/* Test libcdatetime_timestamp_initialize with memcpy failing
+	 */
+	cdatetime_test_memcpy_attempts_before_fail = 0;
+
+	result = libcdatetime_timestamp_copy(
+	          destination_timestamp,
+	          timestamp,
+	          &error );
+
+	if( cdatetime_test_memcpy_attempts_before_fail != -1 )
+	{
+		cdatetime_test_memcpy_attempts_before_fail = -1;
+	}
+	else
+	{
+		CDATETIME_TEST_ASSERT_EQUAL(
+		 "result",
+		 result,
+		 -1 );
+
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
+		libcerror_error_free(
+		 &error );
+	}
+#endif /* defined( HAVE_CDATETIME_TEST_MEMORY ) */
+
+	/* Clean up
+	 */
+	result = libcdatetime_timestamp_free(
+	          &destination_timestamp,
+	          NULL );
+
+	result = libcdatetime_timestamp_free(
+	          &timestamp,
+	          NULL );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( destination_timestamp != NULL )
+	{
+		libcdatetime_timestamp_free(
+		 &destination_timestamp,
+		 NULL );
+	}
+	if( timestamp != NULL )
+	{
+		libcdatetime_timestamp_free(
+		 &timestamp,
+		 NULL );
+	}
+	return( 0 );
 }
 
 /* The main program
  */
 #if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )
-int wmain( int argc, wchar_t * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
+int wmain(
+     int argc CDATETIME_TEST_ATTRIBUTE_UNUSED,
+     wchar_t * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
 #else
-int main( int argc, char * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
+int main(
+     int argc CDATETIME_TEST_ATTRIBUTE_UNUSED,
+     char * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )
 #endif
 {
-	libcdatetime_timestamp_t *timestamp = NULL;
-
+	CDATETIME_TEST_UNREFERENCED_PARAMETER( argc )
 	CDATETIME_TEST_UNREFERENCED_PARAMETER( argv )
 
-	if( argc != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unsupported number of arguments.\n" );
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_timestamp_initialize",
+	 cdatetime_test_timestamp_initialize() )
 
-		return( EXIT_FAILURE );
-	}
-	/* Initialization tests
-	 */
-	timestamp = NULL;
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_timestamp_free",
+	 cdatetime_test_timestamp_free() )
 
-	if( cdatetime_test_timestamp_initialize(
-	     &timestamp,
-	     1 ) != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unable to test initialize.\n" );
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_timestamp_copy",
+	 cdatetime_test_timestamp_copy() )
 
-		return( EXIT_FAILURE );
-	}
-	timestamp = (libcdatetime_timestamp_t *) 0x12345678UL;
+	/* TODO: add test for libcdatetime_timestamp_set_current_time */
+	/* TODO: add test for libcdatetime_timestamp_get_delta_in_seconds */
+	/* TODO: add test for libcdatetime_timestamp_get_string_size */
+	/* TODO: add test for libcdatetime_timestamp_copy_to_string */
+	/* TODO: add test for libcdatetime_timestamp_copy_to_string_with_index */
 
-	if( cdatetime_test_timestamp_initialize(
-	     &timestamp,
-	     -1 ) != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unable to test initialize.\n" );
-
-		return( EXIT_FAILURE );
-	}
-	if( cdatetime_test_timestamp_initialize(
-	     NULL,
-	     -1 ) != 1 )
-	{
-		fprintf(
-		 stderr,
-		 "Unable to test initialize.\n" );
-
-		return( EXIT_FAILURE );
-	}
-	/* TODO: test functions
-	 */
 	return( EXIT_SUCCESS );
+
+on_error:
+	return( EXIT_FAILURE );
 }
 

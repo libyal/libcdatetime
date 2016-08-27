@@ -66,6 +66,7 @@ cdatetime_test_timestamp_SOURCES = \
 	cdatetime_test_libcerror.h \
 	cdatetime_test_libcstring.h \
 	cdatetime_test_macros.h \
+	cdatetime_test_memory.c cdatetime_test_memory.h \
 	cdatetime_test_unused.h
 
 cdatetime_test_timestamp_LDADD = \

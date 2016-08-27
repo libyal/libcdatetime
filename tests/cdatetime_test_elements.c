@@ -2099,16 +2099,84 @@ on_error:
 int cdatetime_test_elements_copy_to_string(
      void )
 {
-	/* Test invocation of function only
+	uint8_t string[ 128 ];
+
+	libcdatetime_elements_t *elements = NULL;
+	libcerror_error_t *error          = NULL;
+	int result                        = 0;
+
+	/* Initialize test
 	 */
-	libcdatetime_elements_copy_to_string(
-	 NULL,
-	 NULL,
-	 0,
-	 0,
-	 NULL );
+	result = libcdatetime_elements_initialize(
+	          &elements,
+	          &error );
+
+	result = libcdatetime_elements_set_current_time_utc(
+	          elements,
+	          &error );
+
+	/* Test copy to string
+	 */
+	result = libcdatetime_elements_copy_to_string(
+	          elements,
+	          string,
+	          128,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 1 );
+
+/* TODO: compare result string */
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_copy_to_string(
+	          NULL,
+	          string,
+	          128,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Clean up
+	 */
+	result = libcdatetime_elements_free(
+	          &elements,
+	          NULL );
 
 	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( elements != NULL )
+	{
+		libcdatetime_elements_free(
+		 &elements,
+		 NULL );
+	}
+	return( 0 );
 }
 
 /* Tests the libcdatetime_elements_copy_to_string_with_index function
@@ -2178,7 +2246,269 @@ int cdatetime_test_elements_copy_to_string_with_index(
          "error",
          error );
 
-/* TODO: add test coverage for too small strings */
+	/* Test copy to string, which is too small for date
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          11,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for date and time seperator
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          12,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for time zone
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          21,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for date
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          9,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for date and time seperator
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          10,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for time
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          18,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for time with milli seconds precision
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          22,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for time with micro seconds precision
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          25,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for time with nano seconds precision
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          28,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for time zone
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          29,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* Test copy to string, which is too small for end-of-string character
+	 */
+	string_index = 0;
+
+	result = libcdatetime_elements_copy_to_string_with_index(
+	          elements,
+	          string,
+	          30,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
 
 	/* Test error cases
 	 */
@@ -2303,6 +2633,8 @@ int cdatetime_test_elements_copy_to_string_with_index(
 
 	libcerror_error_free(
 	 &error );
+
+	string_index = 0;
 
 	/* Clean up
 	 */
