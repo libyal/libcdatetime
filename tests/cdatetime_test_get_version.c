@@ -46,7 +46,7 @@ int cdatetime_test_get_version(
 	          LIBCDATETIME_VERSION_STRING,
 	          9 );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 0 );
