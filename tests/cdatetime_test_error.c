@@ -25,8 +25,8 @@
 #include <stdlib.h>
 #endif
 
-#include "cdatetime_test_libcerror.h"
 #include "cdatetime_test_libcdatetime.h"
+#include "cdatetime_test_libcerror.h"
 #include "cdatetime_test_macros.h"
 #include "cdatetime_test_unused.h"
 

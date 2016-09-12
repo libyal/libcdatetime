@@ -3,7 +3,7 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-Name: libuna
+Name: libcdatetime
 Description: Library to support cross-platform C date and time functions
 Version: @VERSION@
 Libs: -L${libdir} -lcdatetime
