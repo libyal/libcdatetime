@@ -2,7 +2,6 @@ include_HEADERS = \
 	libcdatetime.h
 
 pkginclude_HEADERS = \
-	libcdatetime/codepage.h \
 	libcdatetime/definitions.h \
 	libcdatetime/error.h \
 	libcdatetime/extern.h \

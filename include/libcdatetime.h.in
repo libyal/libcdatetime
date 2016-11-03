@@ -22,12 +22,13 @@
 #if !defined( _LIBCDATETIME_H )
 #define _LIBCDATETIME_H
 
-#include <libcdatetime/codepage.h>
 #include <libcdatetime/definitions.h>
 #include <libcdatetime/error.h>
 #include <libcdatetime/extern.h>
 #include <libcdatetime/features.h>
 #include <libcdatetime/types.h>
+
+#include <stdio.h>
 
 #if defined( __cplusplus )
 extern "C" {
@@ -392,5 +393,5 @@ int libcdatetime_timestamp_copy_to_string_with_index(
 }
 #endif
 
-#endif
+#endif /* !defined( _LIBCDATETIME_H ) */
 

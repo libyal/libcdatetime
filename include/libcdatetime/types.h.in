@@ -208,5 +208,5 @@ typedef intptr_t libcdatetime_timestamp_t;
 }
 #endif
 
-#endif
+#endif /* !defined( _LIBCDATETIME_TYPES_H ) */
 

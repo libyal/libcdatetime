@@ -48,7 +48,7 @@ int cdatetime_test_timestamp_initialize(
 	          &timestamp,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -65,7 +65,7 @@ int cdatetime_test_timestamp_initialize(
 	          &timestamp,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -84,7 +84,7 @@ int cdatetime_test_timestamp_initialize(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -102,7 +102,7 @@ int cdatetime_test_timestamp_initialize(
 	          &timestamp,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -132,7 +132,7 @@ int cdatetime_test_timestamp_initialize(
 	}
 	else
 	{
-		CDATETIME_TEST_ASSERT_EQUAL(
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
 		 "result",
 		 result,
 		 -1 );
@@ -162,7 +162,7 @@ int cdatetime_test_timestamp_initialize(
 	}
 	else
 	{
-		CDATETIME_TEST_ASSERT_EQUAL(
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
 		 "result",
 		 result,
 		 -1 );
@@ -212,7 +212,7 @@ int cdatetime_test_timestamp_free(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -263,7 +263,7 @@ int cdatetime_test_timestamp_copy(
 	          timestamp,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -279,7 +279,7 @@ int cdatetime_test_timestamp_copy(
 	          timestamp,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -296,7 +296,7 @@ int cdatetime_test_timestamp_copy(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -325,7 +325,7 @@ int cdatetime_test_timestamp_copy(
 	}
 	else
 	{
-		CDATETIME_TEST_ASSERT_EQUAL(
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
 		 "result",
 		 result,
 		 -1 );
@@ -394,7 +394,7 @@ int cdatetime_test_timestamp_set_current_time(
 	          timestamp,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -409,7 +409,7 @@ int cdatetime_test_timestamp_set_current_time(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -461,19 +461,19 @@ int main(
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_timestamp_initialize",
-	 cdatetime_test_timestamp_initialize() )
+	 cdatetime_test_timestamp_initialize );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_timestamp_free",
-	 cdatetime_test_timestamp_free() )
+	 cdatetime_test_timestamp_free );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_timestamp_copy",
-	 cdatetime_test_timestamp_copy() )
+	 cdatetime_test_timestamp_copy );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_timestamp_set_current_time",
-	 cdatetime_test_timestamp_set_current_time() )
+	 cdatetime_test_timestamp_set_current_time );
 
 	/* TODO: add test for libcdatetime_timestamp_get_delta_in_seconds */
 	/* TODO: add test for libcdatetime_timestamp_get_string_size */

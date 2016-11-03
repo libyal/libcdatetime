@@ -1,5 +1,5 @@
 /*
- * Library get version test program
+ * Library support functions test program
  *
  * Copyright (C) 2013-2016, Joachim Metz <joachim.metz@gmail.com>
  *
@@ -30,7 +30,7 @@
 #include "cdatetime_test_macros.h"
 #include "cdatetime_test_unused.h"
 
-/* Tests retrieving the library version
+/* Tests the libcdatetime_get_version function
  * Returns 1 if successful or 0 if not
  */
 int cdatetime_test_get_version(
@@ -74,7 +74,7 @@ int main(
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_get_version",
-	 cdatetime_test_get_version() )
+	 cdatetime_test_get_version );
 
 	return( EXIT_SUCCESS );
 

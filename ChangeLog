@@ -4,6 +4,9 @@ TODO:
 * clean up time elements string function, reuse code from libewf_date_time_values.c
 * add a set elements/timestamp function for testing?
 
+20161103
+* worked on tests
+
 20160825
 * worked on tests
 

@@ -48,7 +48,7 @@ int cdatetime_test_elements_initialize(
 	          &elements,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -65,7 +65,7 @@ int cdatetime_test_elements_initialize(
 	          &elements,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -84,7 +84,7 @@ int cdatetime_test_elements_initialize(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -102,7 +102,7 @@ int cdatetime_test_elements_initialize(
 	          &elements,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -132,7 +132,7 @@ int cdatetime_test_elements_initialize(
 	}
 	else
 	{
-		CDATETIME_TEST_ASSERT_EQUAL(
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
 		 "result",
 		 result,
 		 -1 );
@@ -162,7 +162,7 @@ int cdatetime_test_elements_initialize(
 	}
 	else
 	{
-		CDATETIME_TEST_ASSERT_EQUAL(
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
 		 "result",
 		 result,
 		 -1 );
@@ -212,7 +212,7 @@ int cdatetime_test_elements_free(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -263,7 +263,7 @@ int cdatetime_test_elements_copy(
 	          elements,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -279,7 +279,7 @@ int cdatetime_test_elements_copy(
 	          elements,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -296,7 +296,7 @@ int cdatetime_test_elements_copy(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -325,7 +325,7 @@ int cdatetime_test_elements_copy(
 	}
 	else
 	{
-		CDATETIME_TEST_ASSERT_EQUAL(
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
 		 "result",
 		 result,
 		 -1 );
@@ -400,13 +400,13 @@ int cdatetime_test_elements_get_year(
 	          &year,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "year",
 	 year,
 	 1900 );
@@ -423,7 +423,7 @@ int cdatetime_test_elements_get_year(
 	          &year,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -440,7 +440,7 @@ int cdatetime_test_elements_get_year(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -503,13 +503,13 @@ int cdatetime_test_elements_get_day_of_year(
 	          &day_of_year,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "day_of_year",
 	 day_of_year,
 	 0 );
@@ -526,7 +526,7 @@ int cdatetime_test_elements_get_day_of_year(
 	          &day_of_year,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -543,7 +543,7 @@ int cdatetime_test_elements_get_day_of_year(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -606,13 +606,13 @@ int cdatetime_test_elements_get_month(
 	          &month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "month",
 	 month,
 	 1 );
@@ -629,7 +629,7 @@ int cdatetime_test_elements_get_month(
 	          &month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -646,7 +646,7 @@ int cdatetime_test_elements_get_month(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -709,13 +709,13 @@ int cdatetime_test_elements_get_day_of_month(
 	          &day_of_month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "day_of_month",
 	 day_of_month,
 	 0 );
@@ -732,7 +732,7 @@ int cdatetime_test_elements_get_day_of_month(
 	          &day_of_month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -749,7 +749,7 @@ int cdatetime_test_elements_get_day_of_month(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -816,23 +816,23 @@ int cdatetime_test_elements_get_date_values(
 	          &day_of_month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "year",
 	 year,
 	 1970 );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "month",
 	 month,
 	 0 );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "day_of_month",
 	 day_of_month,
 	 0 );
@@ -851,7 +851,7 @@ int cdatetime_test_elements_get_date_values(
 	          &day_of_month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -870,7 +870,7 @@ int cdatetime_test_elements_get_date_values(
 	          &day_of_month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -889,7 +889,7 @@ int cdatetime_test_elements_get_date_values(
 	          &day_of_month,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -908,7 +908,7 @@ int cdatetime_test_elements_get_date_values(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -971,13 +971,13 @@ int cdatetime_test_elements_get_hours(
 	          &hours,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "hours",
 	 hours,
 	 1 );
@@ -994,7 +994,7 @@ int cdatetime_test_elements_get_hours(
 	          &hours,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1011,7 +1011,7 @@ int cdatetime_test_elements_get_hours(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1074,13 +1074,13 @@ int cdatetime_test_elements_get_minutes(
 	          &minutes,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "minutes",
 	 minutes,
 	 1 );
@@ -1097,7 +1097,7 @@ int cdatetime_test_elements_get_minutes(
 	          &minutes,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1114,7 +1114,7 @@ int cdatetime_test_elements_get_minutes(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1177,13 +1177,13 @@ int cdatetime_test_elements_get_seconds(
 	          &seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "seconds",
 	 seconds,
 	 1 );
@@ -1200,7 +1200,7 @@ int cdatetime_test_elements_get_seconds(
 	          &seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1217,7 +1217,7 @@ int cdatetime_test_elements_get_seconds(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1280,13 +1280,13 @@ int cdatetime_test_elements_get_milli_seconds(
 	          &milli_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "milli_seconds",
 	 milli_seconds,
 	 0 );
@@ -1303,7 +1303,7 @@ int cdatetime_test_elements_get_milli_seconds(
 	          &milli_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1320,7 +1320,7 @@ int cdatetime_test_elements_get_milli_seconds(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1383,13 +1383,13 @@ int cdatetime_test_elements_get_micro_seconds(
 	          &micro_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "micro_seconds",
 	 micro_seconds,
 	 0 );
@@ -1406,7 +1406,7 @@ int cdatetime_test_elements_get_micro_seconds(
 	          &micro_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1423,7 +1423,7 @@ int cdatetime_test_elements_get_micro_seconds(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1486,13 +1486,13 @@ int cdatetime_test_elements_get_nano_seconds(
 	          &nano_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "nano_seconds",
 	 nano_seconds,
 	 0 );
@@ -1509,7 +1509,7 @@ int cdatetime_test_elements_get_nano_seconds(
 	          &nano_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1526,7 +1526,7 @@ int cdatetime_test_elements_get_nano_seconds(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1593,23 +1593,23 @@ int cdatetime_test_elements_get_time_values(
 	          &seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
 
 #ifdef TODO
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "hours",
 	 hours,
 	 0 );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "minutes",
 	 minutes,
 	 0 );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "seconds",
 	 seconds,
 	 0 );
@@ -1628,7 +1628,7 @@ int cdatetime_test_elements_get_time_values(
 	          &seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1647,7 +1647,7 @@ int cdatetime_test_elements_get_time_values(
 	          &seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1666,7 +1666,7 @@ int cdatetime_test_elements_get_time_values(
 	          &seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1685,7 +1685,7 @@ int cdatetime_test_elements_get_time_values(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1742,7 +1742,7 @@ int cdatetime_test_elements_get_delta_in_seconds(
 	          &number_of_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1760,7 +1760,7 @@ int cdatetime_test_elements_get_delta_in_seconds(
 	          &number_of_seconds,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1778,7 +1778,7 @@ int cdatetime_test_elements_get_delta_in_seconds(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1823,7 +1823,7 @@ int cdatetime_test_elements_set_current_time_utc(
 	          elements,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -1838,7 +1838,7 @@ int cdatetime_test_elements_set_current_time_utc(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1895,7 +1895,7 @@ int cdatetime_test_elements_set_current_time_localtime(
 	          elements,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -1910,7 +1910,7 @@ int cdatetime_test_elements_set_current_time_localtime(
 	          NULL,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -1974,7 +1974,7 @@ int cdatetime_test_elements_get_string_size(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -1991,7 +1991,7 @@ int cdatetime_test_elements_get_string_size(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -2010,7 +2010,7 @@ int cdatetime_test_elements_get_string_size(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2028,7 +2028,7 @@ int cdatetime_test_elements_get_string_size(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2046,7 +2046,7 @@ int cdatetime_test_elements_get_string_size(
 	          0,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2064,7 +2064,7 @@ int cdatetime_test_elements_get_string_size(
 	          LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2130,7 +2130,7 @@ int cdatetime_test_elements_copy_to_string(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -2150,7 +2150,7 @@ int cdatetime_test_elements_copy_to_string(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2220,7 +2220,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -2241,7 +2241,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 1 );
@@ -2264,7 +2264,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2288,7 +2288,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2312,7 +2312,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2336,7 +2336,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2360,7 +2360,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2384,7 +2384,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2408,7 +2408,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2432,7 +2432,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2456,7 +2456,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2480,7 +2480,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2504,7 +2504,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2528,7 +2528,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2548,7 +2548,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2568,7 +2568,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2588,7 +2588,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2608,7 +2608,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          0,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2628,7 +2628,7 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	          LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
 	          &error );
 
-	CDATETIME_TEST_ASSERT_EQUAL(
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
 	 -1 );
@@ -2682,63 +2682,63 @@ int main(
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_initialize",
-	 cdatetime_test_elements_initialize() )
+	 cdatetime_test_elements_initialize );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_free",
-	 cdatetime_test_elements_free() )
+	 cdatetime_test_elements_free );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_copy",
-	 cdatetime_test_elements_copy() )
+	 cdatetime_test_elements_copy );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_year",
-	 cdatetime_test_elements_get_year() )
+	 cdatetime_test_elements_get_year );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_day_of_year",
-	 cdatetime_test_elements_get_day_of_year() )
+	 cdatetime_test_elements_get_day_of_year );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_month",
-	 cdatetime_test_elements_get_month() )
+	 cdatetime_test_elements_get_month );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_day_of_month",
-	 cdatetime_test_elements_get_day_of_month() )
+	 cdatetime_test_elements_get_day_of_month );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_date_values",
-	 cdatetime_test_elements_get_date_values() )
+	 cdatetime_test_elements_get_date_values );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_hours",
-	 cdatetime_test_elements_get_hours() )
+	 cdatetime_test_elements_get_hours );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_minutes",
-	 cdatetime_test_elements_get_minutes() )
+	 cdatetime_test_elements_get_minutes );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_seconds",
-	 cdatetime_test_elements_get_seconds() )
+	 cdatetime_test_elements_get_seconds );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_milli_seconds",
-	 cdatetime_test_elements_get_milli_seconds() )
+	 cdatetime_test_elements_get_milli_seconds );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_micro_seconds",
-	 cdatetime_test_elements_get_micro_seconds() )
+	 cdatetime_test_elements_get_micro_seconds );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_nano_seconds",
-	 cdatetime_test_elements_get_nano_seconds() )
+	 cdatetime_test_elements_get_nano_seconds );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_time_values",
-	 cdatetime_test_elements_get_time_values() )
+	 cdatetime_test_elements_get_time_values );
 
 	/* TODO: add test for libcdatetime_internal_elements_set_from_filetime_utc */
 	/* TODO: add test for libcdatetime_internal_elements_set_from_time_utc */
@@ -2746,29 +2746,29 @@ int main(
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_set_current_time_utc",
-	 cdatetime_test_elements_set_current_time_utc() )
+	 cdatetime_test_elements_set_current_time_utc );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_set_current_time_localtime",
-	 cdatetime_test_elements_set_current_time_localtime() )
+	 cdatetime_test_elements_set_current_time_localtime );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_delta_in_seconds",
-	 cdatetime_test_elements_get_delta_in_seconds() )
+	 cdatetime_test_elements_get_delta_in_seconds );
 
 	/* TODO: add test for libcdatetime_elements_set_from_delta_in_seconds */
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_string_size",
-	 cdatetime_test_elements_get_string_size() )
+	 cdatetime_test_elements_get_string_size );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_copy_to_string",
-	 cdatetime_test_elements_copy_to_string() )
+	 cdatetime_test_elements_copy_to_string );
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_copy_to_string_with_index",
-	 cdatetime_test_elements_copy_to_string_with_index() )
+	 cdatetime_test_elements_copy_to_string_with_index );
 
 	return( EXIT_SUCCESS );
 
