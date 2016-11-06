@@ -23,8 +23,6 @@
 #include <types.h>
 
 #include "libcdatetime_definitions.h"
-#include "libcdatetime_libcerror.h"
-#include "libcdatetime_libcstring.h"
 #include "libcdatetime_support.h"
 
 #if !defined( HAVE_LOCAL_LIBCDATETIME )

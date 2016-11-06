@@ -20,6 +20,7 @@
  */
 
 #include <common.h>
+#include <types.h>
 
 #if defined( HAVE_STDLIB_H ) || defined( WINAPI )
 #include <stdlib.h>
@@ -27,7 +28,6 @@
 
 #include "cdatetime_test_libcdatetime.h"
 #include "cdatetime_test_libcerror.h"
-#include "cdatetime_test_libcstring.h"
 #include "cdatetime_test_macros.h"
 #include "cdatetime_test_memory.h"
 #include "cdatetime_test_unused.h"
@@ -446,7 +446,7 @@ on_error:
 
 /* The main program
  */
-#if defined( LIBCSTRING_HAVE_WIDE_SYSTEM_CHARACTER )
+#if defined( HAVE_WIDE_SYSTEM_CHARACTER )
 int wmain(
      int argc CDATETIME_TEST_ATTRIBUTE_UNUSED,
      wchar_t * const argv[] CDATETIME_TEST_ATTRIBUTE_UNUSED )

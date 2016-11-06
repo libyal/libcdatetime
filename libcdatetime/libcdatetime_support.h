@@ -26,7 +26,6 @@
 #include <types.h>
 
 #include "libcdatetime_extern.h"
-#include "libcdatetime_libcerror.h"
 
 #if defined( __cplusplus )
 extern "C" {
@@ -44,5 +43,5 @@ const char *libcdatetime_get_version(
 }
 #endif
 
-#endif
+#endif /* !defined( _LIBCDATETIME_SUPPORT_H ) */
 

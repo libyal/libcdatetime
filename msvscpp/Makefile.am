@@ -5,7 +5,6 @@ MSVSCPP_FILES = \
 	cdatetime_test_timestamp/cdatetime_test_timestamp.vcproj \
 	libcdatetime/libcdatetime.vcproj \
 	libcerror/libcerror.vcproj \
-	libcstring/libcstring.vcproj \
 	libcdatetime.sln
 
 EXTRA_DIST = \

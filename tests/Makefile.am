@@ -1,7 +1,6 @@
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/common \
-	@LIBCSTRING_CPPFLAGS@ \
 	@LIBCERROR_CPPFLAGS@ \
 	@LIBCDATETIME_DLL_IMPORT@
 
@@ -27,15 +26,13 @@ cdatetime_test_elements_SOURCES = \
 	cdatetime_test_elements.c \
 	cdatetime_test_libcdatetime.h \
 	cdatetime_test_libcerror.h \
-	cdatetime_test_libcstring.h \
 	cdatetime_test_macros.h \
 	cdatetime_test_memory.c cdatetime_test_memory.h \
 	cdatetime_test_unused.h
 
 cdatetime_test_elements_LDADD = \
 	../libcdatetime/libcdatetime.la \
-	@LIBCERROR_LIBADD@ \
-	@LIBCSTRING_LIBADD@
+	@LIBCERROR_LIBADD@
 
 cdatetime_test_error_SOURCES = \
 	cdatetime_test_error.c \
@@ -46,33 +43,28 @@ cdatetime_test_error_SOURCES = \
 
 cdatetime_test_error_LDADD = \
 	../libcdatetime/libcdatetime.la \
-	@LIBCERROR_LIBADD@ \
-	@LIBCSTRING_LIBADD@
+	@LIBCERROR_LIBADD@
 
 cdatetime_test_support_SOURCES = \
 	cdatetime_test_libcdatetime.h \
-	cdatetime_test_libcstring.h \
 	cdatetime_test_macros.h \
 	cdatetime_test_support.c \
 	cdatetime_test_unused.h
 
 cdatetime_test_support_LDADD = \
-	../libcdatetime/libcdatetime.la \
-	@LIBCSTRING_LIBADD@
+	../libcdatetime/libcdatetime.la
 
 cdatetime_test_timestamp_SOURCES = \
-	cdatetime_test_timestamp.c \
 	cdatetime_test_libcdatetime.h \
 	cdatetime_test_libcerror.h \
-	cdatetime_test_libcstring.h \
 	cdatetime_test_macros.h \
 	cdatetime_test_memory.c cdatetime_test_memory.h \
+	cdatetime_test_timestamp.c \
 	cdatetime_test_unused.h
 
 cdatetime_test_timestamp_LDADD = \
 	../libcdatetime/libcdatetime.la \
-	@LIBCERROR_LIBADD@ \
-	@LIBCSTRING_LIBADD@
+	@LIBCERROR_LIBADD@
 
 MAINTAINERCLEANFILES = \
 	Makefile.in

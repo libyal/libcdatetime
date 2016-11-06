@@ -7,6 +7,6 @@ Name: libcdatetime
 Description: Library to support cross-platform C date and time functions
 Version: @VERSION@
 Libs: -L${libdir} -lcdatetime
-Libs.private: @ax_libcerror_pc_libs_private@ @ax_libcstring_pc_libs_private@
+Libs.private: @ax_libcerror_pc_libs_private@
 Cflags: -I${includedir}
 
