@@ -190,10 +190,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\tests\cdatetime_test_libcerror.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\tests\cdatetime_test_macros.h"
 				>
 			</File>

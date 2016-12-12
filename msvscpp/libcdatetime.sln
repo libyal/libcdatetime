@@ -10,7 +10,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cdatetime_test_error", "cdatetime_test_error\cdatetime_test_error.vcproj", "{237BC439-C654-497A-AF68-AB19D39D17BA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE} = {37F4A30E-405A-4E9D-8E08-D6A087EACFFE}
-		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C} = {BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cdatetime_test_support", "cdatetime_test_support\cdatetime_test_support.vcproj", "{52C1DD49-7810-46F1-A5D8-29DD8A768032}"
