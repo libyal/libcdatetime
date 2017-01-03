@@ -1,7 +1,7 @@
 /*
- * Library elements type testing program
+ * Library elements type test program
  *
- * Copyright (C) 2013-2016, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (C) 2013-2017, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
@@ -20,6 +20,7 @@
  */
 
 #include <common.h>
+#include <file_stream.h>
 #include <types.h>
 
 #if defined( HAVE_STDLIB_H ) || defined( WINAPI )
@@ -32,6 +33,8 @@
 #include "cdatetime_test_memory.h"
 #include "cdatetime_test_unused.h"
 
+#include "../libcdatetime/libcdatetime_elements.h"
+
 /* Tests the libcdatetime_elements_initialize function
  * Returns 1 if successful or 0 if not
  */
@@ -42,7 +45,13 @@ int cdatetime_test_elements_initialize(
 	libcerror_error_t *error          = NULL;
 	int result                        = 0;
 
-	/* Test libcdatetime_elements_initialize
+#if defined( HAVE_CDATETIME_TEST_MEMORY )
+	int number_of_malloc_fail_tests   = 1;
+	int number_of_memset_fail_tests   = 1;
+	int test_number                   = 0;
+#endif
+
+	/* Test regular cases
 	 */
 	result = libcdatetime_elements_initialize(
 	          &elements,
@@ -118,65 +127,89 @@ int cdatetime_test_elements_initialize(
 
 #if defined( HAVE_CDATETIME_TEST_MEMORY )
 
-	/* Test libcdatetime_elements_initialize with malloc failing
-	 */
-	cdatetime_test_malloc_attempts_before_fail = 0;
-
-	result = libcdatetime_elements_initialize(
-	          &elements,
-	          &error );
-
-	if( cdatetime_test_malloc_attempts_before_fail != -1 )
+	for( test_number = 0;
+	     test_number < number_of_malloc_fail_tests;
+	     test_number++ )
 	{
-		cdatetime_test_malloc_attempts_before_fail = -1;
+		/* Test libcdatetime_elements_initialize with malloc failing
+		 */
+		cdatetime_test_malloc_attempts_before_fail = test_number;
+
+		result = libcdatetime_elements_initialize(
+		          &elements,
+		          &error );
+
+		if( cdatetime_test_malloc_attempts_before_fail != -1 )
+		{
+			cdatetime_test_malloc_attempts_before_fail = -1;
+
+			if( elements != NULL )
+			{
+				libcdatetime_elements_free(
+				 &elements,
+				 NULL );
+			}
+		}
+		else
+		{
+			CDATETIME_TEST_ASSERT_EQUAL_INT(
+			 "result",
+			 result,
+			 -1 );
+
+			CDATETIME_TEST_ASSERT_IS_NULL(
+			 "elements",
+			 elements );
+
+			CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+			 "error",
+			 error );
+
+			libcerror_error_free(
+			 &error );
+		}
 	}
-	else
+	for( test_number = 0;
+	     test_number < number_of_memset_fail_tests;
+	     test_number++ )
 	{
-		CDATETIME_TEST_ASSERT_EQUAL_INT(
-		 "result",
-		 result,
-		 -1 );
+		/* Test libcdatetime_elements_initialize with memset failing
+		 */
+		cdatetime_test_memset_attempts_before_fail = test_number;
 
-		CDATETIME_TEST_ASSERT_IS_NULL(
-		 "elements",
-		 elements );
+		result = libcdatetime_elements_initialize(
+		          &elements,
+		          &error );
 
-		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-		 "error",
-		 error );
+		if( cdatetime_test_memset_attempts_before_fail != -1 )
+		{
+			cdatetime_test_memset_attempts_before_fail = -1;
 
-		libcerror_error_free(
-		 &error );
-	}
-	/* Test libcdatetime_elements_initialize with memset failing
-	 */
-	cdatetime_test_memset_attempts_before_fail = 0;
+			if( elements != NULL )
+			{
+				libcdatetime_elements_free(
+				 &elements,
+				 NULL );
+			}
+		}
+		else
+		{
+			CDATETIME_TEST_ASSERT_EQUAL_INT(
+			 "result",
+			 result,
+			 -1 );
 
-	result = libcdatetime_elements_initialize(
-	          &elements,
-	          &error );
+			CDATETIME_TEST_ASSERT_IS_NULL(
+			 "elements",
+			 elements );
 
-	if( cdatetime_test_memset_attempts_before_fail != -1 )
-	{
-		cdatetime_test_memset_attempts_before_fail = -1;
-	}
-	else
-	{
-		CDATETIME_TEST_ASSERT_EQUAL_INT(
-		 "result",
-		 result,
-		 -1 );
+			CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+			 "error",
+			 error );
 
-		CDATETIME_TEST_ASSERT_IS_NULL(
-		 "elements",
-		 elements );
-
-		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-		 "error",
-		 error );
-
-		libcerror_error_free(
-		 &error );
+			libcerror_error_free(
+			 &error );
+		}
 	}
 #endif /* defined( HAVE_CDATETIME_TEST_MEMORY ) */
 
