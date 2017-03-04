@@ -5,12 +5,10 @@ AM_CPPFLAGS = \
 	@LIBCDATETIME_DLL_IMPORT@
 
 TESTS = \
-	test_api_functions.sh \
-	test_api_types.sh
+	test_library.sh
 
 check_SCRIPTS = \
-	test_api_functions.sh \
-	test_api_types.sh \
+	test_library.sh \
 	test_runner.sh
 
 EXTRA_DIST = \
