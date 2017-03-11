@@ -579,7 +579,7 @@ int libcdatetime_timestamp_get_string_size(
 	                | LIBCDATETIME_STRING_FORMAT_FLAG_TIME_NANO_SECONDS
 	                | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR;
 
-	if( ( string_format_flags & supported_flags ) == 0 )
+	if( ( string_format_flags & ~( supported_flags ) ) != 0 )
 	{
 		libcerror_error_set(
 		 error,
