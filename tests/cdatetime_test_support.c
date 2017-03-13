@@ -29,8 +29,11 @@
 #endif
 
 #include "cdatetime_test_libcdatetime.h"
+#include "cdatetime_test_libcerror.h"
 #include "cdatetime_test_macros.h"
 #include "cdatetime_test_unused.h"
+
+#include "../libcdatetime/libcdatetime_support.h"
 
 /* Tests the libcdatetime_get_version function
  * Returns 1 if successful or 0 if not
@@ -59,6 +62,291 @@ on_error:
 	return( 0 );
 }
 
+/* Tests the libcdatetime_is_leap_year function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_is_leap_year(
+     void )
+{
+	int result = 0;
+
+	/* Test regular cases
+	 */
+	result = libcdatetime_is_leap_year(
+	          1900 );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 0 );
+
+	result = libcdatetime_is_leap_year(
+	          2000 );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	result = libcdatetime_is_leap_year(
+	          2016 );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	result = libcdatetime_is_leap_year(
+	          2017 );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 0 );
+
+	return( 1 );
+
+on_error:
+	return( 0 );
+}
+
+/* Tests the libcdatetime_get_days_in_month function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_get_days_in_month(
+     void )
+{
+	libcerror_error_t *error = NULL;
+	uint8_t days_in_month    = 0;
+	int result               = 0;
+
+	/* Test regular cases
+	 */
+	result = libcdatetime_get_days_in_month(
+	          &days_in_month,
+	          2000,
+	          0,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
+	 "days_in_month",
+	 days_in_month,
+	 31 );
+
+	result = libcdatetime_get_days_in_month(
+	          &days_in_month,
+	          2000,
+	          1,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
+	 "days_in_month",
+	 days_in_month,
+	 29 );
+
+	result = libcdatetime_get_days_in_month(
+	          &days_in_month,
+	          1999,
+	          1,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
+	 "days_in_month",
+	 days_in_month,
+	 28 );
+
+	result = libcdatetime_get_days_in_month(
+	          &days_in_month,
+	          2000,
+	          3,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
+	 "days_in_month",
+	 days_in_month,
+	 30 );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_get_days_in_month(
+	          &days_in_month,
+	          2000,
+	          12,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	return( 0 );
+}
+
+/* Tests the libcdatetime_get_day_of_year function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_get_day_of_year(
+     void )
+{
+	libcerror_error_t *error = NULL;
+	uint16_t day_of_year     = 0;
+	int result               = 0;
+
+	/* Test regular cases
+	 */
+	result = libcdatetime_get_day_of_year(
+	          &day_of_year,
+	          2000,
+	          11,
+	          31,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
+	 "day_of_year",
+	 day_of_year,
+	 ( 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 ) - 1 );
+
+	result = libcdatetime_get_day_of_year(
+	          &day_of_year,
+	          1999,
+	          11,
+	          31,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+        CDATETIME_TEST_ASSERT_IS_NULL(
+         "error",
+         error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
+	 "day_of_year",
+	 day_of_year,
+	 ( 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 ) - 1 );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_get_day_of_year(
+	          &day_of_year,
+	          2000,
+	          12,
+	          0,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_get_day_of_year(
+	          &day_of_year,
+	          2000,
+	          0,
+	          0,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_get_day_of_year(
+	          &day_of_year,
+	          2000,
+	          0,
+	          32,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	return( 0 );
+}
+
 /* The main program
  */
 #if defined( HAVE_WIDE_SYSTEM_CHARACTER )
@@ -77,6 +365,18 @@ int main(
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_get_version",
 	 cdatetime_test_get_version );
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_is_leap_year",
+	 cdatetime_test_is_leap_year );
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_get_days_in_month",
+	 cdatetime_test_get_days_in_month );
+
+	CDATETIME_TEST_RUN(
+	 "libcdatetime_get_day_of_year",
+	 cdatetime_test_get_day_of_year );
 
 	return( EXIT_SUCCESS );
 

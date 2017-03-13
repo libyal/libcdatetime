@@ -178,6 +178,16 @@ int libcdatetime_elements_get_time_values(
      uint8_t *seconds,
      libcerror_error_t **error );
 
+int libcdatetime_elements_set_date_and_time_values(
+     libcdatetime_elements_t *elements,
+     uint16_t year,
+     uint8_t month,
+     uint8_t day_of_month,
+     uint8_t hours,
+     uint8_t minutes,
+     uint8_t seconds,
+     libcerror_error_t **error );
+
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
 
 int libcdatetime_internal_elements_set_from_filetime_utc(

@@ -26,6 +26,7 @@
 #include <types.h>
 
 #include "libcdatetime_extern.h"
+#include "libcdatetime_libcerror.h"
 
 #if defined( __cplusplus )
 extern "C" {
@@ -38,6 +39,22 @@ const char *libcdatetime_get_version(
              void );
 
 #endif /* !defined( HAVE_LOCAL_LIBCDATETIME ) */
+
+int libcdatetime_is_leap_year(
+     uint16_t year );
+
+int libcdatetime_get_days_in_month(
+     uint8_t *days_in_month,
+     uint16_t year,
+     uint8_t month,
+     libcerror_error_t **error );
+
+int libcdatetime_get_day_of_year(
+     uint16_t *day_of_year,
+     uint16_t year,
+     uint8_t month,
+     uint8_t day_of_month,
+     libcerror_error_t **error );
 
 #if defined( __cplusplus )
 }

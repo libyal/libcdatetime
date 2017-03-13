@@ -39,6 +39,7 @@
 #include "libcdatetime_definitions.h"
 #include "libcdatetime_elements.h"
 #include "libcdatetime_libcerror.h"
+#include "libcdatetime_support.h"
 #include "libcdatetime_types.h"
 
 /* Creates date and time elements
@@ -344,17 +345,6 @@ int libcdatetime_elements_get_day_of_year(
 	}
 	internal_elements = (libcdatetime_internal_elements_t *) elements;
 
-	if( day_of_year == NULL )
-	{
-		libcerror_error_set(
-		 error,
-		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
-		 "%s: invalid day of year.",
-		 function );
-
-		return( -1 );
-	}
 	/* Valid values for the wMonth member are 1 through 12.
 	 */
 	if( ( internal_elements->systemtime.wMonth == (WORD) 0 )
@@ -369,43 +359,22 @@ int libcdatetime_elements_get_day_of_year(
 
 		return( -1 );
 	}
-	*day_of_year = 0;
-
-	switch( internal_elements->systemtime.wMonth - 1 )
+	if( libcdatetime_get_day_of_year(
+	     &day_of_year,
+	     (uint16_t) internal_elements->systemtime.wYear,
+	     (uint8_t) ( internal_elements->systemtime.wMonth - 1 ),
+	     (uint8_t) internal_elements->systemtime.wDay,
+	     &error ) != 1 )
 	{
-		case 11:
-			*day_of_year += 30;
-		case 10:
-			*day_of_year += 31;
-		case 9:
-			*day_of_year += 30;
-		case 8:
-			*day_of_year += 31;
-		case 7:
-			*day_of_year += 31;
-		case 6:
-			*day_of_year += 30;
-		case 5:
-			*day_of_year += 31;
-		case 4:
-			*day_of_year += 30;
-		case 3:
-			*day_of_year += 31;
-		case 2:
-			if( ( ( ( internal_elements->systemtime.wYear % 4 ) == 0 )
-			  &&  ( ( internal_elements->systemtime.wYear % 100 ) != 0 ) )
-			 || ( ( internal_elements->systemtime.wYear % 400 ) == 0 ) )
-			{
-				*day_of_year += 29;
-			}
-			else
-			{
-				*day_of_year += 28;
-			}
-		case 1:
-			*day_of_year += 31;
-		default:
-			*day_of_year += internal_elements->systemtime.wDay - 1;
+		libcerror_system_set_error(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
+		 errno,
+		 "%s: unable to determine day of year.",
+		 function );
+
+		return( -1 );
 	}
 	return( 1 );
 }
@@ -456,9 +425,8 @@ int libcdatetime_elements_get_day_of_year(
 	}
 	safe_year = 1900 + internal_elements->tm.tm_year;
 
-	if( ( ( ( safe_year % 4 ) == 0 )
-	  &&  ( ( safe_year % 100 ) != 0 ) )
-	 || ( ( safe_year % 400 ) == 0 ) )
+	if( libcdatetime_is_leap_year(
+	     safe_year ) != 0 )
 	{
 		days_in_year = 366;
 	}
@@ -618,7 +586,7 @@ int libcdatetime_elements_get_day_of_month(
 {
 	libcdatetime_internal_elements_t *internal_elements = NULL;
 	static char *function                               = "libcdatetime_elements_get_day_of_month";
-	WORD days_in_month                                  = 0;
+	uint8_t days_in_month                               = 0;
 
 	if( elements == NULL )
 	{
@@ -658,42 +626,25 @@ int libcdatetime_elements_get_day_of_month(
 
 		return( -1 );
 	}
-	switch( internal_elements->systemtime.wMonth )
+	if( libcdatetime_get_days_in_month(
+	     &days_in_month,
+	     (uint16_t) internal_elements->systemtime.wYear,
+	     (uint8_t) ( internal_elements->systemtime.wMonth - 1 ),
+	     error ) != 1 )
 	{
-		case 1:
-		case 3:
-		case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
-			days_in_month = 31;
-			break;
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
+		 "%s: unable to retrieve days in month.",
+		 function );
 
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			days_in_month = 30;
-			break;
-
-		case 2:
-			if( ( ( ( internal_elements->systemtime.wYear % 4 ) == 0 )
-			  &&  ( ( internal_elements->systemtime.wYear % 100 ) != 0 ) )
-			 || ( ( internal_elements->systemtime.wYear % 400 ) == 0 ) )
-			{
-				days_in_month = 29;
-			}
-			else
-			{
-				days_in_month = 28;
-			}
-			break;
+		return( -1 );
 	}
 	/* Valid values for the wDay member are 1 through 31.
 	 */
 	if( ( internal_elements->systemtime.wDay == (WORD) 0 )
-	 || ( internal_elements->systemtime.wDay >= days_in_month ) )
+	 || ( internal_elements->systemtime.wDay >= (WORD) days_in_month ) )
 	{
 		libcerror_error_set(
 		 error,
@@ -726,8 +677,7 @@ int libcdatetime_elements_get_day_of_month(
 {
 	libcdatetime_internal_elements_t *internal_elements = NULL;
 	static char *function                               = "libcdatetime_elements_get_day_of_month";
-	int days_in_month                                   = 0;
-	int safe_year                                       = 0;
+	uint8_t days_in_month                               = 0;
 
 	if( elements == NULL )
 	{
@@ -767,44 +717,25 @@ int libcdatetime_elements_get_day_of_month(
 
 		return( -1 );
 	}
-	safe_year = 1900 + internal_elements->tm.tm_year;
-
-	switch( internal_elements->tm.tm_mon + 1 )
+	if( libcdatetime_get_days_in_month(
+	     &days_in_month,
+	     (uint16_t) ( 1900 + internal_elements->tm.tm_year ),
+	     (uint8_t) internal_elements->tm.tm_mon,
+	     error ) != 1 )
 	{
-		case 1:
-		case 3:
-		case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
-			days_in_month = 31;
-			break;
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
+		 "%s: unable to retrieve days in month.",
+		 function );
 
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			days_in_month = 30;
-			break;
-
-		case 2:
-			if( ( ( ( safe_year % 4 ) == 0 )
-			  &&  ( ( safe_year % 100 ) != 0 ) )
-			 || ( ( safe_year % 400 ) == 0 ) )
-			{
-				days_in_month = 29;
-			}
-			else
-			{
-				days_in_month = 28;
-			}
-			break;
+		return( -1 );
 	}
 	/* Valid values for the tm_mday member are 1 through 31.
 	 */
 	if( ( internal_elements->tm.tm_mday <= 0 )
-	 || ( internal_elements->tm.tm_mday > days_in_month ) )
+	 || ( internal_elements->tm.tm_mday > (int) days_in_month ) )
 	{
 		libcerror_error_set(
 		 error,
@@ -1474,6 +1405,109 @@ int libcdatetime_elements_get_time_values(
 
 		return( -1 );
 	}
+	return( 1 );
+}
+
+/* Sets the date and time elements
+ * Returns 1 if successful or -1 on error
+ */
+int libcdatetime_elements_set_date_and_time_values(
+     libcdatetime_elements_t *elements,
+     uint16_t year,
+     uint8_t month,
+     uint8_t day_of_month,
+     uint8_t hours,
+     uint8_t minutes,
+     uint8_t seconds,
+     libcerror_error_t **error )
+{
+	libcdatetime_internal_elements_t *internal_elements = NULL;
+	static char *function                               = "libcdatetime_elements_get_seconds";
+
+	if( elements == NULL )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_INVALID_VALUE,
+		 "%s: invalid elements.",
+		 function );
+
+		return( -1 );
+	}
+	internal_elements = (libcdatetime_internal_elements_t *) elements;
+
+	if( ( year < (int) -UINT16_MAX )
+	 || ( year > (int) UINT16_MAX ) )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+		 "%s: invalid year value out of bounds.",
+		 function );
+
+		return( -1 );
+	}
+	if( month > 11 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+		 "%s: invalid month value out of bounds.",
+		 function );
+
+		return( -1 );
+	}
+/* TODO validate day_of_month */
+	if( hours > 24 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+		 "%s: invalid hours value out of bounds.",
+		 function );
+
+		return( -1 );
+	}
+	if( minutes > 59 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+		 "%s: invalid minutes value out of bounds.",
+		 function );
+
+		return( -1 );
+	}
+	if( seconds > 59 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+		 "%s: invalid seconds value out of bounds.",
+		 function );
+
+		return( -1 );
+	}
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+#else
+/* TODO get day_of_year */
+/* TODO get day_of_week */
+	internal_elements->tm.tm_year  = (int) year - 1900;
+	internal_elements->tm.tm_yday  = 0;
+	internal_elements->tm.tm_mon   = (int) month;
+	internal_elements->tm.tm_mday  = (int) day_of_month;
+	internal_elements->tm.tm_wday  = 0;
+	internal_elements->tm.tm_hour  = (int) hours;
+	internal_elements->tm.tm_min   = (int) minutes;
+	internal_elements->tm.tm_sec   = (int) seconds;
+	internal_elements->tm.tm_isdst = 0;
+#endif
 	return( 1 );
 }
 

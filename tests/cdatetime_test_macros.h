@@ -71,6 +71,27 @@
 		goto on_error; \
 	}
 
+#define CDATETIME_TEST_ASSERT_EQUAL_INT16( name, value, expected_value ) \
+	if( value != expected_value ) \
+	{ \
+		fprintf( stdout, "%s:%d %s (%" PRIi16 ") != %" PRIi16 "\n", __FILE__, __LINE__, name, value, expected_value ); \
+		goto on_error; \
+	}
+
+#define CDATETIME_TEST_ASSERT_EQUAL_UINT16( name, value, expected_value ) \
+	if( value != expected_value ) \
+	{ \
+		fprintf( stdout, "%s:%d %s (%" PRIi16 ") != %" PRIu16 "\n", __FILE__, __LINE__, name, value, expected_value ); \
+		goto on_error; \
+	}
+
+#define CDATETIME_TEST_ASSERT_LESS_THAN_UINT16( name, value, expected_value ) \
+	if( value >= expected_value ) \
+	{ \
+		fprintf( stdout, "%s:%d %s (%" PRIi16 ") >= %" PRIu16 "\n", __FILE__, __LINE__, name, value, expected_value ); \
+		goto on_error; \
+	}
+
 #define CDATETIME_TEST_ASSERT_EQUAL_INT32( name, value, expected_value ) \
 	if( value != expected_value ) \
 	{ \
