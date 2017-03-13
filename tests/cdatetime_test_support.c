@@ -207,6 +207,24 @@ int cdatetime_test_get_days_in_month(
 	/* Test error cases
 	 */
 	result = libcdatetime_get_days_in_month(
+	          NULL,
+	          2000,
+	          0,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_get_days_in_month(
 	          &days_in_month,
 	          2000,
 	          12,
@@ -286,6 +304,25 @@ int cdatetime_test_get_day_of_year(
 
 	/* Test error cases
 	 */
+	result = libcdatetime_get_day_of_year(
+	          NULL,
+	          2000,
+	          11,
+	          31,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+         "error",
+         error );
+
+	libcerror_error_free(
+	 &error );
+
 	result = libcdatetime_get_day_of_year(
 	          &day_of_year,
 	          2000,
