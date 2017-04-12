@@ -16,10 +16,9 @@ DPKG_FILES = \
 	dpkg/compat \
 	dpkg/control \
 	dpkg/copyright \
-	dpkg/copyright.in \
 	dpkg/rules \
-	dpkg/libcdatetime-dev.docs \
-	dpkg/libcdatetime.docs \
+	dpkg/libcdatetime-dev.install \
+	dpkg/libcdatetime.install \
 	dpkg/source/format
 
 GETTEXT_FILES = \
