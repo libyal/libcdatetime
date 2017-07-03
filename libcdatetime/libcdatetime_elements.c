@@ -360,11 +360,11 @@ int libcdatetime_elements_get_day_of_year(
 		return( -1 );
 	}
 	if( libcdatetime_get_day_of_year(
-	     &day_of_year,
+	     day_of_year,
 	     (uint16_t) internal_elements->systemtime.wYear,
 	     (uint8_t) ( internal_elements->systemtime.wMonth - 1 ),
 	     (uint8_t) internal_elements->systemtime.wDay,
-	     &error ) != 1 )
+	     error ) != 1 )
 	{
 		libcerror_system_set_error(
 		 error,
@@ -1437,18 +1437,6 @@ int libcdatetime_elements_set_date_and_time_values(
 	}
 	internal_elements = (libcdatetime_internal_elements_t *) elements;
 
-	if( ( year < (int) -UINT16_MAX )
-	 || ( year > (int) UINT16_MAX ) )
-	{
-		libcerror_error_set(
-		 error,
-		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
-		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
-		 "%s: invalid year value out of bounds.",
-		 function );
-
-		return( -1 );
-	}
 	if( month > 11 )
 	{
 		libcerror_error_set(
@@ -1495,6 +1483,7 @@ int libcdatetime_elements_set_date_and_time_values(
 		return( -1 );
 	}
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
+/* TODO implement */
 #else
 /* TODO get day_of_year */
 /* TODO get day_of_week */
