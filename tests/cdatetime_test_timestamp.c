@@ -37,7 +37,7 @@
 #endif
 #endif
 
-#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ )
+#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ )
 #define __USE_GNU
 #include <dlfcn.h>
 #undef __USE_GNU
@@ -49,7 +49,7 @@
 #include "cdatetime_test_memory.h"
 #include "cdatetime_test_unused.h"
 
-#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ )
+#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ )
 
 static time_t (*cdatetime_test_real_time)(time_t *) = NULL;
 
@@ -85,7 +85,7 @@ time_t time(
 	return( print_count );
 }
 
-#endif /* defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) */
+#endif /* defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ ) */
 
 /* Tests the libcdatetime_timestamp_initialize function
  * Returns 1 if successful or 0 if not
@@ -571,7 +571,7 @@ int cdatetime_test_timestamp_set_current_time(
 	libcerror_error_free(
 	 &error );
 
-#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ )
+#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ )
 	/* Test libcdatetime_timestamp_set_current_time with time failing
 	 */
 	cdatetime_test_time_attempts_before_fail = 1;
@@ -599,7 +599,7 @@ int cdatetime_test_timestamp_set_current_time(
 		 &error );
 
 	}
-#endif /* defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) */
+#endif /* defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ ) */
 
 	/* Clean up
 	 */
