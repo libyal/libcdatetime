@@ -62,7 +62,7 @@ on_error:
 	return( 0 );
 }
 
-#if defined( __GNUC__ )
+#if defined( __GNUC__ ) && !defined( __CYGWIN__ )
 
 /* Tests the libcdatetime_is_leap_year function
  * Returns 1 if successful or 0 if not
@@ -386,7 +386,7 @@ on_error:
 	return( 0 );
 }
 
-#endif /* defined( __GNUC__ ) */
+#endif /* defined( __GNUC__ ) && !defined( __CYGWIN__ ) */
 
 /* The main program
  */
@@ -407,7 +407,7 @@ int main(
 	 "libcdatetime_get_version",
 	 cdatetime_test_get_version );
 
-#if defined( __GNUC__ )
+#if defined( __GNUC__ ) && !defined( __CYGWIN__ )
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_is_leap_year",
@@ -421,7 +421,7 @@ int main(
 	 "libcdatetime_get_day_of_year",
 	 cdatetime_test_get_day_of_year );
 
-#endif /* defined( __GNUC__ ) */
+#endif /* defined( __GNUC__ ) && !defined( __CYGWIN__ ) */
 
 	return( EXIT_SUCCESS );
 

@@ -43,12 +43,14 @@ cdatetime_test_error_LDADD = \
 
 cdatetime_test_support_SOURCES = \
 	cdatetime_test_libcdatetime.h \
+	cdatetime_test_libcerror.h \
 	cdatetime_test_macros.h \
 	cdatetime_test_support.c \
 	cdatetime_test_unused.h
 
 cdatetime_test_support_LDADD = \
-	../libcdatetime/libcdatetime.la
+	../libcdatetime/libcdatetime.la \
+	@LIBCERROR_LIBADD@
 
 cdatetime_test_timestamp_SOURCES = \
 	cdatetime_test_libcdatetime.h \
