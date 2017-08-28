@@ -135,9 +135,9 @@ int cdatetime_test_get_days_in_month(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
 	 "days_in_month",
@@ -155,9 +155,9 @@ int cdatetime_test_get_days_in_month(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
 	 "days_in_month",
@@ -175,9 +175,9 @@ int cdatetime_test_get_days_in_month(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
 	 "days_in_month",
@@ -195,9 +195,9 @@ int cdatetime_test_get_days_in_month(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
 	 "days_in_month",
@@ -217,9 +217,9 @@ int cdatetime_test_get_days_in_month(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -235,9 +235,9 @@ int cdatetime_test_get_days_in_month(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -272,9 +272,9 @@ int cdatetime_test_get_day_of_year(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
 	 "day_of_year",
@@ -293,9 +293,9 @@ int cdatetime_test_get_day_of_year(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_UINT16(
 	 "day_of_year",
@@ -316,9 +316,9 @@ int cdatetime_test_get_day_of_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -335,9 +335,9 @@ int cdatetime_test_get_day_of_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -354,9 +354,9 @@ int cdatetime_test_get_day_of_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -373,9 +373,9 @@ int cdatetime_test_get_day_of_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );

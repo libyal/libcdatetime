@@ -62,13 +62,13 @@ int cdatetime_test_elements_initialize(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "elements",
-         elements );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "elements",
+	 elements );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	result = libcdatetime_elements_free(
 	          &elements,
@@ -79,13 +79,13 @@ int cdatetime_test_elements_initialize(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "elements",
-         elements );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "elements",
+	 elements );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -98,9 +98,9 @@ int cdatetime_test_elements_initialize(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -116,9 +116,9 @@ int cdatetime_test_elements_initialize(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -250,9 +250,9 @@ int cdatetime_test_elements_free(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -301,9 +301,9 @@ int cdatetime_test_elements_copy(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -317,9 +317,9 @@ int cdatetime_test_elements_copy(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -334,9 +334,9 @@ int cdatetime_test_elements_copy(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -445,9 +445,9 @@ int cdatetime_test_elements_get_year(
 	 1900 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -461,9 +461,9 @@ int cdatetime_test_elements_get_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -478,9 +478,9 @@ int cdatetime_test_elements_get_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -548,9 +548,9 @@ int cdatetime_test_elements_get_day_of_year(
 	 0 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -564,9 +564,9 @@ int cdatetime_test_elements_get_day_of_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -581,9 +581,9 @@ int cdatetime_test_elements_get_day_of_year(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -651,9 +651,9 @@ int cdatetime_test_elements_get_month(
 	 1 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -667,9 +667,9 @@ int cdatetime_test_elements_get_month(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -684,9 +684,9 @@ int cdatetime_test_elements_get_month(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -754,9 +754,9 @@ int cdatetime_test_elements_get_day_of_month(
 	 0 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -770,9 +770,9 @@ int cdatetime_test_elements_get_day_of_month(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -787,9 +787,9 @@ int cdatetime_test_elements_get_day_of_month(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -871,9 +871,9 @@ int cdatetime_test_elements_get_date_values(
 	 0 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -889,9 +889,9 @@ int cdatetime_test_elements_get_date_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -908,9 +908,9 @@ int cdatetime_test_elements_get_date_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -927,9 +927,9 @@ int cdatetime_test_elements_get_date_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -946,9 +946,9 @@ int cdatetime_test_elements_get_date_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1016,9 +1016,9 @@ int cdatetime_test_elements_get_hours(
 	 1 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1032,9 +1032,9 @@ int cdatetime_test_elements_get_hours(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1049,9 +1049,9 @@ int cdatetime_test_elements_get_hours(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1119,9 +1119,9 @@ int cdatetime_test_elements_get_minutes(
 	 1 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1135,9 +1135,9 @@ int cdatetime_test_elements_get_minutes(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1152,9 +1152,9 @@ int cdatetime_test_elements_get_minutes(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1222,9 +1222,9 @@ int cdatetime_test_elements_get_seconds(
 	 1 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1238,9 +1238,9 @@ int cdatetime_test_elements_get_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1255,9 +1255,9 @@ int cdatetime_test_elements_get_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1325,9 +1325,9 @@ int cdatetime_test_elements_get_milli_seconds(
 	 0 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1341,9 +1341,9 @@ int cdatetime_test_elements_get_milli_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1358,9 +1358,9 @@ int cdatetime_test_elements_get_milli_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1428,9 +1428,9 @@ int cdatetime_test_elements_get_micro_seconds(
 	 0 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1444,9 +1444,9 @@ int cdatetime_test_elements_get_micro_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1461,9 +1461,9 @@ int cdatetime_test_elements_get_micro_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1531,9 +1531,9 @@ int cdatetime_test_elements_get_nano_seconds(
 	 0 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1547,9 +1547,9 @@ int cdatetime_test_elements_get_nano_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1564,9 +1564,9 @@ int cdatetime_test_elements_get_nano_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1648,9 +1648,9 @@ int cdatetime_test_elements_get_time_values(
 	 0 );
 #endif
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1666,9 +1666,9 @@ int cdatetime_test_elements_get_time_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1685,9 +1685,9 @@ int cdatetime_test_elements_get_time_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1704,9 +1704,9 @@ int cdatetime_test_elements_get_time_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1723,9 +1723,9 @@ int cdatetime_test_elements_get_time_values(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1780,9 +1780,9 @@ int cdatetime_test_elements_get_delta_in_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1798,9 +1798,9 @@ int cdatetime_test_elements_get_delta_in_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1816,9 +1816,9 @@ int cdatetime_test_elements_get_delta_in_seconds(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1861,9 +1861,9 @@ int cdatetime_test_elements_set_current_time_utc(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1876,9 +1876,9 @@ int cdatetime_test_elements_set_current_time_utc(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -1933,9 +1933,9 @@ int cdatetime_test_elements_set_current_time_localtime(
 	 result,
 	 1 );
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1948,9 +1948,9 @@ int cdatetime_test_elements_set_current_time_localtime(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2014,9 +2014,9 @@ int cdatetime_test_elements_get_string_size(
 
 /* TODO: compare result string size */
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	result = libcdatetime_elements_get_string_size(
 	          elements,
@@ -2031,9 +2031,9 @@ int cdatetime_test_elements_get_string_size(
 
 /* TODO: compare result string size */
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -2048,9 +2048,9 @@ int cdatetime_test_elements_get_string_size(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2066,9 +2066,9 @@ int cdatetime_test_elements_get_string_size(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2084,9 +2084,9 @@ int cdatetime_test_elements_get_string_size(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2102,9 +2102,9 @@ int cdatetime_test_elements_get_string_size(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2170,9 +2170,9 @@ int cdatetime_test_elements_copy_to_string(
 
 /* TODO: compare result string */
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -2188,9 +2188,9 @@ int cdatetime_test_elements_copy_to_string(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2260,9 +2260,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 
 /* TODO: compare result string */
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	string_index = 0;
 
@@ -2281,9 +2281,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 
 /* TODO: compare result string */
 
-        CDATETIME_TEST_ASSERT_IS_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test copy to string, which is too small for date
 	 */
@@ -2302,9 +2302,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2326,9 +2326,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2350,9 +2350,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2374,9 +2374,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2398,9 +2398,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2422,9 +2422,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2446,9 +2446,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2470,9 +2470,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2494,9 +2494,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2518,9 +2518,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2542,9 +2542,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2566,9 +2566,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2586,9 +2586,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2606,9 +2606,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2626,9 +2626,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2646,9 +2646,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
@@ -2666,9 +2666,9 @@ int cdatetime_test_elements_copy_to_string_with_index(
 	 result,
 	 -1 );
 
-        CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-         "error",
-         error );
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
 
 	libcerror_error_free(
 	 &error );
