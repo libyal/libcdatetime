@@ -5,13 +5,13 @@ Summary: Library to support cross-platform C date and time functions
 Group: System Environment/Libraries
 License: LGPL
 Source: %{name}-%{version}.tar.gz
-URL: https://github.com/libyal/libcdatetime/
+URL: https://github.com/libyal/libcdatetime
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 @libcdatetime_spec_requires@ @ax_libcerror_spec_requires@
 @libcdatetime_spec_build_requires@ @ax_libcerror_spec_build_requires@
 
 %description
-libcdatetime is a library to support cross-platform C date and time functions
+Library to support cross-platform C date and time functions
 
 %package devel
 Summary: Header files and libraries for developing applications for libcdatetime
