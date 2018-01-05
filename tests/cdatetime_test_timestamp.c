@@ -571,10 +571,47 @@ int cdatetime_test_timestamp_set_current_time(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+
+#if defined( HAVE_CDATETIME_TEST_MEMORY )
+
+	/* Test libcdatetime_timestamp_set_current_time with memset failing
+	 */
+	cdatetime_test_memset_attempts_before_fail = 0;
+
+	result = libcdatetime_timestamp_set_current_time(
+	          timestamp,
+	          &error );
+
+	if( cdatetime_test_memset_attempts_before_fail != -1 )
+	{
+		cdatetime_test_memset_attempts_before_fail = -1;
+	}
+	else
+	{
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
+		 "result",
+		 result,
+		 -1 );
+
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
+		libcerror_error_free(
+		 &error );
+	}
+#endif /* defined( HAVE_CDATETIME_TEST_MEMORY ) */
+
+	/* TODO: Test libcdatetime_timestamp_set_current_time with SystemTimeToFileTime failing
+	 */
+
+#else
+
 #if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ )
 	/* Test libcdatetime_timestamp_set_current_time with time failing
 	 */
-	cdatetime_test_time_attempts_before_fail = 1;
+	cdatetime_test_time_attempts_before_fail = 0;
 
 	result = libcdatetime_timestamp_set_current_time(
 	          timestamp,
@@ -600,6 +637,8 @@ int cdatetime_test_timestamp_set_current_time(
 
 	}
 #endif /* defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ ) */
+
+#endif /* defined( WINAPI ) && ( WINVER >= 0x0500 ) */
 
 	/* Clean up
 	 */
@@ -895,7 +934,7 @@ int cdatetime_test_timestamp_get_string_size(
 	result = libcdatetime_timestamp_get_string_size(
 	          timestamp,
 	          &string_size,
-	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_ISO8601 | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME_NANO_SECONDS | LIBCDATETIME_STRING_FORMAT_FLAG_TIMEZONE_INDICATOR,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_INT(
@@ -1023,24 +1062,6 @@ on_error:
 int cdatetime_test_timestamp_copy_to_string(
      void )
 {
-	/* Test invocation of function only
-	 */
-	libcdatetime_timestamp_copy_to_string(
-	 NULL,
-	 NULL,
-	 0,
-	 0,
-	 NULL );
-
-	return( 1 );
-}
-
-/* Tests the libcdatetime_timestamp_copy_to_string function
- * Returns 1 if successful or 0 if not
- */
-int cdatetime_test_timestamp_copy_to_string_with_index(
-     void )
-{
 	uint8_t string[ 64 ];
 
 	libcdatetime_timestamp_t *timestamp = NULL;
@@ -1068,6 +1089,21 @@ int cdatetime_test_timestamp_copy_to_string_with_index(
 
 	/* Test regular cases
 	 */
+	result = libcdatetime_timestamp_copy_to_string(
+	          timestamp,
+	          string,
+	          64,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
@@ -1089,6 +1125,174 @@ int cdatetime_test_timestamp_copy_to_string_with_index(
 
 	libcerror_error_free(
 	 &error );
+
+	/* Clean up
+	 */
+	result = libcdatetime_timestamp_free(
+	          &timestamp,
+	          NULL );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "timestamp",
+	 timestamp );
+
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	if( timestamp != NULL )
+	{
+		libcdatetime_timestamp_free(
+		 &timestamp,
+		 NULL );
+	}
+	return( 0 );
+}
+
+/* Tests the libcdatetime_timestamp_copy_to_string_with_index function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_timestamp_copy_to_string_with_index(
+     void )
+{
+	uint8_t string[ 64 ];
+
+	libcdatetime_timestamp_t *timestamp = NULL;
+	libcerror_error_t *error            = NULL;
+	size_t string_index                 = 0;
+	int result                          = 0;
+
+	/* Initialize test
+	 */
+	result = libcdatetime_timestamp_initialize(
+	          &timestamp,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "timestamp",
+	 timestamp );
+
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	/* Test regular cases
+	 */
+	result = libcdatetime_timestamp_copy_to_string_with_index(
+	          timestamp,
+	          string,
+	          64,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	CDATETIME_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	/* Test error cases
+	 */
+	result = libcdatetime_timestamp_copy_to_string_with_index(
+	          NULL,
+	          string,
+	          64,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	/* TODO: Test libcdatetime_timestamp_copy_to_string_with_index with libcdatetime_internal_elements_set_from_filetime_utc failing
+	 */
+
+#if defined( HAVE_CDATETIME_TEST_MEMORY )
+
+	/* Test libcdatetime_timestamp_copy_to_string_with_index with malloc failing in libcdatetime_elements_initialize
+	 */
+	cdatetime_test_malloc_attempts_before_fail = 0;
+
+	result = libcdatetime_timestamp_copy_to_string_with_index(
+	          timestamp,
+	          string,
+	          64,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          &error );
+
+	if( cdatetime_test_malloc_attempts_before_fail != -1 )
+	{
+		cdatetime_test_malloc_attempts_before_fail = -1;
+	}
+	else
+	{
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
+		 "result",
+		 result,
+		 -1 );
+
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
+		libcerror_error_free(
+		 &error );
+	}
+#endif /* defined( HAVE_CDATETIME_TEST_MEMORY ) */
+
+	/* Test libcdatetime_timestamp_copy_to_string_with_index with libcdatetime_elements_copy_to_string_with_index failing
+	 */
+	result = libcdatetime_timestamp_copy_to_string_with_index(
+	          timestamp,
+	          NULL,
+	          64,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	/* TODO: Test libcdatetime_timestamp_copy_to_string_with_index with free failing in libcdatetime_elements_free
+	 */
 
 	/* Clean up
 	 */
