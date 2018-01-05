@@ -1554,7 +1554,7 @@ int libcdatetime_internal_elements_set_from_filetime_utc(
 	return( 1 );
 }
 
-#endif
+#endif /* defined( WINAPI ) && ( WINVER >= 0x0500 ) */
 
 #if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) )
 

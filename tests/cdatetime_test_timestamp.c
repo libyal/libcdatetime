@@ -51,17 +51,51 @@
 
 #if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ )
 
-static time_t (*cdatetime_test_real_time)(time_t *) = NULL;
+static struct tm *(*cdatetime_test_real_gmtime_r)(const time_t *, struct tm *) = NULL;
+static time_t (*cdatetime_test_real_time)(time_t *)                            = NULL;
 
-int cdatetime_test_time_attempts_before_fail        = -1;
+int cdatetime_test_gmtime_r_attempts_before_fail                               = -1;
+int cdatetime_test_time_attempts_before_fail                                   = -1;
 
-/* Custom time for testing memory error cases
+/* Custom time for testing error cases
+ * Returns a pointer to newly allocated data or NULL
+ */
+struct tm *gmtime_r(
+     const time_t *timep,
+     struct tm *result )
+{
+	struct tm *result_tm = NULL;
+
+	if( cdatetime_test_real_gmtime_r == NULL )
+	{
+		cdatetime_test_real_gmtime_r = dlsym(
+		                                RTLD_NEXT,
+		                                "gmtime_r" );
+	}
+	if( cdatetime_test_gmtime_r_attempts_before_fail == 0 )
+	{
+		cdatetime_test_gmtime_r_attempts_before_fail = -1;
+
+		return( NULL );
+	}
+	else if( cdatetime_test_gmtime_r_attempts_before_fail > 0 )
+	{
+		cdatetime_test_gmtime_r_attempts_before_fail--;
+	}
+	result_tm = cdatetime_test_real_gmtime_r(
+	             timep,
+	             result );
+
+	return( result_tm );
+}
+
+/* Custom time for testing error cases
  * Returns a pointer to newly allocated data or NULL
  */
 time_t time(
      time_t *tloc )
 {
-	int print_count = 0;
+	time_t result_time = 0;
 
 	if( cdatetime_test_real_time == NULL )
 	{
@@ -79,10 +113,10 @@ time_t time(
 	{
 		cdatetime_test_time_attempts_before_fail--;
 	}
-	print_count = cdatetime_test_real_time(
+	result_time = cdatetime_test_real_time(
 	               tloc );
 
-	return( print_count );
+	return( result_time );
 }
 
 #endif /* defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ ) */
@@ -609,6 +643,7 @@ int cdatetime_test_timestamp_set_current_time(
 #else
 
 #if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ )
+
 	/* Test libcdatetime_timestamp_set_current_time with time failing
 	 */
 	cdatetime_test_time_attempts_before_fail = 0;
@@ -1232,8 +1267,40 @@ int cdatetime_test_timestamp_copy_to_string_with_index(
 	 "error",
 	 error );
 
-	/* TODO: Test libcdatetime_timestamp_copy_to_string_with_index with libcdatetime_internal_elements_set_from_filetime_utc failing
+#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ )
+
+	/* Test libcdatetime_timestamp_copy_to_string_with_index with gmtime_r failing in libcdatetime_internal_elements_set_from_filetime_utc
 	 */
+	cdatetime_test_gmtime_r_attempts_before_fail = 0;
+
+	result = libcdatetime_timestamp_copy_to_string_with_index(
+	          timestamp,
+	          string,
+	          64,
+	          &string_index,
+	          LIBCDATETIME_STRING_FORMAT_TYPE_CTIME | LIBCDATETIME_STRING_FORMAT_FLAG_DATE_TIME,
+	          &error );
+
+	if( cdatetime_test_gmtime_r_attempts_before_fail != -1 )
+	{
+		cdatetime_test_gmtime_r_attempts_before_fail = -1;
+	}
+	else
+	{
+		CDATETIME_TEST_ASSERT_EQUAL_INT(
+		 "result",
+		 result,
+		 -1 );
+
+		CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+		 "error",
+		 error );
+
+		libcerror_error_free(
+		 &error );
+
+	}
+#endif /* defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( __CYGWIN__ ) */
 
 #if defined( HAVE_CDATETIME_TEST_MEMORY )
 

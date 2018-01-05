@@ -532,7 +532,7 @@ int libcdatetime_timestamp_get_delta_in_seconds(
 	return( 1 );
 }
 
-#endif
+#endif /* defined( WINAPI ) && ( WINVER >= 0x0500 ) */
 
 /* Deterimes the size of the string for the timestamp
  * The string size includes the end of string character
@@ -821,7 +821,7 @@ on_error:
 	{
 		libcdatetime_elements_free(
 		 &time_elements,
-		 error );
+		 NULL );
 	}
 	return( -1 );
 }
