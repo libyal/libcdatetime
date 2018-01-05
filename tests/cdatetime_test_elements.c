@@ -2428,24 +2428,30 @@ int cdatetime_test_internal_elements_set_from_filetime_utc(
 	 "error",
 	 error );
 
-	/* Test set current time in UTC
+	/* Test regular cases
+	 */
+
+	/* Test error cases
 	 */
 	result = libcdatetime_internal_elements_set_from_filetime_utc(
-	          (libcdatetime_internal_elements_t *) elements,
+	          NULL,
+	          NULL,
 	          &error );
 
 	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
-	 1 );
+	 -1 );
 
-	CDATETIME_TEST_ASSERT_IS_NULL(
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
 	 "error",
 	 error );
 
-	/* Test error cases
-	 */
+	libcerror_error_free(
+	 &error );
+
 	result = libcdatetime_internal_elements_set_from_filetime_utc(
+	          elements,
 	          NULL,
 	          &error );
 
@@ -2498,6 +2504,8 @@ on_error:
 }
 
 #endif /* defined( WINAPI ) && ( WINVER >= 0x0500 ) */
+
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) )
 
 /* Tests the libcdatetime_internal_elements_set_from_time_utc function
  * Returns 1 if successful or 0 if not
@@ -2649,6 +2657,10 @@ on_error:
 	return( 0 );
 }
 
+#endif /* !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) ) */
+
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) )
+
 /* Tests the libcdatetime_internal_elements_set_from_time_localtime function
  * Returns 1 if successful or 0 if not
  */
@@ -2766,6 +2778,8 @@ on_error:
 	}
 	return( 0 );
 }
+
+#endif /* !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) ) */
 
 #endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
@@ -3881,13 +3895,21 @@ int main(
 
 #endif /* defined( WINAPI ) && ( WINVER >= 0x0500 ) */
 
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) )
+
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_internal_elements_set_from_time_utc",
 	 cdatetime_test_internal_elements_set_from_time_utc );
 
+#endif /* !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_GMTIME ) || defined( HAVE_GMTIME_R ) ) */
+
+#if !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) )
+
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_internal_elements_set_from_time_localtime",
 	 cdatetime_test_internal_elements_set_from_time_localtime );
+
+#endif /* !defined( WINAPI ) && defined( HAVE_TIME ) && ( defined( HAVE_LOCALTIME ) || defined( HAVE_LOCALTIME_R ) ) */
 
 #endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
