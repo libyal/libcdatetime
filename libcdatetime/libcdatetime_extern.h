@@ -37,8 +37,11 @@
 
 #include <libcdatetime/extern.h>
 
+#define LIBCDATETIME_EXTERN_VARIABLE	LIBCDATETIME_EXTERN
+
 #else
-#define LIBCDATETIME_EXTERN	/* extern */
+#define LIBCDATETIME_EXTERN		/* extern */
+#define LIBCDATETIME_EXTERN_VARIABLE	extern
 
 #endif /* !defined( HAVE_LOCAL_LIBCDATETIME ) */
 
