@@ -1,9 +1,6 @@
 dnl Checks for required headers and functions
 dnl
-dnl Version: 20170903
-
-dnl The AX_LIBCDATETIME_CHECK_FUNC_CTIME function is currently not used
-dnl but kept as a reference for the time being.
+dnl Version: 20170908
 
 dnl Function to detect if ctime_r or ctime is available
 dnl Also checks how to use ctime_r

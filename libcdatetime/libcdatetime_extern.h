@@ -28,13 +28,6 @@
  */
 #if !defined( HAVE_LOCAL_LIBCDATETIME )
 
-/* If libtool DLL support is enabled set LIBCDATETIME_DLL_EXPORT
- * before including libcdatetime/extern.h
- */
-#if defined( _WIN32 ) && defined( DLL_EXPORT )
-#define LIBCDATETIME_DLL_EXPORT
-#endif
-
 #include <libcdatetime/extern.h>
 
 #define LIBCDATETIME_EXTERN_VARIABLE	LIBCDATETIME_EXTERN

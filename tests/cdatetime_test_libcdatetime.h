@@ -24,13 +24,6 @@
 
 #include <common.h>
 
-/* If Cygwin libtool DLL support is enabled and do not want to create static
- * executables set LIBCDATETIME_DLL_IMPORT before including libcdatetime.h
- */
-#if defined( _WIN32 ) && defined( DLL_EXPORT ) && !defined( HAVE_STATIC_EXECUTABLES )
-#define LIBCDATETIME_DLL_IMPORT
-#endif
-
 #include <libcdatetime.h>
 
 #endif /* !defined( _CDATETIME_TEST_LIBCDATETIME_H ) */

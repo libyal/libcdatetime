@@ -2,7 +2,7 @@ AC_PREREQ( 2.59 )
 
 AC_INIT(
  [libcdatetime],
- [20180727],
+ [20180728],
  [joachim.metz@gmail.com])
 
 AC_CONFIG_SRCDIR(
@@ -65,7 +65,7 @@ AS_IF(
  [test "x$enable_shared" = xyes],
  [AS_CASE(
   [$host],
-  [*cygwin* | *mingw*],
+  [*cygwin* | *mingw* | *msys*],
   [AC_DEFINE(
    [HAVE_DLLMAIN],
    [1],
@@ -74,7 +74,10 @@ AS_IF(
    [HAVE_DLLMAIN],
    [1])
 
-  dnl Used in tests
+  AC_SUBST(
+   [LIBCDATETIME_DLL_EXPORT],
+   ["-DLIBCDATETIME_DLL_EXPORT"])
+
   AC_SUBST(
    [LIBCDATETIME_DLL_IMPORT],
    ["-DLIBCDATETIME_DLL_IMPORT"])
