@@ -26,6 +26,14 @@
 #include "libcdatetime_libcerror.h"
 #include "libcdatetime_support.h"
 
+#if !defined( LIBCDATETIME_ATTRIBUTE_FALLTHROUGH )
+#if defined( __GNUC__ ) && __GNUC__ >= 7
+#define LIBCDATETIME_ATTRIBUTE_FALLTHROUGH	__attribute__ ((fallthrough))
+#else
+#define LIBCDATETIME_ATTRIBUTE_FALLTHROUGH
+#endif
+#endif
+
 #if !defined( HAVE_LOCAL_LIBCDATETIME )
 
 /* Returns the library version as a string
@@ -182,30 +190,39 @@ int libcdatetime_get_day_of_year(
 		case LIBCDATETIME_MONTH_DECEMBER:
 			safe_day_of_year += 30;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_NOVEMBER:
 			safe_day_of_year += 31;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_OCTOBER:
 			safe_day_of_year += 30;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_SEPTEMBER:
 			safe_day_of_year += 31;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_AUGUST:
 			safe_day_of_year += 31;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_JULY:
 			safe_day_of_year += 30;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_JUNE:
 			safe_day_of_year += 31;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_MAY:
 			safe_day_of_year += 30;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_APRIL:
 			safe_day_of_year += 31;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_MARCH:
 			if( libcdatetime_is_leap_year(
 			     year ) != 0 )
@@ -217,9 +234,11 @@ int libcdatetime_get_day_of_year(
 				safe_day_of_year += 28;
 			}
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		case LIBCDATETIME_MONTH_FEBRUARY:
 			safe_day_of_year += 31;
 
+		LIBCDATETIME_ATTRIBUTE_FALLTHROUGH;
 		default:
 			safe_day_of_year += day_of_month - 1;
 	}
