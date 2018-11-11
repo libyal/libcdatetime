@@ -10,15 +10,15 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 @libcdatetime_spec_requires@ @ax_libcerror_spec_requires@
 BuildRequires: gcc @ax_libcerror_spec_build_requires@
 
-%description
+%description -n libcdatetime
 Library to support cross-platform C date and time functions
 
-%package devel
+%package -n libcdatetime-devel
 Summary: Header files and libraries for developing applications for libcdatetime
 Group: Development/Libraries
 Requires: libcdatetime = %{version}-%{release}
 
-%description devel
+%description -n libcdatetime-devel
 Header files and libraries for developing applications for libcdatetime.
 
 %prep
@@ -39,13 +39,13 @@ rm -rf %{buildroot}
 
 %postun -p /sbin/ldconfig
 
-%files
+%files -n libcdatetime
 %defattr(644,root,root,755)
 %license COPYING
 %doc AUTHORS README
 %attr(755,root,root) %{_libdir}/*.so.*
 
-%files devel
+%files -n libcdatetime-devel
 %defattr(644,root,root,755)
 %license COPYING
 %doc AUTHORS README ChangeLog
