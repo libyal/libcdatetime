@@ -9,6 +9,8 @@ Homepage: https://github.com/libyal/libcdatetime
 Package: libcdatetime
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: libcdatetime1
+Replaces: libcdatetime1
 Suggests: libcdatetime-dbg
 Description: Library to support cross-platform C date and time functions
  libcdatetime is a library to support cross-platform C date and time functions.
