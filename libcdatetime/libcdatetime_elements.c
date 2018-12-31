@@ -644,7 +644,7 @@ int libcdatetime_elements_get_day_of_month(
 	/* Valid values for the wDay member are 1 through 31.
 	 */
 	if( ( internal_elements->systemtime.wDay == (WORD) 0 )
-	 || ( internal_elements->systemtime.wDay >= (WORD) days_in_month ) )
+	 || ( internal_elements->systemtime.wDay > (WORD) days_in_month ) )
 	{
 		libcerror_error_set(
 		 error,
