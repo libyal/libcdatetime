@@ -13,6 +13,14 @@ BuildRequires: gcc @ax_libcerror_spec_build_requires@
 %description -n libcdatetime
 Library to support cross-platform C date and time functions
 
+%package -n libcdatetime-static
+Summary: Library to support cross-platform C date and time functions
+Group: Development/Libraries
+Requires: libcdatetime = %{version}-%{release}
+
+%description -n libcdatetime-static
+Static library version of libcdatetime.
+
 %package -n libcdatetime-devel
 Summary: Header files and libraries for developing applications for libcdatetime
 Group: Development/Libraries
@@ -45,11 +53,16 @@ rm -rf %{buildroot}
 %doc AUTHORS README
 %attr(755,root,root) %{_libdir}/*.so.*
 
+%files -n libcdatetime-static
+%defattr(644,root,root,755)
+%license COPYING
+%doc AUTHORS README
+%attr(755,root,root) %{_libdir}/*.a
+
 %files -n libcdatetime-devel
 %defattr(644,root,root,755)
 %license COPYING
 %doc AUTHORS README
-%{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libcdatetime.pc
