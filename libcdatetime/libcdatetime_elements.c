@@ -733,7 +733,9 @@ int libcdatetime_elements_get_day_of_month(
 		return( -1 );
 	}
 	/* Valid values for the tm_mday member are 1 through 31.
+	 * where 0 can represent the last day of the preceding month
 	 */
+/* TODO: handle if( internal_elements->tm.tm_mday == 0 ) */
 	if( ( internal_elements->tm.tm_mday <= 0 )
 	 || ( internal_elements->tm.tm_mday > (int) days_in_month ) )
 	{

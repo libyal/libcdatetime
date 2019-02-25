@@ -554,8 +554,14 @@ int cdatetime_test_elements_get_year(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint16_t year                     = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_year           = 0;
+#else
+	int time_elements_year            = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -648,6 +654,42 @@ int cdatetime_test_elements_get_year(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_year = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wYear;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wYear = 0;
+
+	result = libcdatetime_elements_get_year(
+	          elements,
+	          &year,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wYear = time_elements_year;
+#else
+	time_elements_year = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_year;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_year = (int) -UINT16_MAX - 1901;
+
+	result = libcdatetime_elements_get_year(
+	          elements,
+	          &year,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_year = time_elements_year;
+#endif
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
 	/* Clean up
 	 */
 	result = libcdatetime_elements_free(
@@ -692,8 +734,14 @@ int cdatetime_test_elements_get_day_of_year(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint16_t day_of_year              = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_month          = 0;
+#else
+	int time_elements_day_of_year     = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -786,6 +834,42 @@ int cdatetime_test_elements_get_day_of_year(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_month = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth = 0;
+
+	result = libcdatetime_elements_get_day_of_year(
+	          elements,
+	          &day_of_year,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth = time_elements_month;
+#else
+	time_elements_day_of_year = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_yday;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_yday = -1;
+
+	result = libcdatetime_elements_get_day_of_year(
+	          elements,
+	          &day_of_year,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_yday = time_elements_day_of_year;
+#endif
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
 	/* Clean up
 	 */
 	result = libcdatetime_elements_free(
@@ -830,8 +914,14 @@ int cdatetime_test_elements_get_month(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint8_t month                     = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_month          = 0;
+#else
+	int time_elements_month           = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -924,6 +1014,42 @@ int cdatetime_test_elements_get_month(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_month = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth = 0;
+
+	result = libcdatetime_elements_get_month(
+	          elements,
+	          &month,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth = time_elements_month;
+#else
+	time_elements_month = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_mon;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_mon = -1;
+
+	result = libcdatetime_elements_get_month(
+	          elements,
+	          &month,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_mon = time_elements_month;
+#endif
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
 	/* Clean up
 	 */
 	result = libcdatetime_elements_free(
@@ -968,8 +1094,16 @@ int cdatetime_test_elements_get_day_of_month(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint8_t day_of_month              = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_day_of_month   = 0;
+	WORD time_elements_month          = 0;
+#else
+	int time_elements_day_of_month    = 0;
+	int time_elements_month           = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -1049,6 +1183,78 @@ int cdatetime_test_elements_get_day_of_month(
 	          elements,
 	          NULL,
 	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_month = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth = 0;
+
+	result = libcdatetime_elements_get_day_of_month(
+	          elements,
+	          &day_of_month,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMonth = time_elements_month;
+#else
+	time_elements_month = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_mon;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_mon = -1;
+
+	result = libcdatetime_elements_get_day_of_month(
+	          elements,
+	          &day_of_month,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_mon = time_elements_month;
+#endif
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_day_of_month = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wDay;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wDay = 0;
+
+	result = libcdatetime_elements_get_day_of_month(
+	          elements,
+	          &day_of_month,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wDay = time_elements_day_of_month;
+#else
+	time_elements_day_of_month = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_mday;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_mday = -1;
+
+	result = libcdatetime_elements_get_day_of_month(
+	          elements,
+	          &day_of_month,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_mday = time_elements_day_of_month;
+#endif
 
 	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
@@ -1300,8 +1506,14 @@ int cdatetime_test_elements_get_hours(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint8_t hours                     = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_hour           = 0;
+#else
+	int time_elements_hour            = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -1394,6 +1606,42 @@ int cdatetime_test_elements_get_hours(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_hour = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wHour;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wHour = 24;
+
+	result = libcdatetime_elements_get_hours(
+	          elements,
+	          &hours,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wHour = time_elements_hour;
+#else
+	time_elements_hour = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_hour;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_hour = -1;
+
+	result = libcdatetime_elements_get_hours(
+	          elements,
+	          &hours,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_hour = time_elements_hour;
+#endif
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
 	/* Clean up
 	 */
 	result = libcdatetime_elements_free(
@@ -1438,8 +1686,14 @@ int cdatetime_test_elements_get_minutes(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint8_t minutes                   = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_minute         = 0;
+#else
+	int time_elements_minute          = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -1532,6 +1786,42 @@ int cdatetime_test_elements_get_minutes(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_minute = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wMinute;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMinute = 60;
+
+	result = libcdatetime_elements_get_minutes(
+	          elements,
+	          &minutes,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMinute = time_elements_minute;
+#else
+	time_elements_minute = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_min;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_min = -1;
+
+	result = libcdatetime_elements_get_minutes(
+	          elements,
+	          &minutes,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_min = time_elements_minute;
+#endif
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
 	/* Clean up
 	 */
 	result = libcdatetime_elements_free(
@@ -1576,8 +1866,14 @@ int cdatetime_test_elements_get_seconds(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint8_t seconds                   = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_second         = 0;
+#else
+	int time_elements_second          = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -1670,6 +1966,42 @@ int cdatetime_test_elements_get_seconds(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_second = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wSecond;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wSecond = 60;
+
+	result = libcdatetime_elements_get_seconds(
+	          elements,
+	          &seconds,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wSecond = time_elements_second;
+#else
+	time_elements_second = ( (libcdatetime_internal_elements_t *) elements )->tm.tm_sec;
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_sec = -1;
+
+	result = libcdatetime_elements_get_seconds(
+	          elements,
+	          &seconds,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->tm.tm_sec = time_elements_second;
+#endif
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
 	/* Clean up
 	 */
 	result = libcdatetime_elements_free(
@@ -1714,8 +2046,12 @@ int cdatetime_test_elements_get_milli_seconds(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint16_t milli_seconds            = 0;
+	int result                        = 0;
+
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	WORD time_elements_milli_second   = 0;
+#endif
 
 	/* Initialize test
 	 */
@@ -1808,6 +2144,31 @@ int cdatetime_test_elements_get_milli_seconds(
 	libcerror_error_free(
 	 &error );
 
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+	time_elements_milli_second = ( (libcdatetime_internal_elements_t *) elements )->systemtime.wMilliseconds;
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMilliseconds = 1000;
+
+	result = libcdatetime_elements_get_milli_seconds(
+	          elements,
+	          &milli_seconds,
+	          &error );
+
+	( (libcdatetime_internal_elements_t *) elements )->systemtime.wMilliseconds = time_elements_milli_second;
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+#endif
+
 	/* Clean up
 	 */
 	result = libcdatetime_elements_free(
@@ -1852,8 +2213,8 @@ int cdatetime_test_elements_get_micro_seconds(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint16_t micro_seconds            = 0;
+	int result                        = 0;
 
 	/* Initialize test
 	 */
@@ -1990,8 +2351,8 @@ int cdatetime_test_elements_get_nano_seconds(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint16_t nano_seconds             = 0;
+	int result                        = 0;
 
 	/* Initialize test
 	 */
@@ -2128,10 +2489,10 @@ int cdatetime_test_elements_get_time_values(
 {
 	libcdatetime_elements_t *elements = NULL;
 	libcerror_error_t *error          = NULL;
-	int result                        = 0;
 	uint8_t hours                     = 0;
 	uint8_t minutes                   = 0;
 	uint8_t seconds                   = 0;
+	int result                        = 0;
 
 	/* Initialize test
 	 */
