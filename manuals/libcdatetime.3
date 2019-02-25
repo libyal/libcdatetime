@@ -1,11 +1,9 @@
-.Dd January  3, 2017
+.Dd February 25, 2019
 .Dt libcdatetime 3
 .Os libcdatetime
 .Sh NAME
 .Nm libcdatetime.h
 .Nd Library to support cross-platform C date and time functions
-.Sh LIBRARY
-.Lb libcdatetime
 .Sh SYNOPSIS
 .In libcdatetime.h
 .Pp
@@ -17,77 +15,77 @@ Error functions
 .Ft void
 .Fn libcdatetime_error_free "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_error_fprint "libcdatetime_error_t *error, FILE *stream"
+.Fn libcdatetime_error_fprint "libcdatetime_error_t *error" "FILE *stream"
 .Ft int
-.Fn libcdatetime_error_sprint "libcdatetime_error_t *error, char *string, size_t size"
+.Fn libcdatetime_error_sprint "libcdatetime_error_t *error" "char *string" "size_t size"
 .Ft int
-.Fn libcdatetime_error_backtrace_fprint "libcdatetime_error_t *error, FILE *stream"
+.Fn libcdatetime_error_backtrace_fprint "libcdatetime_error_t *error" "FILE *stream"
 .Ft int
-.Fn libcdatetime_error_backtrace_sprint "libcdatetime_error_t *error, char *string, size_t size"
+.Fn libcdatetime_error_backtrace_sprint "libcdatetime_error_t *error" "char *string" "size_t size"
 .Pp
 Date and time elements functions
 .Ft int
-.Fn libcdatetime_elements_initialize "libcdatetime_elements_t **elements, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_initialize "libcdatetime_elements_t **elements" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_free "libcdatetime_elements_t **elements, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_free "libcdatetime_elements_t **elements" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_copy "libcdatetime_elements_t *destination_elements, const libcdatetime_elements_t *source_elements, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_copy "libcdatetime_elements_t *destination_elements" "const libcdatetime_elements_t *source_elements" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_year "libcdatetime_elements_t *elements, uint16_t *year, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_year "libcdatetime_elements_t *elements" "uint16_t *year" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_day_of_year "libcdatetime_elements_t *elements, uint16_t *day_of_year, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_day_of_year "libcdatetime_elements_t *elements" "uint16_t *day_of_year" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_month "libcdatetime_elements_t *elements, uint8_t *month, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_month "libcdatetime_elements_t *elements" "uint8_t *month" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_day_of_month "libcdatetime_elements_t *elements, uint8_t *day_of_month, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_day_of_month "libcdatetime_elements_t *elements" "uint8_t *day_of_month" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_date_values "libcdatetime_elements_t *elements, uint16_t *year, uint8_t *month, uint8_t *day_of_month, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_date_values "libcdatetime_elements_t *elements" "uint16_t *year" "uint8_t *month" "uint8_t *day_of_month" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_hours "libcdatetime_elements_t *elements, uint8_t *hours, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_hours "libcdatetime_elements_t *elements" "uint8_t *hours" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_minutes "libcdatetime_elements_t *elements, uint8_t *minutes, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_minutes "libcdatetime_elements_t *elements" "uint8_t *minutes" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_seconds "libcdatetime_elements_t *elements, uint8_t *seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_seconds "libcdatetime_elements_t *elements" "uint8_t *seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_milli_seconds "libcdatetime_elements_t *elements, uint16_t *milli_seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_milli_seconds "libcdatetime_elements_t *elements" "uint16_t *milli_seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_micro_seconds "libcdatetime_elements_t *elements, uint16_t *micro_seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_micro_seconds "libcdatetime_elements_t *elements" "uint16_t *micro_seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_nano_seconds "libcdatetime_elements_t *elements, uint16_t *nano_seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_nano_seconds "libcdatetime_elements_t *elements" "uint16_t *nano_seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_time_values "libcdatetime_elements_t *elements, uint8_t *hours, uint8_t *minutes, uint8_t *seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_time_values "libcdatetime_elements_t *elements" "uint8_t *hours" "uint8_t *minutes" "uint8_t *seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_set_current_time_utc "libcdatetime_elements_t *elements, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_set_current_time_utc "libcdatetime_elements_t *elements" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_set_current_time_localtime "libcdatetime_elements_t *elements, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_set_current_time_localtime "libcdatetime_elements_t *elements" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_delta_in_seconds "libcdatetime_elements_t *first_elements, libcdatetime_elements_t *second_elements, int64_t *number_of_seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_delta_in_seconds "libcdatetime_elements_t *first_elements" "libcdatetime_elements_t *second_elements" "int64_t *number_of_seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_set_from_delta_in_seconds "libcdatetime_elements_t *elements, int64_t number_of_seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_set_from_delta_in_seconds "libcdatetime_elements_t *elements" "int64_t number_of_seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_get_string_size "libcdatetime_elements_t *elements, size_t *string_size, uint32_t string_format_flags, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_get_string_size "libcdatetime_elements_t *elements" "size_t *string_size" "uint32_t string_format_flags" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_copy_to_string "libcdatetime_elements_t *elements, uint8_t *string, size_t string_size, uint32_t string_format_flags, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_copy_to_string "libcdatetime_elements_t *elements" "uint8_t *string" "size_t string_size" "uint32_t string_format_flags" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_elements_copy_to_string_with_index "libcdatetime_elements_t *elements, uint8_t *string, size_t string_size, size_t *string_index, uint32_t string_format_flags, libcdatetime_error_t **error"
+.Fn libcdatetime_elements_copy_to_string_with_index "libcdatetime_elements_t *elements" "uint8_t *string" "size_t string_size" "size_t *string_index" "uint32_t string_format_flags" "libcdatetime_error_t **error"
 .Pp
 Timestamp functions
 .Ft int
-.Fn libcdatetime_timestamp_initialize "libcdatetime_timestamp_t **timestamp, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_initialize "libcdatetime_timestamp_t **timestamp" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_timestamp_free "libcdatetime_timestamp_t **timestamp, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_free "libcdatetime_timestamp_t **timestamp" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_timestamp_copy "libcdatetime_timestamp_t *destination_timestamp, const libcdatetime_timestamp_t *source_timestamp, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_copy "libcdatetime_timestamp_t *destination_timestamp" "const libcdatetime_timestamp_t *source_timestamp" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_timestamp_set_current_time "libcdatetime_timestamp_t *timestamp, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_set_current_time "libcdatetime_timestamp_t *timestamp" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_timestamp_get_delta_in_seconds "libcdatetime_timestamp_t *first_timestamp, libcdatetime_timestamp_t *second_timestamp, int64_t *number_of_seconds, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_get_delta_in_seconds "libcdatetime_timestamp_t *first_timestamp" "libcdatetime_timestamp_t *second_timestamp" "int64_t *number_of_seconds" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_timestamp_get_string_size "libcdatetime_timestamp_t *timestamp, size_t *string_size, uint32_t string_format_flags, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_get_string_size "libcdatetime_timestamp_t *timestamp" "size_t *string_size" "uint32_t string_format_flags" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_timestamp_copy_to_string "libcdatetime_timestamp_t *timestamp, uint8_t *string, size_t string_size, uint32_t string_format_flags, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_copy_to_string "libcdatetime_timestamp_t *timestamp" "uint8_t *string" "size_t string_size" "uint32_t string_format_flags" "libcdatetime_error_t **error"
 .Ft int
-.Fn libcdatetime_timestamp_copy_to_string_with_index "libcdatetime_timestamp_t *timestamp, uint8_t *string, size_t string_size, size_t *string_index, uint32_t string_format_flags, libcdatetime_error_t **error"
+.Fn libcdatetime_timestamp_copy_to_string_with_index "libcdatetime_timestamp_t *timestamp" "uint8_t *string" "size_t string_size" "size_t *string_index" "uint32_t string_format_flags" "libcdatetime_error_t **error"
 .Sh DESCRIPTION
 The
 .Fn libcdatetime_get_version
@@ -105,7 +103,7 @@ Please report bugs of any kind on the project issue tracker: https://github.com/
 These man pages are generated from "libcdatetime.h".
 .Sh COPYRIGHT
 Copyright (C) 2013-2019, Joachim Metz <joachim.metz@gmail.com>.
-
+.sp
 This is free software; see the source for copying conditions.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .Sh SEE ALSO
