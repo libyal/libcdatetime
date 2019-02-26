@@ -362,7 +362,7 @@ int libcdatetime_elements_get_day_of_year(
 	if( libcdatetime_get_day_of_year(
 	     day_of_year,
 	     (uint16_t) internal_elements->systemtime.wYear,
-	     (uint8_t) ( internal_elements->systemtime.wMonth - 1 ),
+	     (uint8_t) internal_elements->systemtime.wMonth,
 	     (uint8_t) internal_elements->systemtime.wDay,
 	     error ) != 1 )
 	{
@@ -629,7 +629,7 @@ int libcdatetime_elements_get_day_of_month(
 	if( libcdatetime_get_days_in_month(
 	     &days_in_month,
 	     (uint16_t) internal_elements->systemtime.wYear,
-	     (uint8_t) ( internal_elements->systemtime.wMonth - 1 ),
+	     (uint8_t) internal_elements->systemtime.wMonth,
 	     error ) != 1 )
 	{
 		libcerror_error_set(
@@ -720,7 +720,7 @@ int libcdatetime_elements_get_day_of_month(
 	if( libcdatetime_get_days_in_month(
 	     &days_in_month,
 	     (uint16_t) ( 1900 + internal_elements->tm.tm_year ),
-	     (uint8_t) internal_elements->tm.tm_mon,
+	     (uint8_t) ( internal_elements->tm.tm_mon + 1 ),
 	     error ) != 1 )
 	{
 		libcerror_error_set(
@@ -1424,7 +1424,12 @@ int libcdatetime_elements_set_date_and_time_values(
      libcerror_error_t **error )
 {
 	libcdatetime_internal_elements_t *internal_elements = NULL;
-	static char *function                               = "libcdatetime_elements_get_seconds";
+	static char *function                               = "libcdatetime_elements_set_date_and_time_values";
+	uint8_t days_in_month                               = 0;
+
+#if !( defined( WINAPI ) && ( WINVER >= 0x0500 ) )
+	uint16_t day_of_year                                = 0;
+#endif
 
 	if( elements == NULL )
 	{
@@ -1439,7 +1444,27 @@ int libcdatetime_elements_set_date_and_time_values(
 	}
 	internal_elements = (libcdatetime_internal_elements_t *) elements;
 
-	if( month > 11 )
+#if defined( WINAPI ) && ( WINVER >= 0x0500 )
+
+	/* Valid values for the wYear member are 1601 through 30827.
+	 */
+	if( ( year < 1601 )
+	 || ( year > 30827 ) )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+		 "%s: invalid year value out of bounds.",
+		 function );
+
+		return( -1 );
+	}
+#endif
+	/* Valid values for the month value are 1 through 12.
+	 */
+	if( ( month == 0 )
+	 || ( month > 12 ) )
 	{
 		libcerror_error_set(
 		 error,
@@ -1450,8 +1475,35 @@ int libcdatetime_elements_set_date_and_time_values(
 
 		return( -1 );
 	}
-/* TODO validate day_of_month */
-	if( hours > 24 )
+	if( libcdatetime_get_days_in_month(
+	     &days_in_month,
+	     year,
+	     month,
+	     error ) != 1 )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
+		 "%s: unable to retrieve days in month.",
+		 function );
+
+		return( -1 );
+	}
+	if( day_of_month > days_in_month )
+	{
+		libcerror_error_set(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_ARGUMENTS,
+		 LIBCERROR_ARGUMENT_ERROR_VALUE_OUT_OF_BOUNDS,
+		 "%s: invalid day of month value out of bounds.",
+		 function );
+
+		return( -1 );
+	}
+	/* Valid values for the hours value are 0 through 23.
+	 */
+	if( hours > 23 )
 	{
 		libcerror_error_set(
 		 error,
@@ -1462,6 +1514,8 @@ int libcdatetime_elements_set_date_and_time_values(
 
 		return( -1 );
 	}
+	/* Valid values for the minutes value are 0 through 59.
+	 */
 	if( minutes > 59 )
 	{
 		libcerror_error_set(
@@ -1473,6 +1527,8 @@ int libcdatetime_elements_set_date_and_time_values(
 
 		return( -1 );
 	}
+	/* Valid values for the seconds value are 0 through 59.
+	 */
 	if( seconds > 59 )
 	{
 		libcerror_error_set(
@@ -1485,13 +1541,37 @@ int libcdatetime_elements_set_date_and_time_values(
 		return( -1 );
 	}
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
-/* TODO implement */
+	internal_elements->systemtime.wYear         = (WORD) year;
+	internal_elements->systemtime.wMonth        = (WORD) month;
+	internal_elements->systemtime.wDay          = (WORD) day_of_month;
+	internal_elements->systemtime.wHour         = (WORD) hours;
+	internal_elements->systemtime.wMinute       = (WORD) minutes;
+	internal_elements->systemtime.wSecond       = (WORD) seconds;
+	internal_elements->systemtime.wMilliseconds = 0;
+
 #else
-/* TODO get day_of_year */
+	if( libcdatetime_get_day_of_year(
+	     &day_of_year,
+	     year,
+	     month,
+	     day_of_month,
+	     error ) != 1 )
+	{
+		libcerror_system_set_error(
+		 error,
+		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
+		 errno,
+		 "%s: unable to determine day of year.",
+		 function );
+
+		return( -1 );
+	}
 /* TODO get day_of_week */
+
 	internal_elements->tm.tm_year  = (int) year - 1900;
-	internal_elements->tm.tm_yday  = 0;
-	internal_elements->tm.tm_mon   = (int) month;
+	internal_elements->tm.tm_yday  = (int) day_of_year;
+	internal_elements->tm.tm_mon   = (int) month - 1;
 	internal_elements->tm.tm_mday  = (int) day_of_month;
 	internal_elements->tm.tm_wday  = 0;
 	internal_elements->tm.tm_hour  = (int) hours;
@@ -2730,40 +2810,51 @@ int libcdatetime_elements_copy_to_string_with_index(
 		{
 			switch( month )
 			{
-				case 1:
+				case LIBCDATETIME_MONTH_JANUARY:
 					month_string = (uint8_t *) "Jan";
 					break;
-				case 2:
+
+				case LIBCDATETIME_MONTH_FEBRUARY:
 					month_string = (uint8_t *) "Feb";
 					break;
-				case 3:
+
+				case LIBCDATETIME_MONTH_MARCH:
 					month_string = (uint8_t *) "Mar";
 					break;
-				case 4:
+
+				case LIBCDATETIME_MONTH_APRIL:
 					month_string = (uint8_t *) "Apr";
 					break;
-				case 5:
+
+				case LIBCDATETIME_MONTH_MAY:
 					month_string = (uint8_t *) "May";
 					break;
-				case 6:
+
+				case LIBCDATETIME_MONTH_JUNE:
 					month_string = (uint8_t *) "Jun";
 					break;
-				case 7:
+
+				case LIBCDATETIME_MONTH_JULY:
 					month_string = (uint8_t *) "Jul";
 					break;
-				case 8:
+
+				case LIBCDATETIME_MONTH_AUGUST:
 					month_string = (uint8_t *) "Aug";
 					break;
-				case 9:
+
+				case LIBCDATETIME_MONTH_SEPTEMBER:
 					month_string = (uint8_t *) "Sep";
 					break;
-				case 10:
+
+				case LIBCDATETIME_MONTH_OCTOBER:
 					month_string = (uint8_t *) "Oct";
 					break;
-				case 11:
+
+				case LIBCDATETIME_MONTH_NOVEMBER:
 					month_string = (uint8_t *) "Nov";
 					break;
-				case 12:
+
+				case LIBCDATETIME_MONTH_DECEMBER:
 					month_string = (uint8_t *) "Dec";
 					break;
 			}

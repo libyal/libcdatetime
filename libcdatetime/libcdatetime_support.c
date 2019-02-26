@@ -86,7 +86,10 @@ int libcdatetime_get_days_in_month(
 
 		return( -1 );
 	}
-	if( month > 11 )
+	/* Valid values for the month value are 1 through 12.
+	 */
+	if( ( month == 0 )
+	 || ( month > 12 ) )
 	{
 		libcerror_error_set(
 		 error,
