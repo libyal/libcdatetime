@@ -582,6 +582,10 @@ int cdatetime_test_elements_get_year(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get year
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -601,8 +605,6 @@ int cdatetime_test_elements_get_year(
 	 "error",
 	 error );
 
-	/* Test get year
-	 */
 	result = libcdatetime_elements_get_year(
 	          elements,
 	          &year,
@@ -621,6 +623,8 @@ int cdatetime_test_elements_get_year(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -766,6 +770,10 @@ int cdatetime_test_elements_get_day_of_year(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get day of year
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -785,8 +793,6 @@ int cdatetime_test_elements_get_day_of_year(
 	 "error",
 	 error );
 
-	/* Test get day of year
-	 */
 	result = libcdatetime_elements_get_day_of_year(
 	          elements,
 	          &day_of_year,
@@ -805,6 +811,8 @@ int cdatetime_test_elements_get_day_of_year(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -950,6 +958,10 @@ int cdatetime_test_elements_get_month(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get month
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -969,8 +981,6 @@ int cdatetime_test_elements_get_month(
 	 "error",
 	 error );
 
-	/* Test get month
-	 */
 	result = libcdatetime_elements_get_month(
 	          elements,
 	          &month,
@@ -989,6 +999,8 @@ int cdatetime_test_elements_get_month(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -1136,6 +1148,10 @@ int cdatetime_test_elements_get_day_of_month(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get day of month
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -1155,8 +1171,6 @@ int cdatetime_test_elements_get_day_of_month(
 	 "error",
 	 error );
 
-	/* Test get day of month
-	 */
 	result = libcdatetime_elements_get_day_of_month(
 	          elements,
 	          &day_of_month,
@@ -1175,6 +1189,8 @@ int cdatetime_test_elements_get_day_of_month(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -1352,6 +1368,10 @@ int cdatetime_test_elements_get_date_values(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get date values
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -1371,8 +1391,6 @@ int cdatetime_test_elements_get_date_values(
 	 "error",
 	 error );
 
-	/* Test get date values
-	 */
 	result = libcdatetime_elements_get_date_values(
 	          elements,
 	          &year,
@@ -1403,6 +1421,8 @@ int cdatetime_test_elements_get_date_values(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -1554,6 +1574,10 @@ int cdatetime_test_elements_get_hours(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get hours
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -1573,8 +1597,6 @@ int cdatetime_test_elements_get_hours(
 	 "error",
 	 error );
 
-	/* Test get hours
-	 */
 	result = libcdatetime_elements_get_hours(
 	          elements,
 	          &hours,
@@ -1593,6 +1615,8 @@ int cdatetime_test_elements_get_hours(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -1738,6 +1762,10 @@ int cdatetime_test_elements_get_minutes(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get minutes
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -1757,8 +1785,6 @@ int cdatetime_test_elements_get_minutes(
 	 "error",
 	 error );
 
-	/* Test get minutes
-	 */
 	result = libcdatetime_elements_get_minutes(
 	          elements,
 	          &minutes,
@@ -1777,6 +1803,8 @@ int cdatetime_test_elements_get_minutes(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -1922,6 +1950,10 @@ int cdatetime_test_elements_get_seconds(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get seconds
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -1941,8 +1973,6 @@ int cdatetime_test_elements_get_seconds(
 	 "error",
 	 error );
 
-	/* Test get seconds
-	 */
 	result = libcdatetime_elements_get_seconds(
 	          elements,
 	          &seconds,
@@ -1961,6 +1991,8 @@ int cdatetime_test_elements_get_seconds(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -2104,6 +2136,10 @@ int cdatetime_test_elements_get_milli_seconds(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get milli seconds
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -2123,8 +2159,6 @@ int cdatetime_test_elements_get_milli_seconds(
 	 "error",
 	 error );
 
-	/* Test get milli seconds
-	 */
 	result = libcdatetime_elements_get_milli_seconds(
 	          elements,
 	          &milli_seconds,
@@ -2143,6 +2177,8 @@ int cdatetime_test_elements_get_milli_seconds(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -2271,6 +2307,10 @@ int cdatetime_test_elements_get_micro_seconds(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get micro seconds
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -2290,8 +2330,6 @@ int cdatetime_test_elements_get_micro_seconds(
 	 "error",
 	 error );
 
-	/* Test get micro seconds
-	 */
 	result = libcdatetime_elements_get_micro_seconds(
 	          elements,
 	          &micro_seconds,
@@ -2310,6 +2348,8 @@ int cdatetime_test_elements_get_micro_seconds(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -2413,6 +2453,8 @@ int cdatetime_test_elements_get_nano_seconds(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -2431,6 +2473,8 @@ int cdatetime_test_elements_get_nano_seconds(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test get nano seconds
 	 */
@@ -2557,6 +2601,10 @@ int cdatetime_test_elements_get_time_values(
 	 "error",
 	 error );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
+	/* Test get time values
+	 */
 	result = libcdatetime_elements_set_date_and_time_values(
 	          elements,
 	          2019,
@@ -2576,8 +2624,6 @@ int cdatetime_test_elements_get_time_values(
 	 "error",
 	 error );
 
-	/* Test get time values
-	 */
 	result = libcdatetime_elements_get_time_values(
 	          elements,
 	          &hours,
@@ -2608,6 +2654,8 @@ int cdatetime_test_elements_get_time_values(
 	CDATETIME_TEST_ASSERT_IS_NULL(
 	 "error",
 	 error );
+
+#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	/* Test error cases
 	 */
@@ -2722,6 +2770,8 @@ on_error:
 	}
 	return( 0 );
 }
+
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
 
 /* Tests the libcdatetime_elements_set_date_and_time_values function
  * Returns 1 if successful or 0 if not
@@ -2979,89 +3029,6 @@ on_error:
 	}
 	return( 0 );
 }
-
-/* Tests the libcdatetime_elements_get_delta_in_seconds function
- * Returns 1 if successful or 0 if not
- */
-int cdatetime_test_elements_get_delta_in_seconds(
-     void )
-{
-	libcdatetime_elements_t *first_elements  = NULL;
-	libcdatetime_elements_t *second_elements = NULL;
-	libcerror_error_t *error                 = NULL;
-	int64_t number_of_seconds                = 0;
-	int result                               = 0;
-
-/* TODO: improve test coverage */
-
-	/* Test error cases
-	 */
-	result = libcdatetime_elements_get_delta_in_seconds(
-	          NULL,
-	          second_elements,
-	          &number_of_seconds,
-	          &error );
-
-	CDATETIME_TEST_ASSERT_EQUAL_INT(
-	 "result",
-	 result,
-	 -1 );
-
-	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-	 "error",
-	 error );
-
-	libcerror_error_free(
-	 &error );
-
-	result = libcdatetime_elements_get_delta_in_seconds(
-	          first_elements,
-	          NULL,
-	          &number_of_seconds,
-	          &error );
-
-	CDATETIME_TEST_ASSERT_EQUAL_INT(
-	 "result",
-	 result,
-	 -1 );
-
-	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-	 "error",
-	 error );
-
-	libcerror_error_free(
-	 &error );
-
-	result = libcdatetime_elements_get_delta_in_seconds(
-	          first_elements,
-	          second_elements,
-	          NULL,
-	          &error );
-
-	CDATETIME_TEST_ASSERT_EQUAL_INT(
-	 "result",
-	 result,
-	 -1 );
-
-	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
-	 "error",
-	 error );
-
-	libcerror_error_free(
-	 &error );
-
-	return( 1 );
-
-on_error:
-	if( error != NULL )
-	{
-		libcerror_error_free(
-		 &error );
-	}
-	return( 0 );
-}
-
-#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
 
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
 
@@ -3547,7 +3514,7 @@ on_error:
 	return( 0 );
 }
 
-/* Tests the libcdatetime_elements_set_current_time_local function
+/* Tests the libcdatetime_elements_set_current_time_localtime function
  * Returns 1 if successful or 0 if not
  */
 int cdatetime_test_elements_set_current_time_localtime(
@@ -3645,11 +3612,88 @@ on_error:
 	return( 0 );
 }
 
-#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+/* Tests the libcdatetime_elements_get_delta_in_seconds function
+ * Returns 1 if successful or 0 if not
+ */
+int cdatetime_test_elements_get_delta_in_seconds(
+     void )
+{
+	libcdatetime_elements_t *first_elements  = NULL;
+	libcdatetime_elements_t *second_elements = NULL;
+	libcerror_error_t *error                 = NULL;
+	int64_t number_of_seconds                = 0;
+	int result                               = 0;
 
-	/* TODO: add test for libcdatetime_elements_set_from_delta_in_seconds */
+/* TODO: improve test coverage */
 
-#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
+	/* Test error cases
+	 */
+	result = libcdatetime_elements_get_delta_in_seconds(
+	          NULL,
+	          second_elements,
+	          &number_of_seconds,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_delta_in_seconds(
+	          first_elements,
+	          NULL,
+	          &number_of_seconds,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libcdatetime_elements_get_delta_in_seconds(
+	          first_elements,
+	          second_elements,
+	          NULL,
+	          &error );
+
+	CDATETIME_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	CDATETIME_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	return( 0 );
+}
+
+/* TODO: add test for libcdatetime_elements_set_from_delta_in_seconds */
 
 /* Tests the libcdatetime_elements_get_string_size function
  * Returns 1 if successful or 0 if not
@@ -4551,11 +4595,11 @@ int main(
 	 "libcdatetime_elements_get_time_values",
 	 cdatetime_test_elements_get_time_values );
 
+#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
+
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_set_date_and_time_values",
 	 cdatetime_test_elements_set_date_and_time_values );
-
-#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
 
 #if defined( WINAPI ) && ( WINVER >= 0x0500 )
 
@@ -4595,11 +4639,7 @@ int main(
 	 "libcdatetime_elements_get_delta_in_seconds",
 	 cdatetime_test_elements_get_delta_in_seconds );
 
-#if defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT )
-
 	/* TODO: add test for libcdatetime_elements_set_from_delta_in_seconds */
-
-#endif /* defined( __GNUC__ ) && !defined( LIBCDATETIME_DLL_IMPORT ) */
 
 	CDATETIME_TEST_RUN(
 	 "libcdatetime_elements_get_string_size",
