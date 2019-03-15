@@ -1,6 +1,6 @@
 dnl Checks for required headers and functions
 dnl
-dnl Version: 20181117
+dnl Version: 20190308
 
 dnl Function to detect if ctime_r or ctime is available
 dnl Also checks how to use ctime_r
