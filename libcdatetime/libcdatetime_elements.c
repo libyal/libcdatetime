@@ -366,11 +366,10 @@ int libcdatetime_elements_get_day_of_year(
 	     (uint8_t) internal_elements->systemtime.wDay,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to determine day of year.",
 		 function );
 
@@ -772,11 +771,10 @@ int libcdatetime_elements_get_date_values(
 	     year,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to retrieve year.",
 		 function );
 
@@ -787,11 +785,10 @@ int libcdatetime_elements_get_date_values(
 	     month,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to retrieve month.",
 		 function );
 
@@ -802,11 +799,10 @@ int libcdatetime_elements_get_date_values(
 	     day_of_month,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to retrieve day of month.",
 		 function );
 
@@ -1367,11 +1363,10 @@ int libcdatetime_elements_get_time_values(
 	     hours,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to retrieve hours.",
 		 function );
 
@@ -1382,11 +1377,10 @@ int libcdatetime_elements_get_time_values(
 	     minutes,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to retrieve minutes.",
 		 function );
 
@@ -1397,11 +1391,10 @@ int libcdatetime_elements_get_time_values(
 	     seconds,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to retrieve seconds.",
 		 function );
 
@@ -1557,11 +1550,10 @@ int libcdatetime_elements_set_date_and_time_values(
 	     day_of_month,
 	     error ) != 1 )
 	{
-		libcerror_system_set_error(
+		libcerror_error_set(
 		 error,
 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 		 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-		 errno,
 		 "%s: unable to determine day of year.",
 		 function );
 
@@ -2696,11 +2688,10 @@ int libcdatetime_elements_copy_to_string_with_index(
 		     &day_of_month,
 		     error ) != 1 )
 		{
-			libcerror_system_set_error(
+			libcerror_error_set(
 			 error,
 			 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 			 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-			 errno,
 			 "%s: unable to retrieve date values.",
 			 function );
 
@@ -2722,11 +2713,10 @@ int libcdatetime_elements_copy_to_string_with_index(
 		     &seconds,
 		     error ) != 1 )
 		{
-			libcerror_system_set_error(
+			libcerror_error_set(
 			 error,
 			 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 			 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-			 errno,
 			 "%s: unable to retrieve time values.",
 			 function );
 
@@ -2741,11 +2731,10 @@ int libcdatetime_elements_copy_to_string_with_index(
 			     &milli_seconds,
 			     error ) != 1 )
 			{
-				libcerror_system_set_error(
+				libcerror_error_set(
 				 error,
 				 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 				 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-				 errno,
 				 "%s: unable to retrieve milli seconds.",
 				 function );
 
@@ -2764,11 +2753,10 @@ int libcdatetime_elements_copy_to_string_with_index(
 			     &micro_seconds,
 			     error ) != 1 )
 			{
-				libcerror_system_set_error(
+				libcerror_error_set(
 				 error,
 				 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 				 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-				 errno,
 				 "%s: unable to retrieve micro seconds.",
 				 function );
 
@@ -2786,11 +2774,10 @@ int libcdatetime_elements_copy_to_string_with_index(
 			     &nano_seconds,
 			     error ) != 1 )
 			{
-				libcerror_system_set_error(
+				libcerror_error_set(
 				 error,
 				 LIBCERROR_ERROR_DOMAIN_RUNTIME,
 				 LIBCERROR_RUNTIME_ERROR_GET_FAILED,
-				 errno,
 				 "%s: unable to retrieve nano seconds.",
 				 function );
 
