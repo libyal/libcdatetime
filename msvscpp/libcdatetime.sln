@@ -1,13 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C++ Express 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcerror", "libcerror\libcerror.vcproj", "{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcdatetime", "libcdatetime\libcdatetime.vcproj", "{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C} = {BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cdatetime_test_elements", "cdatetime_test_elements\cdatetime_test_elements.vcproj", "{C6A07B6D-B45E-46C4-A185-176269FB13ED}"
 	ProjectSection(ProjectDependencies) = postProject
 		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE} = {37F4A30E-405A-4E9D-8E08-D6A087EACFFE}
@@ -31,20 +24,19 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cdatetime_test_timestamp", 
 		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C} = {BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcdatetime", "libcdatetime\libcdatetime.vcproj", "{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C} = {BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcerror", "libcerror\libcerror.vcproj", "{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|Win32 = Release|Win32
 		VSDebug|Win32 = VSDebug|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.Release|Win32.ActiveCfg = Release|Win32
-		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.Release|Win32.Build.0 = Release|Win32
-		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.VSDebug|Win32.ActiveCfg = VSDebug|Win32
-		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.VSDebug|Win32.Build.0 = VSDebug|Win32
-		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.Release|Win32.ActiveCfg = Release|Win32
-		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.Release|Win32.Build.0 = Release|Win32
-		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.VSDebug|Win32.ActiveCfg = VSDebug|Win32
-		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.VSDebug|Win32.Build.0 = VSDebug|Win32
 		{C6A07B6D-B45E-46C4-A185-176269FB13ED}.Release|Win32.ActiveCfg = Release|Win32
 		{C6A07B6D-B45E-46C4-A185-176269FB13ED}.Release|Win32.Build.0 = Release|Win32
 		{C6A07B6D-B45E-46C4-A185-176269FB13ED}.VSDebug|Win32.ActiveCfg = VSDebug|Win32
@@ -61,6 +53,14 @@ Global
 		{AD27CE76-CA94-40D4-94FA-DCE700E82FFC}.Release|Win32.Build.0 = Release|Win32
 		{AD27CE76-CA94-40D4-94FA-DCE700E82FFC}.VSDebug|Win32.ActiveCfg = VSDebug|Win32
 		{AD27CE76-CA94-40D4-94FA-DCE700E82FFC}.VSDebug|Win32.Build.0 = VSDebug|Win32
+		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.Release|Win32.ActiveCfg = Release|Win32
+		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.Release|Win32.Build.0 = Release|Win32
+		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.VSDebug|Win32.ActiveCfg = VSDebug|Win32
+		{37F4A30E-405A-4E9D-8E08-D6A087EACFFE}.VSDebug|Win32.Build.0 = VSDebug|Win32
+		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.Release|Win32.ActiveCfg = Release|Win32
+		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.Release|Win32.Build.0 = Release|Win32
+		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.VSDebug|Win32.ActiveCfg = VSDebug|Win32
+		{BD3A95FA-A3DE-4B79-A889-A7E5ECA4B69C}.VSDebug|Win32.Build.0 = VSDebug|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
