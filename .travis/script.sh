@@ -25,7 +25,7 @@ then
 
 		make install DESTDIR=${PWD}/osx-pkg;
 		mkdir -p ${PWD}/osx-pkg/usr/share/doc/libcdatetime;
-		cp AUTHORS COPYING NEWS README ${PWD}/osx-pkg/usr/share/doc/libcdatetime;
+		cp AUTHORS COPYING COPYING.LESSER NEWS README ${PWD}/osx-pkg/usr/share/doc/libcdatetime;
 
 		pkgbuild --root osx-pkg --identifier com.github.libyal.libcdatetime --version ${VERSION} --ownership recommended ../libcdatetime-${VERSION}.pkg;
 	fi
