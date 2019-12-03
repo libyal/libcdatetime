@@ -1901,7 +1901,7 @@ int libcdatetime_elements_set_current_time_utc(
 		return( -1 );
 	}
 	if( libcdatetime_internal_elements_set_from_time_utc(
-             internal_elements,
+	     internal_elements,
 	     &( internal_elements->time ),
 	     error ) != 1 )
 	{
@@ -2019,7 +2019,7 @@ int libcdatetime_elements_set_current_time_localtime(
 		return( -1 );
 	}
 	if( libcdatetime_internal_elements_set_from_time_localtime(
-             internal_elements,
+	     internal_elements,
 	     &( internal_elements->time ),
 	     error ) != 1 )
 	{
@@ -2309,7 +2309,7 @@ int libcdatetime_elements_set_from_delta_in_seconds(
 	internal_elements->filetime.dwLowDateTime  = (DWORD) ( number_of_seconds & 0xffffffffUL );
 
 	if( libcdatetime_internal_elements_set_from_filetime_utc(
-             internal_elements,
+	     internal_elements,
 	     &( internal_elements->filetime ),
 	     error ) != 1 )
 	{
@@ -2367,7 +2367,7 @@ int libcdatetime_elements_set_from_delta_in_seconds(
 	internal_elements->time = (time_t) number_of_seconds;
 
 	if( libcdatetime_internal_elements_set_from_time_utc(
-             internal_elements,
+	     internal_elements,
 	     &( internal_elements->time ),
 	     error ) != 1 )
 	{
