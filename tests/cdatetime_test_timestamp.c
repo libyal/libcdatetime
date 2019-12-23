@@ -197,6 +197,8 @@ int cdatetime_test_timestamp_initialize(
 	          &timestamp,
 	          &error );
 
+	timestamp = NULL;
+
 	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
@@ -208,8 +210,6 @@ int cdatetime_test_timestamp_initialize(
 
 	libcerror_error_free(
 	 &error );
-
-	timestamp = NULL;
 
 #if defined( HAVE_CDATETIME_TEST_MEMORY )
 

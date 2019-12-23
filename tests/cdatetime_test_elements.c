@@ -201,6 +201,8 @@ int cdatetime_test_elements_initialize(
 	          &elements,
 	          &error );
 
+	elements = NULL;
+
 	CDATETIME_TEST_ASSERT_EQUAL_INT(
 	 "result",
 	 result,
@@ -212,8 +214,6 @@ int cdatetime_test_elements_initialize(
 
 	libcerror_error_free(
 	 &error );
-
-	elements = NULL;
 
 #if defined( HAVE_CDATETIME_TEST_MEMORY )
 
