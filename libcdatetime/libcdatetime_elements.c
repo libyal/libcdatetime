@@ -24,15 +24,12 @@
 #include <types.h>
 
 #if !defined( WINAPI )
-#if defined( TIME_WITH_SYS_TIME )
+#if defined( HAVE_SYS_TIME_H )
 #include <sys/time.h>
-#include <time.h>
-#elif defined( HAVE_SYS_TIME_H )
-#include <sys/time.h>
-#else
-#include <time.h>
 #endif
-#endif
+
+#include <time.h>
+#endif /* !defined( WINAPI ) */
 
 #include <errno.h>
 
