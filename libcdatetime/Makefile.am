@@ -32,11 +32,13 @@ MAINTAINERCLEANFILES = \
 	Makefile.in
 
 distclean: clean
-	/bin/rm -f libcdatetime_definitions.h
-	/bin/rm -f libcdatetime.rc
-	/bin/rm -f Makefile
+	-rm -f libcdatetime_definitions.h
+	-rm -f libcdatetime.rc
+	-rm -f Makefile
 
-splint:
+sources-local: $(BUILT_SOURCES)
+
+splint-local:
 	@echo "Running splint on libcdatetime ..."
 	-splint -preproc -redef $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(libcdatetime_la_SOURCES)
 
