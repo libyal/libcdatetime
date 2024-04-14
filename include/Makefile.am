@@ -14,13 +14,11 @@ EXTRA_DIST = \
 	libcdatetime/features.h.in \
 	libcdatetime/types.h.in
 
-MAINTAINERCLEANFILES = \
+DISTCLEANFILES = \
+	libcdatetime.h \
+	libcdatetime/definitions.h \
+	libcdatetime/features.h \
+	libcdatetime/types.h \
+	Makefile \
 	Makefile.in
-
-distclean: clean
-	-rm -f libcdatetime.h
-	-rm -f libcdatetime/definitions.h
-	-rm -f libcdatetime/features.h
-	-rm -f libcdatetime/types.h
-	-rm -f Makefile
 
