@@ -72,7 +72,7 @@ environment:
     PYTHON_PATH: "C:\\Python311"
   - TARGET: macos-x64-clang
     BUILD_ENVIRONMENT: xcode
-    APPVEYOR_BUILD_WORKER_IMAGE: macos-monterey
+    APPVEYOR_BUILD_WORKER_IMAGE: macos-sonoma
     HOMEBREW_NO_INSTALL_CLEANUP: 1
     CC: clang
     CFLAGS: "-I/usr/local/include"
@@ -80,7 +80,7 @@ environment:
     CONFIGURE_OPTIONS: ""
   - TARGET: macos-x64-gcc
     BUILD_ENVIRONMENT: xcode
-    APPVEYOR_BUILD_WORKER_IMAGE: macos-monterey
+    APPVEYOR_BUILD_WORKER_IMAGE: macos-sonoma
     HOMEBREW_NO_INSTALL_CLEANUP: 1
     CC: gcc
     CFLAGS: "-I/usr/local/include"
@@ -88,7 +88,7 @@ environment:
     CONFIGURE_OPTIONS: ""
   - TARGET: macos-pkgbuild
     BUILD_ENVIRONMENT: xcode
-    APPVEYOR_BUILD_WORKER_IMAGE: macos-monterey
+    APPVEYOR_BUILD_WORKER_IMAGE: macos-sonoma
     HOMEBREW_NO_INSTALL_CLEANUP: 1
     CONFIGURE_OPTIONS: "--disable-dependency-tracking --prefix=/usr/local --with-pyprefix"
   - TARGET: cygwin64-gcc
