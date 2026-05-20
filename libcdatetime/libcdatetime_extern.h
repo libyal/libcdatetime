@@ -30,12 +30,6 @@
 
 #include <libcdatetime/extern.h>
 
-#if defined( __CYGWIN__ ) || defined( __MINGW32__ )
-#define LIBCDATETIME_EXTERN_VARIABLE	extern
-#else
-#define LIBCDATETIME_EXTERN_VARIABLE	LIBCDATETIME_EXTERN
-#endif
-
 #else
 #define LIBCDATETIME_EXTERN		/* extern */
 #define LIBCDATETIME_EXTERN_VARIABLE	extern
