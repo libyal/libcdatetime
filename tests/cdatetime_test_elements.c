@@ -3122,7 +3122,7 @@ int cdatetime_test_internal_elements_set_from_filetime_utc(
 	 &error );
 
 	result = libcdatetime_internal_elements_set_from_filetime_utc(
-	          elements,
+	          (libcdatetime_internal_elements_t *) elements,
 	          NULL,
 	          &error );
 

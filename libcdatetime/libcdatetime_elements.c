@@ -1696,7 +1696,7 @@ int libcdatetime_internal_elements_set_from_time_utc(
 		return( -1 );
 	}
 	if( memory_copy(
-	     internal_elements->tm,
+	     &( internal_elements->tm ),
 	     static_tm,
 	     sizeof( struct tm ) ) == NULL )
 	{
@@ -1783,7 +1783,7 @@ int libcdatetime_internal_elements_set_from_time_localtime(
 		return( -1 );
 	}
 	if( memory_copy(
-	     internal_elements->tm,
+	     &( internal_elements->tm ),
 	     static_tm,
 	     sizeof( struct tm ) ) == NULL )
 	{
