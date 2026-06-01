@@ -24,11 +24,18 @@
 
 #include <common.h>
 
-#if defined( __has_attribute ) && __has_attribute( visibility ) && !defined( __CYGWIN__ ) && !defined( _WIN32 )
+#if !defined( __CYGWIN__ ) && !defined( _WIN32 ) && defined( __has_attribute )
+#if __has_attribute( visibility )
 #define LIBCDATETIME_INTERNAL	__attribute__((visibility("hidden"))) extern
+
 #else
 #define LIBCDATETIME_INTERNAL	extern
-#endif
+
+#endif /* __has_attribute( visibility ) */
+#else
+#define LIBCDATETIME_INTERNAL	extern
+
+#endif /* !defined( __CYGWIN__ ) && !defined( _WIN32 ) && defined( __has_attribute ) */
 
 /* Define HAVE_LOCAL_LIBCDATETIME for local use of libcdatetime
  */
