@@ -1,6 +1,6 @@
 # Files to ignore by git
 #
-# Version: 20251129
+# Version: 20260604
 
 # Generic auto-generated build files
 *~
@@ -127,11 +127,19 @@ stamp-h[1-9]
 /libcdatetime.spec
 /libcdatetime/libcdatetime.rc
 /libcdatetime/libcdatetime_definitions.h
+/tests/*.dir
 /tests/*.exe
+/tests/*.log
+/tests/*.tmp
+/tests/atconfig
+/tests/atlocal
 /tests/cdatetime_test_elements
 /tests/cdatetime_test_error
 /tests/cdatetime_test_support
 /tests/cdatetime_test_timestamp
+/tests/package.m4
+/tests/test_library
+/tests/test_manpages
 /tests/tmp*
 
 # Local library dependencies specific files

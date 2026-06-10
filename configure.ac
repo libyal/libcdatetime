@@ -2,8 +2,8 @@ AC_PREREQ([2.71])
 
 AC_INIT(
   [libcdatetime],
-  [20260602],
-  [joachim.metz@gmail.com])
+  [20260610],
+  [https://github.com/libyal/libcdatetime/issues])
 
 AC_CONFIG_SRCDIR(
   [include/libcdatetime.h.in])
@@ -12,6 +12,8 @@ AM_INIT_AUTOMAKE([gnu 1.6 tar-ustar])
 AM_EXTRA_RECURSIVE_TARGETS([sources splint])
 
 AC_CONFIG_MACRO_DIR([m4])
+
+AC_CONFIG_TESTDIR([tests])
 
 dnl Check for host type
 AC_CANONICAL_HOST
@@ -118,6 +120,8 @@ AC_CONFIG_FILES([dpkg/changelog])
 AC_CONFIG_FILES([libcdatetime/libcdatetime.rc])
 AC_CONFIG_FILES([libcdatetime.pc])
 AC_CONFIG_FILES([libcdatetime.spec])
+dnl Generate test configuration files
+AC_CONFIG_FILES([tests/atlocal])
 dnl Generate a source configuration file
 AC_CONFIG_HEADERS([common/config.h])
 
