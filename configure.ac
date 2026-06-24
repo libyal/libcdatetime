@@ -2,7 +2,7 @@ AC_PREREQ([2.71])
 
 AC_INIT(
   [libcdatetime],
-  [20260621],
+  [20260624],
   [https://github.com/libyal/libcdatetime/issues])
 
 AC_CONFIG_SRCDIR(

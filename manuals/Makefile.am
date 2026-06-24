@@ -2,7 +2,7 @@ man_MANS = \
 	libcdatetime.3
 
 EXTRA_DIST = \
-	libcdatetime.3
+	$(man_MANS)
 
 DISTCLEANFILES = \
 	Makefile \
